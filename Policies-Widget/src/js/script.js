@@ -23,12 +23,12 @@ let data = {
 		}, {
 			Policy: "Vision Insurance",
 			Category:"Life + Health",
-			Category_Image: "https://redzoneinsurance.com/wp-content/uploads/2022/04/Policies_Auto.jpg",
+			Category_Image: "https://redzoneinsurance.com/wp-content/uploads/2022/04/Policies_Health.jpg",
 			Page_Link: "Apartment"
 		},{
 			Policy: "Homeowners Insurance",
 			Category:"Home",
-			Category_Image: "https://redzoneinsurance.com/wp-content/uploads/2022/04/Policies_Auto.jpg",
+			Category_Image: "https://redzoneinsurance.com/wp-content/uploads/2022/03/HOME.png",
 			Page_Link: "Apartment"
 		}
 	], 
@@ -113,10 +113,12 @@ function fil(filter){
 	filters.Category = filter;
 	let filtered = multiFilter(policyList,filters )
 	let mapRes = filtered.map(function(b){
+		$(element).find('.p-img-container').css('background-image', `url(${b.Category_Image})`);
 		return `<li>
 					<a href="https://www.google.com/">${b.Policy}</a>
 				</li>`;
 	})
+	
 	$(element).find('.p-results ul').empty();
 	$(element).find('.p-results ul').append(mapRes);
 }
