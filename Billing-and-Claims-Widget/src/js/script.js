@@ -85,12 +85,14 @@ dmAPI.runOnReady('init', function () {
 
 	logoList.map(function(a){
 		let mapcat = `<li>
-						<figure>
-							<img src="${a.Logo}" alt="${a.Title} Logo">
-						</figure>
+						<a href="#${convertDash(a.Title)}">
+							<figure>
+								<img src="${a.Logo}" alt="${a.Title} Logo">
+							</figure>
+						</a>
 					</li>`;
 
-		let mapRes = `<div class="res box">
+		let mapRes = `<div class="res box" id="${convertDash(a.Title)}">
 						<div class="logo-wrapper">
 							<img src="${a.Logo}" alt="${a.Title} Logo">
 							<span>${a.Title}</span>
@@ -115,4 +117,9 @@ dmAPI.runOnReady('init', function () {
 
 
 })
+
+function convertDash(str){
+	let newStr = str.replace(/\s/g , "-");
+	return newStr.replace(/\+/g , "").toLowerCase();
+}
 
