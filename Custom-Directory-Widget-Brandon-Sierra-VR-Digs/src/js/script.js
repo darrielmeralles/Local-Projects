@@ -169,7 +169,7 @@ $(element).find('.searchField').keyup(function(event) {
 //FILTER ONCHANGE
 $('.busFilWrap select').change(function(){
 	let keyword = $(element).find('.searchInputField input').val();
-	let keyword2 = $(element).find('.searchInputField2 input').val();
+	// let keyword2 = $(element).find('.searchInputField2 input').val();
 	let selectedCateg = $(element).find('#busCategory').val();
 	let filters = {};
 	
@@ -269,7 +269,7 @@ function createBox(b){
 
 					<button class="btnPageLink">
 						<a href="${itemLink }">
-							<span>More Info</span>
+							<span>MORE INFO</span>
 						</a>
 					</button>
 				</div>
