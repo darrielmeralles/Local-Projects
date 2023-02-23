@@ -1,7 +1,7 @@
 body,
 html {
 	position: relative;
-	display: block;
+	display: block; 
 	width: 100%;
 	height: auto;
 	padding: 0;
@@ -141,11 +141,109 @@ html {
 
 /* - - - - - -  END CSS HERE - - - - - - */
 
+*{
+	margin: 0;
+	padding: 0;
+}
+.chart-main-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
 
-.barChart-Main-Container{
+.box-wrapper{
 	width: 350px;
     height: 300px;
     border: 1px solid #3e66a0;
     border-radius: 8px;
     padding: 10px;
+}
+
+.elevation-Main-Container{
+	width: 350px;
+    height: 300px;
+    border: 1px solid #3e66a0;
+    border-radius: 8px;
+    padding: 10px;
+}
+.pieChart-Main-Container{
+	margin: 0 20px;
+}
+p.boxTitle {
+    text-align: center;
+	color: #113474;
+    font-size: 24px;
+    text-transform: uppercase;
+	font-weight: 700;
+	margin-bottom: 20px;
+}
+.elev-wrapper{
+	display: flex !important;
+    justify-content: space-around;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 100px 200px;
+    border-color: transparent transparent #3e66a0;
+    -webkit-transform: rotate(360deg);
+}
+
+.content-data {
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.summit, .vertical, .base{
+	position: relative;
+}
+.summit:before{
+	position: absolute;
+    height: 0.25rem;
+    top: 13px;
+    border-width: 1px 0 0;
+    border-style: dashed;
+    border-color: #092e3d;
+    content: "";
+    width: 85%;
+    left: -97px;
+    margin-left: -0.15rem;
+}
+.vertical::before{
+	position: absolute;
+    height: 0.25rem;
+    top: 13px;
+    border-width: 1px 0 0;
+    border-style: dashed;
+    border-color: #092e3d;
+    content: "";
+    width: 45%;
+    left: -55px;
+    margin-left: -0.15rem;
+}
+.base::before{
+	position: absolute;
+    height: 0.25rem;
+    top: 13px;
+    border-width: 1px 0 0;
+    border-style: dashed;
+    border-color: #092e3d;
+    content: "";
+    width: 15%;
+    left: -19px;
+    margin-left: -0.15rem;
+}
+
+#barChart{
+	height: 260px !important;
+	width: 100% !important;
+}
+#pieChart{
+	height: 250px !important;
+    width: 250px !important;
+    margin: auto !important;
 }

@@ -7,7 +7,7 @@ let data = {
 	config: {
 		sampleList: [{}],
 		sample:''
-	}
+	} 
 };
 
 let collection = new Collection()
@@ -37,25 +37,22 @@ switch (device) {
 dmAPI.runOnReady('init', function () {
 	dmAPI.loadScript('https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js', function () {
 
+		//BAR CHART
 		let data = {
 			labels: ["Average", "High Records"],
 			datasets: [{
 				label: "Snowfall (Inches)",
 				backgroundColor: "#3E66A0",
 				data: [210,300]
-				// borderColor: "rgba(255,99,132,1)",
-				// borderWidth: 2,
-				// hoverBackgroundColor: "rgba(255,99,132,0.4)",
-				// hoverBorderColor: "rgba(255,99,132,1)",
-				
-				// data: [65, 59, 20, 81, 56, 55, 40],
 			}]
 		};
 		
 		let options = {
-			legend: {
-				position: 'bottom',
-				display: true
+			responsive: true,
+			plugins: {
+				legend: {
+				  position: 'bottom',
+				}
 			},
 			maintainAspectRatio: false,
 			scales: {
@@ -79,6 +76,34 @@ dmAPI.runOnReady('init', function () {
 			type: 'bar',
 			options: options,
 			data: data
+		});
+
+
+		//PIE CHART
+		let xValues = [ "Beginner", "Intermediate", "Advance"];
+		let yValues = [10, 60, 30];
+		let barColors = [
+			"#2BA433",
+			"#2b5797",
+			"#222222",
+		];
+
+		new Chart("pieChart", {
+		type: "pie",
+		data: {
+			labels: xValues,
+			datasets: [{
+				backgroundColor: barColors,
+				data: yValues
+			}]
+		},
+		options: {
+			plugins: {
+				legend: {
+				  position: 'bottom',
+				}
+			}
+		}
 		});
 
 	})
