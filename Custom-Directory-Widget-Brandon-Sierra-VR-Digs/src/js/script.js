@@ -1,7 +1,7 @@
 let element = $('.widget-abc123');
 let data = {
 	device: 'desktop', //desktop, tablet, mobile
-	inEditor: true,
+	inEditor: true, 
 	siteId: '',
 	elementId: '',
 	config: {
@@ -104,6 +104,8 @@ let device = data.device;
 let directoryList= data.config.directoryList;
 let sample = data.config.sample;
 
+
+
 let noCollectMessage = 'No data was found.' ///data.config.noCollectMessage
 let noCollectSubMessage = 'This will be hidden on preview and live site.' ///data.config.noCollectSubMessage
 let sampleListData;
@@ -128,9 +130,13 @@ dmAPI.runOnReady('init', function () {
 			
 			console.log(directoryList, "directoryList");
 
+			let Areas = catFilter(directoryList, 'Areas_Of_Expertise');
+			console.log(Areas, "Areas");
+
 			//append categor in dropdown
 			let bCat = removeDuplicate(directoryList.map(a => a.Areas_Of_Expertise));
-			createFilterDropdown(bCat,'Areas_Of_Expertise');
+			console.log(bCat, "bCat");
+			createFilterDropdown(Areas,'Areas_Of_Expertise');
 
 			//append onload
 			let appdef = directoryList.map(function(i){
@@ -149,7 +155,7 @@ $(element).find('.searchField').keyup(function(event) {
         let keyword = $(this).val();
 		console.log(keyword, "keyword");
         if(keyword != ""){
-			let result = searchByBusinessKey(businessList,keyword);
+			let result = searchByBusinessKey(directoryList,keyword);
 			console.log(result, "result ");
 
 			let filRes = result.map(function(i){
@@ -159,7 +165,7 @@ $(element).find('.searchField').keyup(function(event) {
 			$(element).find(".cd-contentWrapper").html(filRes);
         }
     }else{
-		let allRes = businessList.map(function(i){
+		let allRes = directoryList.map(function(i){
 			return createBox(i);
 		})
 		$(element).find(".cd-contentWrapper").html(allRes);
@@ -169,7 +175,6 @@ $(element).find('.searchField').keyup(function(event) {
 //FILTER ONCHANGE
 $('.busFilWrap select').change(function(){
 	let keyword = $(element).find('.searchInputField input').val();
-	// let keyword2 = $(element).find('.searchInputField2 input').val();
 	let selectedCateg = $(element).find('#busCategory').val();
 	let filters = {};
 	
@@ -180,15 +185,11 @@ $('.busFilWrap select').change(function(){
 	console.log(filters, "filters");
 
 	if(keyword != ""){
-		let result = searchByBusinessKey(businessList,keyword);
+		let result = searchByBusinessKey(directoryList,keyword);
 		let filtered = multiFilter(result, filters);
 		console.log(filtered, 'filtered');
-	}else if(keyword2 != ""){
-		let result2 = searchByBusinessKey(businessList,keyword2);
-		let filtered2 = multiFilter(result2, filters);
-		console.log(filtered2, 'filtered2');
 	}else{  
-		let filtered = multiFilter(businessList, filters);
+		let filtered = multiFilter(directoryList, filters);
 		console.log(filtered, "filtered 2");
 	}
 
@@ -276,3 +277,18 @@ function createBox(b){
 			</div>`
     return j;
 }
+
+//SPLIT FILTERS WITH COMMA
+function catFilter(obj, key) {
+    let newObj = obj.map(i => {
+        return i[key].split(",").map(j => {
+            return j.trim();
+        });
+    }).flat();
+    var uniqueItems = Array.from(new Set(newObj));
+    return uniqueItems.sort((a, b) => {
+        return a > b ? 1 : -1;
+    }).map(i => {
+        return i;
+    })
+};
