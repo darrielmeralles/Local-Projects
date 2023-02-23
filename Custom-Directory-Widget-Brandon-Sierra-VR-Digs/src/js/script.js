@@ -1,3 +1,16 @@
+/*  * Custom Directory
+    * Feb 24, 2023
+    * Version 1.0.0
+    
+    *Upon purchase of this widget, you acquire the right to use it; you're not actually 
+    acquiring the widget itself.TheCamel.co is the owner of the intellectual property of this widget.
+    The widget is for use only, it is not to be on sold, lent, rented, given away, gifted you can’t 
+    even put it in your will. It is for use for your sites only on the duda dashboard we install the item in.
+    
+    *Kindly refer to our Terms and Conditions for more info - http://www.thecamel.co/terms-and-conditions
+    
+*/
+
 let element = $('.widget-abc123');
 let data = {
 	device: 'desktop', //desktop, tablet, mobile
