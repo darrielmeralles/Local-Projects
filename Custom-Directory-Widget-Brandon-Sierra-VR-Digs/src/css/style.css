@@ -2,7 +2,7 @@ body,
 html {
 	position: relative;
 	display: block;
-	width: 100%;
+	width: 100%; 
 	height: auto;
 	padding: 0;
 	margin: 0;
@@ -248,4 +248,25 @@ p.bPhone {
 .btn-slink:hover, .btnPageLink:hover{
     background-color: #ffa031;
     border: 4px solid #1c1c1c !important;
+}
+
+/*PAGINATION CSS*/
+.paginationjs .paginationjs-pages li{
+    border: none !important;
+	color: #222222 !important;
+}
+/* .paginationjs .paginationjs-pages li>a{
+    border-radius: 10px !important;
+} */
+.paginationjs .paginationjs-pages li.active>a{
+    background: #ffd431 !important;
+	color: #222222 !important;
+}
+.paginationjs{
+    margin-top: 20px;
+}
+/*PAGINATION CSS*/
+.cd-sub-wrapper {
+    display: flex !important;
+    flex-wrap: wrap;
 }

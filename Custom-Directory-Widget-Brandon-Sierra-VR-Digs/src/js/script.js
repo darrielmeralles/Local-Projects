@@ -1,7 +1,7 @@
 let element = $('.widget-abc123');
 let data = {
 	device: 'desktop', //desktop, tablet, mobile
-	inEditor: true, 
+	inEditor: true,  
 	siteId: '',
 	elementId: '',
 	config: {
@@ -13,7 +13,7 @@ let data = {
 			Phone_Number: "9049454401",
 			Contact_Mail: "brandon@rdigs.net",
 			Street_Address: "25 Oriole Street",
-			Street_Address2: "",
+			Street_Address2: "N/A",
 			City: "Pensacola",
 			State: "FL",
 			Region: "South",
@@ -42,7 +42,7 @@ let data = {
 			Phone_Number: "222-2222-2222",
 			Contact_Mail: "babydiieem@gmail.com",
 			Street_Address: "USA",
-			Street_Address2: "",
+			Street_Address2: "N/A",
 			City: "Oklahoma",
 			State: "United States",
 			Region: "Western America",
@@ -55,7 +55,7 @@ let data = {
 			About_The_Company: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis,",
 			Number_Of_Company_Vehicles: "700",
 			Number_Of_Current_Employees: "800",
-			Actively_Hiring: "",
+			Actively_Hiring: "N/A",
 			Facebook_Link: "facebook.com",
 			Instagram_Link: "instagram.com",
 			Google_Link: "Google.com",
@@ -74,7 +74,7 @@ let data = {
 			Street_Address2: "",
 			City: "Nederland",
 			State: "Colorado",
-			Region: "",
+			Region: "N/A",
 			Zip_Code: "80466",
 			Company_Name: "Widget Pro",
 			Company_Website: "https://www.widgetpro.io",
@@ -84,7 +84,36 @@ let data = {
 			About_The_Company: "I make widgets",
 			Number_Of_Company_Vehicles: "1-3",
 			Number_Of_Current_Employees: "1",
-			Actively_Hiring: "",
+			Actively_Hiring: "N/A",
+			Facebook_Link: "facebook.com",
+			Instagram_Link: "instagram.com",
+			Google_Link: "googlemybusiness.com",
+			LinkedIn_Link: "linkedIn.com",
+			Record_ID: "recLLfJWp3EaBwHsg",
+			Member_ID: "1",
+			page_item_url: "liz2-fedak"
+		}, {
+			Image: "https://images.pexels.com/photos/262391/pexels-photo-262391.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+			First_Name: "Liz2",
+			Last_Name: "Fedak",
+			Job_Title_At_Work: "Developer",
+			Phone_Number: "630-945-4089",
+			Contact_Mail: "liz2@lizfedak.com",
+			Street_Address: "23884 Peak to Peak Highway",
+			Street_Address2: "",
+			City: "Nederland",
+			State: "Colorado",
+			Region: "N/A",
+			Zip_Code: "80466",
+			Company_Name: "Widget Pro",
+			Company_Website: "https://www.widgetpro.io",
+			Areas_Of_Expertise: "Commercial Property Services, Hardscape & Pavers Services",
+			Year_The_Company_Was_Founded: "2021",
+			Years_Of_Professional_Landscaping_Experience: "5",
+			About_The_Company: "I make widgets",
+			Number_Of_Company_Vehicles: "1-3",
+			Number_Of_Current_Employees: "1",
+			Actively_Hiring: "N/A",
 			Facebook_Link: "facebook.com",
 			Instagram_Link: "instagram.com",
 			Google_Link: "googlemybusiness.com",
@@ -139,10 +168,7 @@ dmAPI.runOnReady('init', function () {
 			createFilterDropdown(Areas,'Areas_Of_Expertise');
 
 			//append onload
-			let appdef = directoryList.map(function(i){
-				return createBox(i);
-			})
-			$(element).find(".cd-contentWrapper").html(appdef);
+			PaginationFunction(directoryList);
 	
 		});
 	});
@@ -151,35 +177,38 @@ dmAPI.runOnReady('init', function () {
 
 //ONCLICK SEARCH
 $(element).find('.searchField').keyup(function(event) {
-    if (event.keyCode == '13') {
+	if (event.keyCode == '13') {
         let keyword = $(this).val();
-		console.log(keyword, "keyword");
         if(keyword != ""){
-			let result = searchByBusinessKey(directoryList,keyword);
-			console.log(result, "result ");
-
-			let filRes = result.map(function(i){
-				return createBox(i);
-			})
-
-			$(element).find(".cd-contentWrapper").html(filRes);
-        }
-    }else{
-		let allRes = directoryList.map(function(i){
-			return createBox(i);
-		})
-		$(element).find(".cd-contentWrapper").html(allRes);
+            let result = searchByBusinessKey(directoryList,keyword);
+            result.map(function(i){
+                PaginationFunction(result);
+            });
+        }else{
+			PaginationFunction(directoryList);
+		}
+    }
+});
+$(element).find('.btn-slink').click(function() {
+	let keyword = $(".searchField").val();
+	if(keyword != ""){
+		let result = searchByBusinessKey(directoryList,keyword);
+		result.map(function(i){
+			PaginationFunction(result);
+		});
+	}else{
+		PaginationFunction(directoryList);
 	}
 });
 
 //FILTER ONCHANGE
 $('.busFilWrap select').change(function(){
 	let keyword = $(element).find('.searchInputField input').val();
-	let selectedCateg = $(element).find('#busCategory').val();
+	let selectedExpertise = $(element).find('#busCategory').val();
 	let filters = {};
 	
-	if(selectedCateg !== null){
-		filters.Category = selectedCateg;
+	if(selectedExpertise !== null){
+		filters.Areas_Of_Expertise = selectedExpertise;
 	}
 
 	console.log(filters, "filters");
@@ -188,9 +217,11 @@ $('.busFilWrap select').change(function(){
 		let result = searchByBusinessKey(directoryList,keyword);
 		let filtered = multiFilter(result, filters);
 		console.log(filtered, 'filtered');
+		PaginationFunction(filtered);
 	}else{  
 		let filtered = multiFilter(directoryList, filters);
 		console.log(filtered, "filtered 2");
+		PaginationFunction(filtered);
 	}
 
 });
@@ -205,14 +236,15 @@ function convertDash(str){
 	return newStr.replace(/\+/g , "");
 }
 
-function multiFilter(arr,filters){
+// MULTI FILTER FOR SPLIT CATEGORY
+function multiFilter(property, filters){
     const filterKeys = Object.keys(filters);
-    return arr.filter(function(eachObj){
+    return property.filter(function(eachObj){
         return filterKeys.every(function(eachKey){
-        if (!filters[eachKey].length) {
-            return true; // passing an empty filter means that filter is ignored.
-        }
-        return filters[eachKey].includes(eachObj[eachKey]);
+            if (!filters[eachKey].length) {
+                return true; // passing an empty filter means that filter is ignored.
+            }
+            return eachObj[eachKey].includes(filters[eachKey]);
         });
     });
 }
@@ -234,8 +266,7 @@ function searchByBusinessKey(arr,keyword){
         maxPatternLength: 32,
         minMatchCharLength: 1,
         keys: [
-            "Business_Name",
-            "Location"
+            "Areas_Of_Expertise"
         ]
     };
     let fuse = new Fuse(arr, options);
@@ -292,3 +323,23 @@ function catFilter(obj, key) {
         return i;
     })
 };
+
+//PAGINATION 
+function PaginationFunction(items){
+    // let sordtedItems = sortItems(jobs);
+    // console.log(sordtedItems);
+    $('.cd-contentWrapper').pagination({
+        dataSource: items,
+        pageSize:3,
+        callback: function(result, pagination) {
+            console.log(result, 'result');
+            let structure = '';
+
+			structure = result.map(i=>{
+				return createBox(i);
+			 }).join("")
+
+			$(element).find(".cd-sub-wrapper").html(structure);
+        }
+    });
+}
