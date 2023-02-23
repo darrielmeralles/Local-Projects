@@ -34,8 +34,27 @@ switch (device) {
 //ADD MULTIPLE LINK SOURCE HERE
 
 
+let summit = "6,820 ft";
+let vertical = "2,250 ft";
+let base = "4,570 ft";
+let average = 210;
+let highRecords = 300;
+let beginner = 10;
+let intermediate = 60;
+let advance = 30;
+// let summit = data.config.summit;
+// let vertical = data.config.vertical;
+// let base = data.config.base;
+
+
 dmAPI.runOnReady('init', function () {
 	dmAPI.loadScript('https://cdn.jsdelivr.net/npm/chart.js@4.2.0/dist/chart.umd.min.js', function () {
+
+		let elevate = `<p class="summit">Summit: ${summit}</p>
+						<p class="vertical">Vertical: ${vertical}</p>
+						<p class="base">Base: ${base}</p>`;
+						
+		$(element).find('.content-data').append(elevate);	
 
 		//BAR CHART
 		let data = {
@@ -43,7 +62,7 @@ dmAPI.runOnReady('init', function () {
 			datasets: [{
 				label: "Snowfall (Inches)",
 				backgroundColor: "#3E66A0",
-				data: [210,300]
+				data: [average,highRecords]
 			}]
 		};
 		
@@ -81,7 +100,7 @@ dmAPI.runOnReady('init', function () {
 
 		//PIE CHART
 		let xValues = [ "Beginner", "Intermediate", "Advance"];
-		let yValues = [10, 60, 30];
+		let yValues = [beginner, intermediate, advance];
 		let barColors = [
 			"#2BA433",
 			"#2b5797",
