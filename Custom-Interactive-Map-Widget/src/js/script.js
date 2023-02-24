@@ -110,21 +110,15 @@ dmAPI.runOnReady('init', function () {
 	});
 
 	mapUsa.map(function(a){
-		let s = `<div class="resHotpot hspot-1" style="top: ${a.Top}; left: ${a.Left};">
-					<img src="${a.Logo}" alt="${a.Resort}">
-				</div>`;
+		let s = createBox(a);
 		$(element).find(".usa-map-wrapper .img").after(s);
 	})
 	mapCanada.map(function(a){
-		let s = `<div class="resHotpot hspot-1" style="top: ${a.Top}; left: ${a.Left};">
-					<img src="${a.Logo}" alt="${a.Resort}">
-				</div>`;
+		let s = createBox(a);
 		$(element).find(".canada-map-wrapper .img").after(s);
 	})
 	mapJapan.map(function(a){
-		let s = `<div class="resHotpot hspot-1" style="top: ${a.Top}; left: ${a.Left};">
-					<img src="${a.Logo}" alt="${a.Resort}">
-				</div>`;
+		let s = createBox(a);
 		$(element).find(".japan-map-wrapper .img").after(s);
 	})
 
@@ -146,3 +140,16 @@ dmAPI.runOnReady('init', function () {
 	  });
 })
 
+//CREATE JOB GRID LAYOUT
+function createBox(a){
+    let itemLink = window.location.href.includes(data.siteId)  ? `/site/${data.siteId}${a.page_item_url}?preview=true&nee=true&showOriginal=true&dm_checkSync=1&dm_try_mode=true&dm_device=${data.device}`: a.page_item_url;
+    if(typeof a.page_item_url == "object"){
+        itemLink = a.page_item_url.href;   
+    }
+    let j = `<div class="resHotpot hspot-1" style="top: ${a.Top}; left: ${a.Left};">
+				<a href="${itemLink}">
+					<img src="${a.Logo}" alt="${a.Resort}">
+				</a>
+			</div>`
+    return j;
+}
