@@ -4,7 +4,7 @@ let data = {
 	inEditor: true,
 	siteId: '',
 	elementId: '',
-	config: {
+	config: { 
 		sampleList: [{}],
 		sample:''
 	}
