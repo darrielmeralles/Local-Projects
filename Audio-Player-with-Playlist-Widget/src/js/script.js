@@ -2,7 +2,7 @@ let element = $('.widget-abc123');
 let data = {
 	device: 'desktop', //desktop, tablet, mobile
 	inEditor: true,
-	siteId: '',
+	siteId: '', 
 	elementId: '',
 	config: {
 		sampleList: [{}],
@@ -12,27 +12,32 @@ let data = {
 
 // let collection = new Collection()
 
-// let device = data.device;
+let device = data.device;
 // let sampleList = data.config.sampleList;
 // let sample = data.config.sample;
 
 
-// switch (device) {
-// 	case 'desktop':
-// 		$(element).width("960px");
-// 		break;
-// 	case 'tablet':
-// 		$(element).width("875px");
-// 		break;
-// 	default:
-// 		$(element).width("326px");
-// }
+switch (device) {
+	case 'desktop':
+		$(element).width("960px");
+		break;
+	case 'tablet':
+		$(element).width("875px");
+		break;
+	default:
+		$(element).width("326px");
+}
 
 //ADD MULTIPLE LINK SOURCE HERE
 
 
 dmAPI.runOnReady('init', function () {
+    let audioList = `<li>
+                        <span class="simp-source" data-src="http://www.archive.org/download/CanonInD_261/CanoninD.mp3">Canon in D</span>
+                        <span class="simp-desc">Johann Pachelbel</span>
+                    </li>`;
 
+    $(element).find(".simp-playlist ul").append(audioList);
 })
 
 /*
