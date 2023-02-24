@@ -2,7 +2,7 @@ let element = $('.widget-abc123');
 let data = {
 	device: 'desktop', //desktop, tablet, mobile
 	inEditor: true,
-	siteId: '',
+	siteId: '', 
 	elementId: '',
 	config: { 
 		sampleList: [{}],
@@ -30,6 +30,35 @@ switch (device) {
 
 //ADD MULTIPLE LINK SOURCE HERE
 
+
+
+$( ".map-img-con i" ).click(function() {
+	let mapData = $(this).attr("data-map");
+	console.log(mapData, "mapData");
+
+	if(mapData === "usa"){
+		$(".worldmap-wrapper").addClass("hideMap");
+		$(".mapwrapper").removeClass("showmap");
+		$(".usa-map-wrapper").addClass("showmap");
+	}
+	if(mapData === "canada"){
+		$(".worldmap-wrapper").addClass("hideMap");
+		$(".mapwrapper").removeClass("showmap");
+		$(".canada-map-wrapper").addClass("showmap");
+	}
+	if(mapData === "japan"){
+		$(".worldmap-wrapper").addClass("hideMap");
+		$(".mapwrapper").removeClass("showmap");
+		$(".japan-map-wrapper").addClass("showmap");
+	}
+
+});
+
+$( ".back" ).click(function() {
+	$(".worldmap-wrapper").removeClass("hideMap");
+	// $(".mapwrapper").addlass("hideMap");
+	$(".mapwrapper").removeClass("showmap");
+});
 
 dmAPI.runOnReady('init', function () {
 	//fade animation

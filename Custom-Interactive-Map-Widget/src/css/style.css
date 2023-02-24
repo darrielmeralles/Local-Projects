@@ -209,12 +209,60 @@ p.country {
     width: 50px !important;
 	position: absolute !important;
 	cursor: pointer;
+	filter: drop-shadow(rgba(0, 0, 0, 0.5) 0px 4px 5px);
 }
-.hspot-1 {
-	top: 37px;
-    left: 133px;
+button.back {
+	width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+	box-shadow: rgb(0 0 0 / 16%) 0px 5px 30px 0px;
+    border-radius: 8px;
+    background-image: linear-gradient(269deg, rgb(219, 49, 87) 0%, rgb(60, 109, 196) 100%);
+    font-family: RalewayPA;
+    color: rgb(255, 255, 255);
+    line-height: 24px;
+    font-size: 16px;
+    padding: 10px 25px;
+    background-color: rgb(219, 49, 87);
+    font-weight: 700;
+    white-space: normal;
+    margin: 0px;
+    z-index: auto;
+    width: auto;
+    height: auto;
+    border-width: 0px;
+    letter-spacing: 0px;
+    filter: none;
+	cursor: pointer;
 }
-.hspot-2 {
-	top: 58px !important;
-    left: 188px;
+.lineWrapper{
+	width: 200px !important;
+	height: 5px !important;
+	background: linear-gradient(269deg, rgb(60, 109, 196) 0%, rgb(219, 49, 87) 100%);
+}
+p.mapTitle {
+    font-weight: bold;
+    padding: 5px 5px 5px 0px;
+    text-transform: uppercase;
+    font-size: 24px;
+    color: rgb(219, 49, 87);
+    margin: 20px 0 10px 0;
+}
+p.mapDes {
+    color: #ffffff;
+    margin: 0;
+    font-size: 18px;
+}
+
+.mapwrapper, .hideMap{
+	display: none !important;
+}
+
+.showmap{
+	display: block !important;
 }
