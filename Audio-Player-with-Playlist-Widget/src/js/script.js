@@ -5,17 +5,104 @@ let data = {
 	siteId: '', 
 	elementId: '',
 	config: {
-		sampleList: [{}],
-		sample:''
+		audioList: [{
+			Title: "Canon in D",
+			Artist: "Johann Pachelbel",
+			Audio_Source:"http://www.archive.org/download/CanonInD_261/CanoninD.mp3"
+		}, {
+			Title: "Artist 5",
+			Artist: "Artist 5",
+			Audio_Source:"https://www.script-tutorials.com/demos/363/data/05.mp3"
+		}, {
+			Title: "Nightmare Side",
+			Artist: "Set Stori",
+			Audio_Source:"https://www.dropbox.com/s/6pays95q2a9jrsf/2020.01.02.mp3"
+		}, {
+			Title: "Angklung Preman Pensiun",
+			Artist: "Angklung Preman Pensiun",
+			Audio_Source:"https://www.dropbox.com/s/k011ag91uktonbv/Angklung%20Preman%20Pensiun.mp3?"
+		},{
+			Title: "Canon Rock (JerryC)",
+			Artist: "by Funtwo",
+			Audio_Source:"https://www.dropbox.com/s/prgte33m86n9ce7/Canon%20Rock%20%28JerryC%29%20-%20funtwo.mp3?dl=1"
+		}
+		,{
+			Title: "105.9 FM Ardan Radio",
+			Artist: "Streaming Radio",
+			Audio_Source:"http://listento.ardanradio.com:1059/"
+		}
+		,{
+			Title: "Jailhouse Rock",
+			Artist: "Elvis Presley",
+			Audio_Source:"https://archive.org/download/78_jailhouse-rock_elvis-presley-jerry-leiber-mike-stoller_gbia0080595b/Jailhouse%20Rock%20-%20Elvis%20Presley%20-%20Jerry%20Leiber-restored.mp3"
+		}
+		,{
+			Title: "Smooth Criminal",
+			Artist: "Michael Jackson",
+			Audio_Source:"https://archive.org/download/J._Period_and_Michael_Jackson_-_Man_Or_The_Music-2010/17%20Smooth%20Criminal.mp3"
+		}
+		,{
+			Title: "Y.M.C.A",
+			Artist: "Village People",
+			Audio_Source:"https://archive.org/download/OldPop_256/VillagePeople-Y.m.c.a.mp3"
+		}
+		,{
+			Title: "Johnny B. Goode",
+			Artist: "Chuck Berry",
+			Audio_Source:"https://archive.org/download/chuckberryjohnnyb.goode/Chuck%20Berry%20-%20Johnny%20B.%20Goode.mp3"
+		}
+		,{
+			Title: "House of the Rising Sun",
+			Artist: "The Animals",
+			Audio_Source:"https://archive.org/download/AnimalsTheHouseOfTheRisingSun_201811/Animals%20-%20The%20House%20Of%20The%20Rising%20Sun.mp3"
+		}
+		,{
+			Title: "Don't Stop Me Now",
+			Artist: "Queen",
+			Audio_Source:"https://archive.org/download/DontStopMeNow_255/Queen-DontStopMeNow.mp3"
+		}
+		,{
+			Title: "Never Gonna Give You Up",
+			Artist: "Rick Astley",
+			Audio_Source:"https://archive.org/download/NeverGonnaGiveYouUpOriginal/Never%20Gonna%20Give%20You%20Up%20Original.mp3"
+		}
+		,{
+			Title: "Sweet Child O' Mine",
+			Artist: "Guns N' Roses",
+			Audio_Source:"https://archive.org/download/gunsnrosessweetchildomine_202003/Guns%20N%27%20Roses%20-%20Sweet%20Child%20%27O%20Mine.mp3"
+		}
+		,{
+			Title: "The Final Countdown",
+			Artist: "Europe",
+			Audio_Source:"https://archive.org/download/01.TheFinalCountdown/01.%20The%20Final%20Countdown.mp3"
+		}
+		,{
+			Title: "My Heart Will Go On",
+			Artist: "Céline Dion",
+			Audio_Source:"https://archive.org/download/1MyHeartWillGoOnLoveThemeFromTitanic/1%20-%20My%20Heart%20Will%20Go%20On%20%28Love%20Theme%20from%20_Titanic_%29.mp3"
+		}
+		,{
+			Title: "Imagine",
+			Artist: "John Lennon",
+			Audio_Source:"https://archive.org/download/tntvillage_323140/John%20Lennon%20-%20Imagine/01%20Imagine.mp3"
+		}
+		,{
+			Title: "Hey Jude",
+			Artist: "The Beatles",
+			Audio_Source:"https://archive.org/download/TheBeatles1970HeyJudeAppleRecords6e062.0434807HeyJude/The%20Beatles%20-%201970%20-%20Hey%20Jude%20%28Apple%20Records%3B%20%236e%20062.04348%29_07%20-%20Hey%20Jude.mp3"
+		}
+		,{
+			Title: "Take Me Home, Country Roads",
+			Artist: "John Denver",
+			Audio_Source:"https://archive.org/download/TakeMeHomeCountryRoad/JohnDenver-TakeMeHomeCountryRoad.mp3"
+		}
+	],
+		sample:'' 
 	}
 };
 
-// let collection = new Collection()
-
 let device = data.device;
-// let sampleList = data.config.sampleList;
-// let sample = data.config.sample;
-
+let audioList = data.config.audioList;
 
 switch (device) {
 	case 'desktop':
@@ -28,16 +115,20 @@ switch (device) {
 		$(element).width("326px");
 }
 
-//ADD MULTIPLE LINK SOURCE HERE
-
-
 dmAPI.runOnReady('init', function () {
+
+  console.log(audioList, "audioList");
+
+  audioList.map(function(i){
     let audioList = `<li>
-                        <span class="simp-source" data-src="http://www.archive.org/download/CanonInD_261/CanoninD.mp3">Canon in D</span>
-                        <span class="simp-desc">Johann Pachelbel</span>
+                        <span class="simp-source" data-src="${i.Audio_Source}">${i.Title}</span>
+                        <span class="simp-desc">${i.Artist}</span>
                     </li>`;
 
     $(element).find(".simp-playlist ul").append(audioList);
+  })
+
+  
 })
 
 /*
