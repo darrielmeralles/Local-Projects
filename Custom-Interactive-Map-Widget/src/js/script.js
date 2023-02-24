@@ -5,7 +5,47 @@ let data = {
 	siteId: '', 
 	elementId: '',
 	config: { 
-		sampleList: [{}],
+		usamapList: [{
+				Resort: "WHITE PASS",
+				Logo: "https://powderalliance.com/wp-content/uploads/2020/09/whitepass-red-map-marker.png",
+				Top:"37px",
+				Left: "133px",
+				Country: "usa",
+				page_item_url: "Apartment"
+			}, 
+			{	
+				Resort: "MISSION RIDGE",
+				Logo: "https://powderalliance.com/wp-content/uploads/2020/09/mission-ridge-red-map-marker.png",
+				Top:"58px",
+				Left: "188px",
+				Country: "usa",
+				page_item_url: "Apartment"
+			},
+			{	
+				Resort: "SKI MARMOT BASIN",
+				Logo: "https://powderalliance.com/wp-content/uploads/2020/09/marmot-basin-red-map-marker.png",
+				Top:"386.5px",
+				Left: " 217.5px",
+				Country: "canada",
+				page_item_url: "Apartment"
+			},
+			{	
+				Resort: "CASTLE MOUNTAIN RESORT",
+				Logo: "https://powderalliance.com/wp-content/uploads/2020/09/castle-mtn-red-map-marker.png",
+				Top:"437.5px",
+				Left: "239px",
+				Country: "canada",
+				page_item_url: "Apartment"
+			},
+			{
+				Resort: "KIRORO",
+				Logo: "https://powderalliance.com/wp-content/uploads/2020/09/kiroro-red-map-marker.png",
+				Top:"100px",
+				Left: "551px",
+				Country: "japan",
+				page_item_url: "Apartment"
+			},
+		],
 		sample:''
 	}
 };
@@ -13,7 +53,7 @@ let data = {
 let collection = new Collection()
 
 let device = data.device;
-let sampleList = data.config.sampleList;
+let usamapList = data.config.usamapList;
 let sample = data.config.sample;
 
 
@@ -28,11 +68,7 @@ switch (device) {
 		$(element).width("326px");
 }
 
-//ADD MULTIPLE LINK SOURCE HERE
-
-
-
-$( ".map-img-con i" ).click(function() {
+$(element).find( ".map-img-con i" ).click(function() {
 	let mapData = $(this).attr("data-map");
 	console.log(mapData, "mapData");
 
@@ -54,15 +90,47 @@ $( ".map-img-con i" ).click(function() {
 
 });
 
-$( ".back" ).click(function() {
+$(element).find( ".back" ).click(function() {
 	$(".worldmap-wrapper").removeClass("hideMap");
-	// $(".mapwrapper").addlass("hideMap");
 	$(".mapwrapper").removeClass("showmap");
 });
 
 dmAPI.runOnReady('init', function () {
+
+	console.log(usamapList, 'usamapList');
+
+	let mapUsa = usamapList.filter(function (u) {
+		return u.Country === "usa";
+	});
+	let mapCanada = usamapList.filter(function (u) {
+		return u.Country === "canada";
+	});
+	let mapJapan = usamapList.filter(function (u) {
+		return u.Country === "japan";
+	});
+
+	mapUsa.map(function(a){
+		let s = `<div class="resHotpot hspot-1" style="top: ${a.Top}; left: ${a.Left};">
+					<img src="${a.Logo}" alt="${a.Resort}">
+				</div>`;
+		$(element).find(".usa-map-wrapper .img").after(s);
+	})
+	mapCanada.map(function(a){
+		let s = `<div class="resHotpot hspot-1" style="top: ${a.Top}; left: ${a.Left};">
+					<img src="${a.Logo}" alt="${a.Resort}">
+				</div>`;
+		$(element).find(".canada-map-wrapper .img").after(s);
+	})
+	mapJapan.map(function(a){
+		let s = `<div class="resHotpot hspot-1" style="top: ${a.Top}; left: ${a.Left};">
+					<img src="${a.Logo}" alt="${a.Resort}">
+				</div>`;
+		$(element).find(".japan-map-wrapper .img").after(s);
+	})
+
+
 	//fade animation
-	$('.countryBox, .resHotpot').chainFade({
+	$(element).find('.countryBox, .resHotpot').chainFade({
 		startAt: 0,
 		interval: 700,
 		speed: 700,
