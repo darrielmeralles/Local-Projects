@@ -438,6 +438,9 @@ if (document.querySelector('#simp')) {
   var simp_isRanext = false; //check if before random starts, simp_isNext value is true
   var simp_isStream = false; //radio streaming
   var simp_isLoaded = false; //audio file has loaded
+
+  console.log(JSON.parse(ap_simp.dataset.config), "ap_simp.dataset.config");
+
   var simp_config = ap_simp.dataset.config ? JSON.parse(ap_simp.dataset.config) : {
     shide_top: false, //show/hide album
     shide_btm: false, //show/hide playlist
