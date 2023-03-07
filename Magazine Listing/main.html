@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Dynamic Magazine Page</title>
+	<meta name="description" content="Sample Widget">
+	<meta name="keywords" content="HTML, CSS, JavaScript">
+	<meta name="author" content="Oscar Faigmani">
+	<link rel="icon" type="image/x-icon" href="../../_reusable-resources/img/codes.ico">
+	<link rel="stylesheet" href="../../_reusable-resources/css/style.css">
+	<link rel="stylesheet" href="./src/css/style.css">
+</head>
+
+<body>
+
+	<div class="widget-abc123">
+
+		<div class="widget-Loader-Container">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+				<circle class="one" cx="50" cy="50" r="25" />
+				<circle class="two" cx="50" cy="50" r="25" />
+			</svg>
+		</div>
+
+		<div class="dmp-Main-Container" style="display: none;">
+			<div class="dmp-Row-Container">
+				<div class="dmp-Iframe-Container">
+					<h3 class="dmp-Iframe-Title">February 2023</h3>
+					<iframe class="dmp-Iframe-Link" loading="lazy" style="border: 1px solid #777;"
+						src="https://indd.adobe.com/embed/ec83a2e3-8ce3-4fe9-85e2-9f28ce2ccf93?startpage=1&amp;allowFullscreen=true"
+						width="100%" height="500px" frameborder="0" allowfullscreen=""></iframe>
+				</div>
+				<div class="dmp-Magazines-Container">
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<script src="../../_reusable-resources/js/main.js"></script>
+	<script src="./src/js/script.js"></script>
+</body>
+
+</html>

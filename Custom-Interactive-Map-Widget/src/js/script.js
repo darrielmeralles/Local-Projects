@@ -45,6 +45,14 @@ let data = {
 				Country: "japan",
 				page_item_url: "Apartment"
 			},
+			{
+				Resort: "TŪROA SKI AREA",
+				Logo: "https://irp.cdn-website.com/e93534a9/dms3rep/multi/turoa.png",
+				Top:"100px",
+				Left: "551px",
+				Country: "new zealand",
+				page_item_url: "Apartment"
+			},
 		],
 		sample:''
 	}
@@ -87,6 +95,11 @@ $(element).find( ".map-img-con i" ).click(function() {
 		$(".mapwrapper").removeClass("showmap");
 		$(".japan-map-wrapper").addClass("showmap");
 	}
+	if(mapData === "new zealand"){
+		$(".worldmap-wrapper").addClass("hideMap");
+		$(".mapwrapper").removeClass("showmap");
+		$(".newZealand-map-wrapperr").addClass("showmap");
+	}
 
 });
 
@@ -108,6 +121,9 @@ dmAPI.runOnReady('init', function () {
 	let mapJapan = usamapList.filter(function (u) {
 		return u.Country === "japan";
 	});
+	let mapNewZealand = usamapList.filter(function (u) {
+		return u.Country === "new zealand";
+	});
 
 	mapUsa.map(function(a){
 		let s = createBox(a);
@@ -120,6 +136,10 @@ dmAPI.runOnReady('init', function () {
 	mapJapan.map(function(a){
 		let s = createBox(a);
 		$(element).find(".japan-map-wrapper .img").after(s);
+	})
+	mapNewZealand.map(function(a){
+		let s = createBox(a);
+		$(element).find(".newZealand-map-wrapper .img").after(s);
 	})
 
 

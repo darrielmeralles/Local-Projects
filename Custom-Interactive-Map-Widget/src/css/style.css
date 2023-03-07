@@ -168,6 +168,10 @@ html {
 	top: 210px;
     left: 693px;
 }
+.ci-newZealand-box {
+    top: 453px !important;
+    left: 699px;
+}
 
 .map-img-con{
 	height: 100px !important;
