@@ -38,10 +38,10 @@ dmAPI.runOnReady('init', function () {
 	const typedTextSpan = document.querySelector(".typed-text");
 	const cursorSpan = document.querySelector(".cursor");
 	
-	const textArray = ["code snippets", "plugins", "scripts", "tutorials"];
-	const typingDelay = 200;
+	const textArray = ["can draft a packing list for your weekend fishing and camping trip", "can suggest more high-protein options to add to your vegan diet"];
+	const typingDelay = 100;
 	const erasingDelay = 100;
-	const newTextDelay = 2000; // Delay between current and next text
+	const newTextDelay = 1000; // Delay between current and next text
 	let textArrayIndex = 0;
 	let charIndex = 0;
 	
