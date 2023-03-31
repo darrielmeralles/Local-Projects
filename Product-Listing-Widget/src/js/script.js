@@ -150,30 +150,34 @@ $(element).find('.searchField').keyup(function(event) {
 					return layout1(i);
 				})
 				$(element).find(".accordionContainer").html(appdef);
+				sliderAccor();
 			}else{
 				let appdef = result.map(function(i){
 					return layout2(i);
 				})
 				$(element).find(".accordionContainer").html(appdef);
+				sliderAccor();
 			}
 		}
+
 	}else{
 		if(layout == "layout1"){
 			let appdef = medList.map(function(i){
 				return layout1(i);
 			})
 			$(element).find(".accordionContainer").html(appdef);
+			sliderAccor();
 		}else{
 			let appdef = medList.map(function(i){
 				return layout2(i);
 			})
 			$(element).find(".accordionContainer").html(appdef);
+			sliderAccor();
 		}
+		
 	}
-
-	sliderAccor();
-	
 });
+
 
 //SEARCH BY JOB KEY
 function searchByBusinessKey(arr,keyword){
@@ -210,7 +214,7 @@ function layout1(b){
 					<div class="list-container-item limg">
 						<div class="numCon">
 							<i class="fa-solid fa-chevron-down"></i>
-							<!-- <i class="fa-solid fa-chevron-up"></i> -->
+							<i class="fa-solid fa-chevron-up"></i>
 						</div>
 					</div>
 				</div><!--end list container-->
@@ -417,7 +421,6 @@ function sliderAccor(){
 				$this.addClass('acc-active');
 			}
 			$this.next().slideToggle();
-			
 		});
 		$(element).find('ul.rteBlock li').each(function(){
 			if($(this).text() != ""){
