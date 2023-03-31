@@ -34,7 +34,37 @@ let data = {
 				Link_2:"https://www.google.com/",
 				Link_3:"https://www.google.com/",
 				Dokumenti_surovine:"https://www.google.com/",
-				Images: 'https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal3.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal2.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg'
+				Images: 'https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal3.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal2.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg'
+			},
+			{
+				Title: "Sample, Suh Izvlecek, Min. Vitamin C 50%",
+				Subtitle:"Lat: Malpighia Punicifolia",
+				Sifra_Proizvajalca:"HP 774/150",
+				Volumen:"150 ml",
+				Maksimalen_Volumen:"158 ml",
+				Premer:"51,6 mm",
+				Visina:"122,8 mm",
+				Teza:"98 g",
+				Tip_Stekla:"Belo III + Jantar rjava III",
+				Grlo:"PFP 28",
+				Pakiranje:"88 kos",
+				Pakiranje_1:"1kg",
+				Pakiranje_2:"5kg",
+				Pakiranje_3:"10kg",
+				Ident_1:"0010",
+				Ident_2:"0011",
+				Ident_3:"0012",
+				Cas_1:"66-84-2",
+				Cas_2:"66-84-2",
+				Cas_3:"66-84-2",
+				Inci_1:"Glucosamin sulfate",
+				Inci_2:"Glucosamin sulfate",
+				Inci_3:"Glucosamin sulfate",
+				Link_1:"https://www.google.com/",
+				Link_2:"https://www.google.com/",
+				Link_3:"https://www.google.com/",
+				Dokumenti_surovine:"https://www.google.com/",
+				Images: 'https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal3.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal2.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg'
 			}
 		],
 		listingSlideToShow: 4,
@@ -42,7 +72,7 @@ let data = {
 		arrowToggle: true,
 		interval: 3000,
 		animSpeed: 200,
-		layout: 'layout2' //layout2
+		layout: 'layout1' //layout2
 	}
 };
 
@@ -77,8 +107,6 @@ switch (device) {
 }
 
 //ADD MULTIPLE LINK SOURCE HERE
-
-
 dmAPI.runOnReady('init', function () {
 
 	dmAPI.loadScript('https://irp-cdn.multiscreensite.com/e70fa563a8d442bc81646ad9d635638a/files/uploaded/fuse.js', function() { 
@@ -100,54 +128,7 @@ dmAPI.runOnReady('init', function () {
 				$(element).find(".accordionContainer").html(appdef);
 			}
 
-			$(element).find('.listingGalleryContainer').slick({
-				slidesToShow: 1,
-				slidesToScroll: 1,
-				fade: true,
-				infinite:true,
-				autoplay:autoPlayListingSlide,
-				arrows: false,
-				autoplaySpeed:interval,
-				speed:animSpeed,
-				asNavFor: $(element).find('.listingGalleryContainerThumbnail'),
-				prevArrow:'<button type="button" class="cSlickPrev cSarrow"><i class="fa fa-angle-left fa-3x"></i></button>',
-				nextArrow:'<button type="button" class="cSlickNext cSarrow"><i class="fa fa-angle-right fa-3x"></i></button>',
-			});
-
-			$(element).find('.listingGalleryContainerThumbnail').slick({
-				slidesToShow: parseInt(4),
-				slidesToScroll: 1,
-				infinite:true,
-				asNavFor: $(element).find('.listingGalleryContainer'),
-				dots: false,
-				centerMode: true,
-				centerPadding:0,
-				focusOnSelect: true,
-				arrows:false
-			});
-
-			(function(){
-				var $element = $(element);
-				$element.find('#accordion > ol > div').click(function(){
-					var $this = $(this);
-					//$element.find('#accordion').find('ol').find('div').removeClass('acc-active');
-					$element.find('#accordion').find('ol').find('.list-container').removeClass('acc-active');
-					//if (false === $this.next().is(':visible')){
-					if (!$this.next().is(':visible')){
-						$(element).find('#accordion').find('ol').find('div').next('ul').slideUp();
-						$this.addClass('acc-active');
-					}
-					$this.next().slideToggle();
-					
-				});
-				$(element).find('ul.rteBlock li').each(function(){
-					if($(this).text() != ""){
-						   
-					}else{
-						$(this).css("opacity","0");
-					}
-				});
-			})();
+			sliderAccor();
 
 			});
 		});
@@ -156,10 +137,65 @@ dmAPI.runOnReady('init', function () {
 
 })
 
+//ONCLICK SEARCH
+$(element).find('.searchField').keyup(function(event) {
+	if (event.keyCode == '13') {
+		let keyword = $(this).val();
+		console.log(keyword, "keyword");
+		if(keyword != ""){
+			let result = searchByBusinessKey(medList,keyword);
+			console.log(result, "result ");
+			if(layout == "layout1"){
+				let appdef = result.map(function(i){
+					return layout1(i);
+				})
+				$(element).find(".accordionContainer").html(appdef);
+			}else{
+				let appdef = result.map(function(i){
+					return layout2(i);
+				})
+				$(element).find(".accordionContainer").html(appdef);
+			}
+		}
+	}else{
+		if(layout == "layout1"){
+			let appdef = medList.map(function(i){
+				return layout1(i);
+			})
+			$(element).find(".accordionContainer").html(appdef);
+		}else{
+			let appdef = medList.map(function(i){
+				return layout2(i);
+			})
+			$(element).find(".accordionContainer").html(appdef);
+		}
+	}
 
+	sliderAccor();
+	
+});
+
+//SEARCH BY JOB KEY
+function searchByBusinessKey(arr,keyword){
+    let options = {
+        shouldSort: true,
+        threshold: 0.2,
+        location: 0,
+        distance: 100,
+        maxPatternLength: 32,
+        minMatchCharLength: 1,
+        keys: [
+            "Title"
+        ]
+    };
+    let fuse = new Fuse(arr, options);
+    let result = fuse.search(keyword);
+    return result;
+}
 
 //CREATE JOB GRID LAYOUT
 function layout1(b){
+	let separatedImage = b.Images.split(",");
     let j = `<ol class="list-item hasBackgroundOverlay">
 				<div class="list-container">
 					<div class="list-container-item">
@@ -229,12 +265,13 @@ function layout1(b){
 										</div>
 									</div>
 									<div class="rightContent">
-										<div class="imgThumb" style="background-image: url(https://images.pexels.com/photos/159211/headache-pain-pills-medication-159211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);"></div>
-										<div class="imgThumb" style="background-image: url(https://images.pexels.com/photos/159211/headache-pain-pills-medication-159211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);"></div>
-										<div class="imgThumb" style="background-image: url(https://images.pexels.com/photos/159211/headache-pain-pills-medication-159211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);"></div>
-										<div class="imgThumb" style="background-image: url(https://images.pexels.com/photos/159211/headache-pain-pills-medication-159211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);"></div>
-										<div class="imgThumb" style="background-image: url(https://images.pexels.com/photos/159211/headache-pain-pills-medication-159211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);"></div>
-										<div class="imgThumb" style="background-image: url(https://images.pexels.com/photos/159211/headache-pain-pills-medication-159211.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);"></div>
+										${
+											separatedImage.map(function(i){
+												return `<div class="imgThumb" style="background-image: url(${i});"></div>`;    
+											}).join("")
+										}
+					
+										
 									</div>
 								</div>
 							</div>
@@ -338,4 +375,57 @@ function layout2(b){
 				</ul> 
 			</ol>`
     return j;
+}
+
+function sliderAccor(){
+	$(element).find('.listingGalleryContainer').slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		fade: true,
+		infinite:true,
+		autoplay:autoPlayListingSlide,
+		arrows: false,
+		autoplaySpeed:interval,
+		speed:animSpeed,
+		asNavFor: $(element).find('.listingGalleryContainerThumbnail'),
+		prevArrow:'<button type="button" class="cSlickPrev cSarrow"><i class="fa fa-angle-left fa-3x"></i></button>',
+		nextArrow:'<button type="button" class="cSlickNext cSarrow"><i class="fa fa-angle-right fa-3x"></i></button>',
+	});
+
+	$(element).find('.listingGalleryContainerThumbnail').slick({
+		slidesToShow: parseInt(4),
+		slidesToScroll: 1,
+		infinite:true,
+		asNavFor: $(element).find('.listingGalleryContainer'),
+		dots: false,
+		centerMode: true,
+		centerPadding:0,
+		focusOnSelect: true,
+		arrows:false
+	});
+
+	//accordion
+	(function(){
+		var $element = $(element);
+		$element.find('#accordion > ol > div').click(function(){
+			var $this = $(this);
+			//$element.find('#accordion').find('ol').find('div').removeClass('acc-active');
+			$element.find('#accordion').find('ol').find('.list-container').removeClass('acc-active');
+			//if (false === $this.next().is(':visible')){
+			if (!$this.next().is(':visible')){
+				$(element).find('#accordion').find('ol').find('div').next('ul').slideUp();
+				$this.addClass('acc-active');
+			}
+			$this.next().slideToggle();
+			
+		});
+		$(element).find('ul.rteBlock li').each(function(){
+			if($(this).text() != ""){
+				   
+			}else{
+				$(this).css("opacity","0");
+			}
+		});
+	})();
+	//accordion
 }
