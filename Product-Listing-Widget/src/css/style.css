@@ -421,13 +421,12 @@ p.ptitle {
     height:auto;
     /*align-items:flex-start;*/
 }
-.accContent img{
+/* .accContent img{
     position:relative;
     display:block;
     width:100%;
     height:50px;
-    /* opacity:0; */
-}
+} */
 .listingGalleryContainerThumbnail .accContent img{
     margin: 0 5px !important;
 }

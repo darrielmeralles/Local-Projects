@@ -7,6 +7,7 @@ let data = {
 	config: {
 		medList: [
 			{
+				Item_Id: 1,
 				Title: "Acerola Plod, Suh Izvlecek, Min. Vitamin C 25%",
 				Subtitle:"Lat: Malpighia Punicifolia",
 				Sifra_Proizvajalca:"HP 774/150",
@@ -37,6 +38,7 @@ let data = {
 				Images: 'https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal3.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal2.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg'
 			},
 			{
+				Item_Id: 2,
 				Title: "Sample, Suh Izvlecek, Min. Vitamin C 50%",
 				Subtitle:"Lat: Malpighia Punicifolia",
 				Sifra_Proizvajalca:"HP 774/150",
@@ -72,7 +74,7 @@ let data = {
 		arrowToggle: true,
 		interval: 3000,
 		animSpeed: 200,
-		layout: 'layout1' //layout2
+		layout: 'layout2' //layout2
 	}
 };
 
@@ -113,7 +115,10 @@ dmAPI.runOnReady('init', function () {
 		dmAPI.loadScript('https://irt-cdn.multiscreensite.com/8914113fe39e47bcb3040f2b64f71b02/files/uploaded/paginates.min.js', function() { 
 			dmAPI.loadScript('https://irp-cdn.multiscreensite.com/f49f126e/files/uploaded/slick.min.js', function() { 
 
-			console.log(medList, "medList");
+			//append categor in dropdown
+			let bCat = medList.map(a => a.Item_Id);
+			
+			console.log(bCat, "bCat");
 			//append onload
 			console.log(layout, "layout ");
 			if(layout == "layout1"){
@@ -127,10 +132,17 @@ dmAPI.runOnReady('init', function () {
 				})
 				$(element).find(".accordionContainer").html(appdef);
 			}
+			
+			
 
 			sliderAccor();
-
+			
 			});
+
+
+
+
+
 		});
 	});
 
@@ -312,21 +324,25 @@ function layout2(b){
 							<div class="accTextContainer">
 								<div class="layout2-wrapper">
 									<div class="col1-wrap">
-										<div class="listingGalleryMainWrapper">  
-											<div class="listingGalleryContainer">
-												${
-													separatedImage.map(function(i){
-														return `<img src="${i}">`;    
-													}).join("")
-												}
-											</div>
-											<div class="listingGalleryContainerThumbnail">
-												${
-													separatedImage.map(function(i){
-														return `<img src="${i}">`;    
-													}).join("")
-												}
-											</div>  
+										<!-- Primary carousel image -->
+
+										<div class="show" href="1.jpg">
+										<img src="./src/images/1.png" id="show-img-${b.Item_Id}">
+										</div>
+								
+										<!-- Secondary carousel image thumbnail gallery -->
+								
+										<div class="small-img">
+										<img src="./src/images/next-icon.png" class="icon-left" alt="" id="prev-img">
+										<div class="small-container">
+										<div id="small-img-roll">
+											<img src="https://images.pexels.com/photos/5029301/pexels-photo-5029301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
+											<img src="https://images.pexels.com/photos/11837301/pexels-photo-11837301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
+											<img src="https://images.pexels.com/photos/12296890/pexels-photo-12296890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
+											<img src="https://images.pexels.com/photos/5110955/pexels-photo-5110955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
+										</div>
+										</div>
+										<img src="./src/images/next-icon.png" class="icon-right" alt="" id="next-img">
 										</div> 
 									</div>
 									<div class="col2-wrap">
@@ -382,32 +398,6 @@ function layout2(b){
 }
 
 function sliderAccor(){
-	$(element).find('.listingGalleryContainer').slick({
-		slidesToShow: 1,
-		slidesToScroll: 1,
-		fade: true,
-		infinite:true,
-		autoplay:autoPlayListingSlide,
-		arrows: false,
-		autoplaySpeed:interval,
-		speed:animSpeed,
-		asNavFor: $(element).find('.listingGalleryContainerThumbnail'),
-		prevArrow:'<button type="button" class="cSlickPrev cSarrow"><i class="fa fa-angle-left fa-3x"></i></button>',
-		nextArrow:'<button type="button" class="cSlickNext cSarrow"><i class="fa fa-angle-right fa-3x"></i></button>',
-	});
-
-	$(element).find('.listingGalleryContainerThumbnail').slick({
-		slidesToShow: parseInt(4),
-		slidesToScroll: 1,
-		infinite:true,
-		asNavFor: $(element).find('.listingGalleryContainer'),
-		dots: false,
-		centerMode: true,
-		centerPadding:0,
-		focusOnSelect: true,
-		arrows:false
-	});
-
 	//accordion
 	(function(){
 		var $element = $(element);
@@ -431,4 +421,73 @@ function sliderAccor(){
 		});
 	})();
 	//accordion
+	
+}
+
+
+function initGallery(a){
+	//Initialize product gallery
+
+	// $('.show').zoomImage();
+
+	$('.show-small-img:first-of-type').css({'border': 'solid 1px #951b25', 'padding': '2px'})
+	$('.show-small-img:first-of-type').attr('alt', 'now').siblings().removeAttr('alt')
+	$('.show-small-img').click(function () {
+
+		let imgs =  $(this).attr('src');
+		console.log(imgs, "imgs");
+
+		$(`#show-img-${a}`).attr('src', $(this).attr('src'))
+		$('#big-img').attr('src', $(this).attr('src'))
+		$(this).attr('alt', 'now').siblings().removeAttr('alt')
+		$(this).css({'border': 'solid 1px #951b25', 'padding': '2px'}).siblings().css({'border': 'none', 'padding': '0'})
+		if ($('#small-img-roll').children().length > 4) {
+			if ($(this).index() >= 3 && $(this).index() < $('#small-img-roll').children().length - 1){
+			$('#small-img-roll').css('left', -($(this).index() - 2) * 76 + 'px')
+			} else if ($(this).index() == $('#small-img-roll').children().length - 1) {
+			$('#small-img-roll').css('left', -($('#small-img-roll').children().length - 4) * 76 + 'px')
+			} else {
+			$('#small-img-roll').css('left', '0')
+			}
+		}
+		console.log("click image");
+	})
+
+	//Enable the next button
+
+	$('#next-img').click(function (){
+	$('#show-img').attr('src', $(".show-small-img[alt='now']").next().attr('src'))
+	$('#big-img').attr('src', $(".show-small-img[alt='now']").next().attr('src'))
+	$(".show-small-img[alt='now']").next().css({'border': 'solid 1px #951b25', 'padding': '2px'}).siblings().css({'border': 'none', 'padding': '0'})
+	$(".show-small-img[alt='now']").next().attr('alt', 'now').siblings().removeAttr('alt')
+	if ($('#small-img-roll').children().length > 4) {
+		if ($(".show-small-img[alt='now']").index() >= 3 && $(".show-small-img[alt='now']").index() < $('#small-img-roll').children().length - 1){
+		$('#small-img-roll').css('left', -($(".show-small-img[alt='now']").index() - 2) * 76 + 'px')
+		} else if ($(".show-small-img[alt='now']").index() == $('#small-img-roll').children().length - 1) {
+		$('#small-img-roll').css('left', -($('#small-img-roll').children().length - 4) * 76 + 'px')
+		} else {
+		$('#small-img-roll').css('left', '0')
+		}
+	}
+	})
+
+	//Enable the previous button
+
+	$('#prev-img').click(function (){
+	$('#show-img').attr('src', $(".show-small-img[alt='now']").prev().attr('src'))
+	$('#big-img').attr('src', $(".show-small-img[alt='now']").prev().attr('src'))
+	$(".show-small-img[alt='now']").prev().css({'border': 'solid 1px #951b25', 'padding': '2px'}).siblings().css({'border': 'none', 'padding': '0'})
+	$(".show-small-img[alt='now']").prev().attr('alt', 'now').siblings().removeAttr('alt')
+	if ($('#small-img-roll').children().length > 4) {
+		if ($(".show-small-img[alt='now']").index() >= 3 && $(".show-small-img[alt='now']").index() < $('#small-img-roll').children().length - 1){
+		$('#small-img-roll').css('left', -($(".show-small-img[alt='now']").index() - 2) * 76 + 'px')
+		} else if ($(".show-small-img[alt='now']").index() == $('#small-img-roll').children().length - 1) {
+		$('#small-img-roll').css('left', -($('#small-img-roll').children().length - 4) * 76 + 'px')
+		} else {
+		$('#small-img-roll').css('left', '0')
+		}
+	}
+	})
+	
+	
 }
