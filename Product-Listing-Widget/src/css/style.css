@@ -697,3 +697,17 @@ button.btnLink {
 .lockContent i {
     font-size: 20px;
 }
+
+/* layout2 */
+.imgThumb2{
+    height: 200px !important;
+    width: 200px !important;
+    background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.layout2-wrapper {
+    display: flex !important;
+}
+
+/* thumbnail css */
