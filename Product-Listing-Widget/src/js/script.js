@@ -136,7 +136,7 @@ dmAPI.runOnReady('init', function () {
 			
 
 			sliderAccor();
-			
+			initGallery();
 			});
 
 
@@ -336,10 +336,10 @@ function layout2(b){
 										<img src="./src/images/next-icon.png" class="icon-left" alt="" id="prev-img">
 										<div class="small-container">
 										<div id="small-img-roll">
-											<img src="https://images.pexels.com/photos/5029301/pexels-photo-5029301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
-											<img src="https://images.pexels.com/photos/11837301/pexels-photo-11837301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
-											<img src="https://images.pexels.com/photos/12296890/pexels-photo-12296890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
-											<img src="https://images.pexels.com/photos/5110955/pexels-photo-5110955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
+											<img data-id="show-img-${b.Item_Id}" src="https://images.pexels.com/photos/5029301/pexels-photo-5029301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
+											<img data-id="show-img-${b.Item_Id}" src="https://images.pexels.com/photos/11837301/pexels-photo-11837301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
+											<img data-id="show-img-${b.Item_Id}" src="https://images.pexels.com/photos/12296890/pexels-photo-12296890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
+											<img data-id="show-img-${b.Item_Id}" src="https://images.pexels.com/photos/5110955/pexels-photo-5110955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
 										</div>
 										</div>
 										<img src="./src/images/next-icon.png" class="icon-right" alt="" id="next-img">
@@ -425,7 +425,7 @@ function sliderAccor(){
 }
 
 
-function initGallery(a){
+function initGallery(){
 	//Initialize product gallery
 
 	// $('.show').zoomImage();
@@ -435,9 +435,11 @@ function initGallery(a){
 	$('.show-small-img').click(function () {
 
 		let imgs =  $(this).attr('src');
+		let imgId = $(this).data('id');
 		console.log(imgs, "imgs");
+		console.log(imgId, "imgId");
 
-		$(`#show-img-${a}`).attr('src', $(this).attr('src'))
+		$(`#${imgId}`).attr('src', $(this).attr('src'))
 		$('#big-img').attr('src', $(this).attr('src'))
 		$(this).attr('alt', 'now').siblings().removeAttr('alt')
 		$(this).css({'border': 'solid 1px #951b25', 'padding': '2px'}).siblings().css({'border': 'none', 'padding': '0'})
@@ -456,7 +458,7 @@ function initGallery(a){
 	//Enable the next button
 
 	$('#next-img').click(function (){
-	$('#show-img').attr('src', $(".show-small-img[alt='now']").next().attr('src'))
+	$(`#${imgId}`).attr('src', $(".show-small-img[alt='now']").next().attr('src'))
 	$('#big-img').attr('src', $(".show-small-img[alt='now']").next().attr('src'))
 	$(".show-small-img[alt='now']").next().css({'border': 'solid 1px #951b25', 'padding': '2px'}).siblings().css({'border': 'none', 'padding': '0'})
 	$(".show-small-img[alt='now']").next().attr('alt', 'now').siblings().removeAttr('alt')
@@ -474,7 +476,7 @@ function initGallery(a){
 	//Enable the previous button
 
 	$('#prev-img').click(function (){
-	$('#show-img').attr('src', $(".show-small-img[alt='now']").prev().attr('src'))
+	$(`#${imgId}`).attr('src', $(".show-small-img[alt='now']").prev().attr('src'))
 	$('#big-img').attr('src', $(".show-small-img[alt='now']").prev().attr('src'))
 	$(".show-small-img[alt='now']").prev().css({'border': 'solid 1px #951b25', 'padding': '2px'}).siblings().css({'border': 'none', 'padding': '0'})
 	$(".show-small-img[alt='now']").prev().attr('alt', 'now').siblings().removeAttr('alt')
