@@ -35,7 +35,7 @@ let data = {
 				Link_2:"https://www.google.com/",
 				Link_3:"https://www.google.com/",
 				Dokumenti_surovine:"https://www.google.com/",
-				Images: 'https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal3.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal2.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg'
+				Images: 'https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal3.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal2.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg,https://irt-cdn.multiscreensite.com/edb6655af63949cc93dd07aa38c7b398/dms3rep/multi/cargal1.jpg'
 			},
 			{
 				Item_Id: 2,
@@ -74,7 +74,7 @@ let data = {
 		arrowToggle: true,
 		interval: 3000,
 		animSpeed: 200,
-		layout: 'layout2' //layout2
+		layout: 'layout1' //layout2
 	}
 };
 
@@ -132,17 +132,9 @@ dmAPI.runOnReady('init', function () {
 				})
 				$(element).find(".accordionContainer").html(appdef);
 			}
-			
-			
-
 			sliderAccor();
 			initGallery();
 			});
-
-
-
-
-
 		});
 	});
 
@@ -163,12 +155,14 @@ $(element).find('.searchField').keyup(function(event) {
 				})
 				$(element).find(".accordionContainer").html(appdef);
 				sliderAccor();
+				initGallery();
 			}else{
 				let appdef = result.map(function(i){
 					return layout2(i);
 				})
 				$(element).find(".accordionContainer").html(appdef);
 				sliderAccor();
+				initGallery();
 			}
 		}
 
@@ -179,12 +173,14 @@ $(element).find('.searchField').keyup(function(event) {
 			})
 			$(element).find(".accordionContainer").html(appdef);
 			sliderAccor();
+			initGallery();
 		}else{
 			let appdef = medList.map(function(i){
 				return layout2(i);
 			})
 			$(element).find(".accordionContainer").html(appdef);
 			sliderAccor();
+			initGallery();
 		}
 		
 	}
@@ -300,6 +296,9 @@ function layout1(b){
 
 function layout2(b){
 	let separatedImage = b.Images.split(",");
+	let fImg = separatedImage[0];
+	console.log(fImg , "fImg ");
+	console.log(separatedImage, "separatedImage");
     let j = `<ol class="list-item hasBackgroundOverlay">
 				<div class="list-container">
 					<div class="list-container-item">
@@ -327,7 +326,7 @@ function layout2(b){
 										<!-- Primary carousel image -->
 
 										<div class="show" href="1.jpg">
-										<img src="./src/images/1.png" id="show-img-${b.Item_Id}">
+											<img src="${fImg}" id="show-img-${b.Item_Id}">
 										</div>
 								
 										<!-- Secondary carousel image thumbnail gallery -->
@@ -336,10 +335,11 @@ function layout2(b){
 										<img src="./src/images/next-icon.png" class="icon-left" alt="" id="prev-img">
 										<div class="small-container">
 										<div id="small-img-roll">
-											<img data-id="show-img-${b.Item_Id}" src="https://images.pexels.com/photos/5029301/pexels-photo-5029301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
-											<img data-id="show-img-${b.Item_Id}" src="https://images.pexels.com/photos/11837301/pexels-photo-11837301.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
-											<img data-id="show-img-${b.Item_Id}" src="https://images.pexels.com/photos/12296890/pexels-photo-12296890.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
-											<img data-id="show-img-${b.Item_Id}" src="https://images.pexels.com/photos/5110955/pexels-photo-5110955.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="show-small-img" alt="">
+											${
+												separatedImage.map(function(i){
+													return `<img data-id="show-img-${b.Item_Id}" src="${i}" class="show-small-img" alt="">`;    
+												}).join("")
+											}
 										</div>
 										</div>
 										<img src="./src/images/next-icon.png" class="icon-right" alt="" id="next-img">
