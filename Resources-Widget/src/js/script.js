@@ -32,32 +32,51 @@ switch (device) {
 }
 
 //ADD MULTIPLE LINK SOURCE HERE
-
+let tab_list = data.config.tab_list;
+let video = "https://www.youtube.com/embed/LXb3EKWsInQ";
+let sources = {
+    youtube: 'https://youtube.com/embed/',
+    vimeo: 'https://player.vimeo.com/video/',
+    dailymotion: 'https://www.dailymotion.com/embed/video/'
+};
 
 dmAPI.runOnReady('init', function () {
-	dmAPI.loadScript('PLUGIN LINK', function () {
+    let urlmap = new URL(video);
+    let vidtype = "";
+    
+    if(video.includes("youtube")){
+        $(element).find('.errorCon').hide();
+        $(element).find('.tab-container').removeClass('hide');
+        vidtype = "youtube";
+    }
+    
+    if(video.includes("vimeo")){
+        $(element).find('.errorCon').hide();
+        $(element).find('.tab-container').removeClass('hide');
+        vidtype = "vimeo";
+    }
 
-		// ? Uncomment this if you want to ue the CONNECT DATA feature
-		// sampleListData = collection.data(sampleList) 
-
-		if (sampleListData.length == 0) {
-
-			if (data.inEditor) {
-				$(element).html(`<div class="widget-noCollection-Title">${noCollectMessage}</div><div class="widget-noCollection-Subtext">${noCollectSubMessage}</div>`)
-			} else {
-				$(element).hide()
-			}
-			return
-
-		} else {
-			
-			setTimeout(preloader(), 2000)
-		}
-
-	})
+    hostedVideo(urlmap, vidtype);
 })
 
-function preloader() {
-	$(element).find('div.widget-Loader-Container').fadeOut().remove()
-	$(element).find('div.widgetName-Main-Container').fadeIn()
+
+
+
+function buildFrame (src) {
+    var iframe = document.createElement('iframe');
+    iframe.frameBorder = 0;
+    iframe.allowFullScreen = true;
+    iframe.src = src;
+    return iframe;
 }
+
+function hostedVideo (url, type) {
+    let container = $('.rw-video-wrap');
+    var domain = sources[type];
+    if (!domain) return console.error('Unknown video source.');
+    var id = url.pathname.split('/').pop();
+    var src = domain + id;
+    var iframe = buildFrame(src);
+    container.append(iframe);
+}
+
