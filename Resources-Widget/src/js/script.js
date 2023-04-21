@@ -59,9 +59,6 @@ dmAPI.runOnReady('init', function () {
     hostedVideo(urlmap, vidtype);
 })
 
-
-
-
 function buildFrame (src) {
     var iframe = document.createElement('iframe');
     iframe.frameBorder = 0;
