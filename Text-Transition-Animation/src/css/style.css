@@ -139,6 +139,7 @@ html {
 	align-items: center;
 	width: 450px !important;
 	position: relative !important;
+	animation: fadein ease 0.4s;
 }
 .tta-title{
 	font-size: 50px !important;
@@ -166,3 +167,15 @@ html {
     border-radius: 50%;
     z-index: -1;
 } */
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}

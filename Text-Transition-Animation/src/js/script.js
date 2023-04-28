@@ -44,9 +44,12 @@ dmAPI.runOnReady('init', function () {
 		controls:false,
 		infiniteLoop:true,
 		auto:true,
-		speed:900,
-		pause:2000,
+		speed:1900,
+		pause:3000,
 		autoDirection: 'previous',
+		useCSS: false,    
+   		easing: 'easeInOutQuint'
+
 	  });
 
 	})
