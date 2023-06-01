@@ -48,7 +48,20 @@ dmAPI.runOnReady('init', function () {
 		pause:3000,
 		autoDirection: 'previous',
 		useCSS: false,    
-   		easing: 'easeInOutQuint'
+   		easing: 'easeInOutQuint',
+		onSlideBefore: function($slideElement, $oldIndex, $newIndex) {                    
+			$('.tta-title').removeClass('active');
+			$('.img-con').removeClass('active');
+			$('.tta-bg-con').removeClass('active');
+			$($slideElement).find('.tta-title').addClass('active');
+			$($slideElement).find('.img-con').addClass('active');
+			$($slideElement).find('.tta-bg-con').addClass('active');
+	    },
+		// onSlideAfter: function($slideElement, $oldIndex, $newIndex) {                    
+		// 	$($newIndex).find('.tta-title').fadeOut("slow");
+		// 	$($newIndex).find('.img-con').fadeOut("slow");
+		// 	$($newIndex).find('.tta-bg-con').fadeOut("slow");
+	    // }
 
 	  });
 

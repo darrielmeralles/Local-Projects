@@ -18,6 +18,7 @@ html {
 	padding: 0;
 	margin: 0 auto;
 	box-sizing: border-box;
+	width: 450px !important;
 }
 
 /* Start CSS Here */
@@ -74,17 +75,6 @@ html {
 	overflow: hidden;
 	position: relative;
 }
-/* .text-animation:after {
-	content: "";
-	border-right: 2px dotted #fff;
-	height: 200px;
-	width: 5px;
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 44%;
-	transform: rotate(17deg) translate( 0%, -50%);
-} */
 
 .bx-wrapper {
 	width: 50%;
@@ -124,13 +114,13 @@ html {
 	background-repeat: no-repeat;
     background-size: cover;
     background-position: 50%;
-    width: 120px !important;
+    width: 138px !important;
     position: absolute !important;
-    height: 70px !important;
+    height: 92px !important;
     top: 50%;
-    right: 38px;
+    right: 30px;
     transform: translateY(-50%);
-	box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
 }  
 
 .tta-content-wrapper{
@@ -139,7 +129,8 @@ html {
 	align-items: center;
 	width: 450px !important;
 	position: relative !important;
-	animation: fadein ease 0.4s;
+	/* animation:fadeOut 0.9s ease-in-out;
+	-webkit-animation:fadeOut 0.9s ease-in-out; */
 }
 .tta-title{
 	font-size: 50px !important;
@@ -156,26 +147,15 @@ html {
     border-radius: 50%;
     z-index: -1;
 }
-/* li.tta-content-wrapper:before {
-    content: "";
-    position: absolute;
-    height: 100px !important;
-    width: 100px !important;
-    background: red;
-    top: 0;
-    right: 0;
-    border-radius: 50%;
-    z-index: -1;
-} */
-@keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-}
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-     }
-}
+.active {
+	animation:fadeOut 0.9s ease-in-out;
+	-webkit-animation:fadeOut 0.9s ease-in-out;
+} 
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+	   opacity: 0;
+	}
+  }
