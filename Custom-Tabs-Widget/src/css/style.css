@@ -1,0 +1,278 @@
+body,
+html {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font: var(--defaultFont);
+}
+
+.widget-abc123 {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+/* Start CSS Here */
+.c-tab-Main-Container,
+.c-tab-Main-Container a,
+.c-tab-Main-Container div,
+.c-tab-Main-Container img,
+.c-tab-Main-Container label,
+.c-tab-Main-Container input,
+.c-tab-Main-Container select {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0;
+	line-height: 1.5em;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+body {
+	color: #666;
+	font: 14px/24px "Open Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", Sans-Serif;
+  }
+  .tabs {
+	max-width: 100%;
+  }
+  .tabs-nav{
+	width: 100%;
+    list-style-type: none;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 0 !important;
+  }
+  .tabs-nav li {
+	float: left;
+	width: 50%;
+	list-style-type: none;
+	margin: 0 3px;
+  }
+  .tabs-nav li a{
+	padding: 10px 20px;
+	font-size: 20px;
+    font-weight: bold;
+  }
+
+ .c-tab-Main-Container a {
+	background: #eaeaed;
+	color: #4F364D;
+	display: block;
+	font-weight: 600;
+	padding: 10px 0;
+	text-align: center;
+	text-decoration: none;
+  }
+  a.services:hover {
+	color: #73AD22;
+  }
+  a.benefits:hover {
+	color: #4F364D;
+  }
+  a.team:hover {
+	color: #00AEDC;
+  }
+  .tab-active a {
+	background: #fff;
+    border-bottom-color: transparent;
+    cursor: default;
+  }
+  .tab-active a.services {
+    border-top: 4px solid #73AD22 !important;
+	color: #73AD22;
+  }
+  .tab-active a.benefits {
+    border-top: 4px solid #4F364D !important;
+	color: #4F364D;
+  }
+  .tab-active a.team {
+    border-top: 4px solid #00AEDC !important;
+	color: #00AEDC;
+  }
+  .tabs-stage {
+	border-radius: 0 0 6px 6px;
+	border-top: 0;
+	clear: both;
+	padding: 24px 30px;
+	position: relative;
+	top: -1px;
+	padding-top: 30px !important;
+  }
+  
+.ser-tab-wrapper {
+    /* background-color: red; */
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+}
+.ser-tab-box{
+	height:400px !important;
+	width: 30% !important;
+    border-radius: 30px;
+	text-align: center !important;
+	padding: 20px !important;
+}
+.ser-tab-box .ser-description {
+    font-size: 18px;
+    color: #222222;
+}
+.more{
+	cursor: pointer;
+}
+/* ser-tab-box1 */
+.ser-tab-box1{
+    border: 2px solid #73AD22;
+}
+.ser-tab-box1 i.icon {
+    font-size: 50px;
+    color: #73AD22;
+}
+.ser-tab-box1 i.more {
+    font-size: 30px;
+    color: #73AD22;
+}
+.ser-tab-box1 .ser-title {
+    font-size: 20px;
+    color: #73AD22;
+	font-weight: bold;
+}
+/* ser-tab-box2 */
+.ser-tab-box2{
+    border: 2px solid #4F364D;
+}
+.ser-tab-box2 i.icon {
+    font-size: 50px;
+    color: #4F364D;
+}
+.ser-tab-box2 i.more {
+    font-size: 30px;
+    color: #4F364D;
+}
+.ser-tab-box2 .ser-title {
+    font-size: 20px;
+    color: #4F364D;
+	font-weight: bold;
+}
+/* ser-tab-box3 */
+.ser-tab-box3{
+    border: 2px solid #00AEDC;
+}
+.ser-tab-box3 i.icon {
+    font-size: 50px;
+    color: #00AEDC;
+}
+.ser-tab-box3 i.more {
+    font-size: 30px;
+    color: #00AEDC;
+}
+.ser-tab-box3 .ser-title {
+    font-size: 20px;
+    color: #00AEDC;
+	font-weight: bold;
+}
+
+/* BENEFITS TAB */
+.ben-tab-wrapper {
+    display: flex !important;
+}
+.ben-tab-box:first-child{
+	padding-right: 30px;
+}
+p.ben-des1 {
+    font-size: 20px;
+    line-height: 40px;
+    color: #00AEDC;
+    font-weight: bold;
+}
+.ben-tab-box:first-child p {
+    width: 58%;
+}
+p.ben-des2-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #4F364D;
+}
+p.ben-des2 {
+    font-size: 16px;
+    line-height: 25px;
+}
+
+/* TEAM TAB */
+.team-wrapper {
+    display: flex !important;
+    justify-content: space-between;
+}
+p.team-des {
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+    width: 70%;
+    margin: 0 auto 40px auto;
+}
+.team-box {
+    width: 200px !important;
+	text-align: center !important;
+}
+.team-img-con {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    height: 150px !important;
+    width: 150px !important;
+	margin: auto !important;
+}
+
+p.team-name {
+    font-size: 20px;
+    font-weight: bold;
+    color: #4F364D;
+}
+p.team-pos {
+    font-size: 16px;
+    color: #4F364D;
+}
+ul.char {
+    list-style-type: none;
+    display: flex !important;
+    padding: 0 !important;
+    justify-content: space-between;
+}
+ul.char li:nth-child(2) {
+    border-left: 1px solid #73AD22;
+    border-right: 1px solid #73AD22;
+    padding: 0 5px !important;
+}
+
+.white-popup {
+	position: relative;
+	background: #FFF;
+	padding: 20px;
+	width:auto;
+	max-width: 500px;
+	margin: 20px auto;
+  }
+/* - - - - - -  ADD CSS HERE - - - - - - */
+
+/* desktop-tablet.css */
+@media (min-width: 875px) and (max-width: 1280px) {
+
+}
+
+/* mobile.css */
+@media (max-width: 767px) {
+
+}
+
+/* - - - - - -  END CSS HERE - - - - - - */
