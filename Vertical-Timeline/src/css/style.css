@@ -149,8 +149,20 @@ html {
     position: relative;
     padding: 40px;
 }
-/* .timeline-container::before{
+.timeline-container::before{
 	background-color: #ffffff !important;
+}
+/* .timeline:after {
+    content: "";
+    position: absolute;
+    top: 43px;
+    left: 0;
+    width: 378px;
+    height: 500px;
+	background-position: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+	background-image: url("https://media.istockphoto.com/id/465116552/photo/young-man-with-hand-on-chin-thinking.jpg?s=2048x2048&w=is&k=20&c=PwCfhJFIC4YRhzcYfE8FqsflhvR7kYUpgdjYHDFY0dw=");
 } */
  .timeline__content-title {
 	 font-weight: normal;
@@ -173,8 +185,8 @@ html {
 }
  .timeline:before {
 	position: absolute;
-    left: 40%;
-    width: 6px;
+    left: 0;
+    width: 5px;
     height: 100%;
     margin-left: -1px;
     content: "";
@@ -192,7 +204,7 @@ html {
     filter: blur(2px);
     transition: 0.5s;
     box-sizing: border-box;
-    width: 55%;
+    width: 98%;
     /* width: calc(50% - 40px); */
     display: flex;
     position: relative;
@@ -228,6 +240,9 @@ html {
 	 top: 50%;
 	 transition: 0.3s all 0.2s;
 	 opacity: 1;
+	 border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid #E4B544;
 }
  .timeline-item--active .timeline__content-title {
 	 margin: -50px 0 20px 0;
