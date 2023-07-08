@@ -142,13 +142,16 @@ html {
 /* - - - - - -  END CSS HERE - - - - - - */
 @import url('https://fonts.googleapis.com/css?family=Cardo|Pathway+Gothic+One');
  .timeline {
-	 display: flex;
-	 margin: 0 auto;
-	 flex-wrap: wrap;
-	 flex-direction: column;
-	 max-width: 700px;
-	 position: relative;
+	display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    flex-direction: column;
+    position: relative;
+    padding: 40px;
 }
+/* .timeline-container::before{
+	background-color: #ffffff !important;
+} */
  .timeline__content-title {
 	 font-weight: normal;
 	 font-size: 66px;
@@ -163,19 +166,19 @@ html {
 	 margin: 0;
 	 font-size: 15px;
 	 box-sizing: border-box;
-	 color: rgba(255, 255, 255, .7);
+	 color: #222222;
 	 font-family: Cardo;
 	 font-weight: normal;
 	 line-height: 25px;
 }
  .timeline:before {
-	 position: absolute;
-	 left: 50%;
-	 width: 2px;
-	 height: 100%;
-	 margin-left: -1px;
-	 content: "";
-	 background: rgba(255, 255, 255, .07);
+	position: absolute;
+    left: 40%;
+    width: 6px;
+    height: 100%;
+    margin-left: -1px;
+    content: "";
+    background: #40177D;
 }
  @media only screen and (max-width: 767px) {
 	 .timeline:before {
@@ -183,47 +186,43 @@ html {
 	}
 }
  .timeline-item {
-	 padding: 40px 0;
-	 opacity: 0.3;
-	 filter: blur(2px);
-	 transition: 0.5s;
-	 box-sizing: border-box;
-	 width: calc(50% - 40px);
-	 display: flex;
-	 position: relative;
-	 transform: translateY(-80px);
+	padding: 30px;
+    margin: 30px 0;
+    opacity: 0.3;
+    filter: blur(2px);
+    transition: 0.5s;
+    box-sizing: border-box;
+    width: 55%;
+    /* width: calc(50% - 40px); */
+    display: flex;
+    position: relative;
+    background-color: #ffffff !important;
+    border-top: 3px solid #E4B544;
+    box-shadow: 15px 0px 70px 0px rgba(0, 0, 0, .08);
 }
+
  .timeline-item:before {
-	 content: attr(data-text);
-	 letter-spacing: 3px;
-	 width: 100%;
-	 position: absolute;
-	 color: rgba(255, 255, 255, .5);
-	 font-size: 13px;
-	 font-family: 'Pathway Gothic One', sans-serif;
-	 border-left: 2px solid rgba(255, 255, 255, .5);
-	 top: 70%;
-	 margin-top: -5px;
-	 padding-left: 15px;
-	 opacity: 0;
-	 right: calc(-100% - 56px);
+    content: "";
+    position: absolute;
+    top: 50% !important;
+    transform: translateY(-50%);
+    left: -37px !important;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 20px solid #E4B544;
 }
- .timeline-item:nth-child(even) {
+ .timeline-item {
 	 align-self: flex-end;
-}
- .timeline-item:nth-child(even):before {
-	 right: auto;
-	 text-align: right;
-	 left: calc(-100% - 56px);
-	 padding-left: 0;
-	 border-left: none;
-	 border-right: 2px solid rgba(255, 255, 255, .5);
-	 padding-right: 15px;
 }
  .timeline-item--active {
 	 opacity: 1;
-	 transform: translateY(0);
+	 /* transform: translateY(0); */
 	 filter: blur(0px);
+}
+.timeline-item--active p {
+    font-size: 20px !important;
 }
  .timeline-item--active:before {
 	 top: 50%;
