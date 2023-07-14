@@ -1,0 +1,96 @@
+body,
+html {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font: var(--defaultFont);
+}
+
+.widget-abc123 {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0 auto;
+	box-sizing: border-box;
+}
+
+/* Start CSS Here */
+.widgetName-Main-Container,
+.widgetName-Main-Container a,
+.widgetName-Main-Container div,
+.widgetName-Main-Container img,
+.widgetName-Main-Container label,
+.widgetName-Main-Container input,
+.widgetName-Main-Container select {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: auto;
+	padding: 0;
+	margin: 0;
+	line-height: 1.5em;
+	text-decoration: none;
+	box-sizing: border-box;
+}
+
+/* - - - - - -  ADD CSS HERE - - - - - - */
+
+/* desktop-tablet.css */
+@media (min-width: 875px) and (max-width: 1280px) {
+
+}
+
+/* mobile.css */
+@media (max-width: 767px) {
+
+}
+
+/* - - - - - -  END CSS HERE - - - - - - */
+.refactoredWidgetStyles-main-3s_m_tdj .refactoredWidgetStyles-container-1M_m_tdj > *, .refactoredWidgetStyles-main-3s_m_tdj .refactoredWidgetStyles-container-1M_m_tdj .refactoredWidgetStyles-innerContainer-2a_m_tdj > * {
+    width: calc(var(--popupwidth) - 32px);
+}
+.refactoredWidgetStyles-innerContainer-2a_m_tdj {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.Flex-main-36_m_tdj {
+    min-height: 0;
+    min-width: 0;
+}
+.Container-main-11_m_tdj.Container-reg-size-bR_m_tdj {
+    width: 313px;
+    box-sizing: border-box;
+}
+.Group-module-main-eV_m_tdj.Group-module-flex-1o_m_tdj {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    min-width: 0;
+}
+.groupContainer {
+    position: relative;
+}
+.Container-filled-1R_m_tdj {
+    padding-block-start: 10px;
+    padding-inline-end: 16px;
+    padding-block-end: 10px;
+    padding-inline-start: 16px;
+    background: #fff;
+    border-radius: 3px;
+    margin-block-start: 16px;
+    margin-inline-end: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0;
+}
+.Flex-module-main-2j_m_tdj {
+    min-height: 0;
+    min-width: 0;
+}
