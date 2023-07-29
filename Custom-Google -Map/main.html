@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Custom Google Map</title>
+	<meta name="description" content="Sample Widget">
+	<meta name="keywords" content="HTML, CSS, JavaScript">
+	<meta name="author" content="">
+	<link rel="icon" type="image/x-icon" href="../_reusable-resources/img/codes.ico">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css">
+	<link rel="stylesheet" href="../_reusable-resources/css/style.css">
+	<link rel="stylesheet" href="./src/css/style.css">
+	
+</head>
+
+<body>
+
+	<div class="widget-abc123">
+		<div class="widgetName-Main-Container">
+			<div class="custom-listing-map-Wrapper">
+				<div class="custom-listing-map-Container">
+				  <!-- Map goes here -->
+				</div>
+		
+				<div class="custom-listing-map-filter-Panel-Wrapper">
+				  <div class="custom-listing-map-filter-Panel">
+					<div class="custom-listing-map-filter-Section">
+					  <div class="custom-listing-map-Dropdown">
+						<div
+						  class="custom-listing-map-Location-Dropdown-Wrapper dropdownWrapper"
+						  data-filter-group
+						>
+						  <label for="locations"> Locations: </label>
+		
+						  <select name="locationSelectBox" id="locationSelectBox">
+							<option value="all">All</option>
+						  </select>
+						</div>
+						<div
+						  class="custom-listing-map-Price-Dropdown-Wrapper dropdownWrapper"
+						  data-filter-group
+						>
+						  <label for="Price"> Price Range: </label>
+		
+						  <select name="priceSelectBox" id="priceSelectBox">
+							<option value=".all">All</option>
+						  </select>
+						</div>
+						<div
+						  class="custom-listing-map-BuildingSize-Dropdown-Wrapper dropdownWrapper"
+						  data-filter-group
+						>
+						  <label for="Building Size"> Building Size:</label>
+		
+						  <select
+							name="buildingSizeSelectBox"
+							id="buildingSizeSelectBox"
+						  >
+							<option value=".all">All</option>
+						  </select>
+						</div>
+						<div
+						  class="custom-listing-map-ForSale-Dropdown-Wrapper dropdownWrapper"
+						  data-filter-group
+						>
+						  <label for="For Sale">Transaction Type</label>
+		
+						  <select name="forSaleSelectBox" id="forSaleSelectBox">
+							<option value=".all">All</option>
+						  </select>
+						</div>
+					  </div>
+					</div>
+				  </div>
+				  <div class="custom-listing-Sort-Panel">
+					<div class="custom-listing-map-Total-Results">
+					  <!-- Append total number of results found during the search -->
+					  8 Properties found
+					</div>
+					<div class="custom-listing-map-Sort-Wrapper">
+					  <div class="custom-listing-map-Sort-Container">
+						<label for="Sort">Sort</label>
+						<select name="Sort" id="sortSelected">
+						  <option value="All">Price Low to High</option>
+						</select>
+					  </div>
+					  <div class="custom-listing-map-Grid-Container">
+						<img src="../img/grid.svg" />
+					  </div>
+					</div>
+				  </div>
+				</div>
+				<div class="custom-listing-map-Listing-Container"></div>
+				<div class="paginationContainer">
+				  <div class="mixitup-page-list"></div>
+				</div>
+			  </div>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+	<script src="https://irt-cdn.multiscreensite.com/8914113fe39e47bcb3040f2b64f71b02/files/uploaded/paginates.min.js"></script>
+	<script src="../_reusable-resources/js/main.js"></script>
+	<script src="./src/js/script.js"></script>
+</body>
+
+</html>

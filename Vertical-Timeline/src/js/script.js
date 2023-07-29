@@ -56,11 +56,18 @@ dmAPI.runOnReady('init', function () {
 		  var itemLength = selectors.item.length;
 		  $(window).scroll(function() {
 			var max, min;
-			var pos = $(this).scrollTop();
+			var pos = $(this).scrollTop() + 150;
 			selectors.item.each(function(i) {
 			  min = $(this).offset().top;
 			  max = $(this).height() + $(this).offset().top;
+
 			  var that = $(this);
+
+			  console.log(min, "min");
+			  console.log(max, "max");
+			  console.log(i, "i");
+			  console.log(itemLength, "itemLength");
+
 			  if (i == itemLength - 2 && pos > min + $(this).height() / 2) {
 				selectors.item.removeClass(selectors.activeClass);
 				selectors.id.css(
