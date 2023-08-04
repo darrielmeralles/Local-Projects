@@ -127,29 +127,71 @@ $(element).find('.cpl-Reset').click(function() {
 });
 
 //FILTER ONCHANGE
-// $('.busFilWrap select').change(function(){
-// 	let keyword = $(element).find('.searchInputField input').val();
-// 	let selectedExpertise = $(element).find('#busCategory').val();
-// 	let filters = {};
+$('.cpl-InputContainer select').change(function(){
+	let keyword = $(element).find('.cpl-SearchInput').val();
+	let min_price = $(element).find('#cpl-MinpriceInput').val();
+	let max_price = $(element).find('#cpl-MaxpriceInput').val();
+	let sort_by = $(element).find('#cpl-SortbyInput').val();
+	let bathrooms = $(element).find('#cpl-BathsInput').val();
+	let bedrooms = $(element).find('#cpl-BedroomsInput').val();
+	let filters = {};
 	
-// 	if(selectedExpertise !== null){
-// 		filters.Areas_Of_Expertise = selectedExpertise;
-// 	}
+	// if(min_price !== null){
+	// 	filters.Price = min_price;
+	// }
 
-// 	console.log(filters, "filters");
 
-// 	if(keyword != ""){
-// 		let result = searchByBusinessKey(directoryList,keyword);
-// 		let filtered = multiFilter(result, filters);
-// 		console.log(filtered, 'filtered');
-// 		PaginationFunction(filtered);
-// 	}else{  
-// 		let filtered = multiFilter(directoryList, filters);
-// 		console.log(filtered, "filtered 2");
-// 		PaginationFunction(filtered);
-// 	}
+	console.log(filters, "filters");
 
-// });
+	if(keyword != ""){
+		let result = searchByBusinessKey(propertyList,keyword);
+		// let filtered = multiFilter(result, filters);
+		// PaginationFunction(filtered);
+
+		let filtered = multiFilter(result, filters).filter((a)=>{
+   
+            // let filterPrice = typeof a.price == "string" ? parseFloat(a.price.replace("$","").split(",").join("")):parseFloat(a.price);
+            
+            // let fPricing = isNaN(filterPrice) ? 0: filterPrice;
+            
+            // let filterArea = isNaN(parseFloat(a.landarea.split(",").join(""))) ? 0 :parseFloat(a.landarea.split(",").join(""));
+            
+            let bedC = a.Bedroom == 0 ? 0 : a.Bedroom;
+            let batC = a.Bathroom == 0 ? 0 : a.Bathroom;
+
+			// console.log(bedC, "bedC")
+			// console.log(batC, "batC")
+            
+            // if(parseInt(bedrooms) <= parseInt(bedC) && parseInt(bathrooms) <= parseInt(batC) && min_price <= a.Price && max_price >= a.Price){
+            if(parseInt(bedrooms) <= parseInt(bedC) && parseInt(bathrooms) <= parseInt(batC) ){
+                return a;
+            }
+        });
+		console.log(filtered, 'filtered');
+		return PaginationFunction(filtered);
+
+	}else{  
+		// let filtered = multiFilter(propertyList, filters);
+		// console.log(filtered, "filtered 2");
+		// PaginationFunction(filtered);
+
+		let filtered = multiFilter(propertyList, filters).filter((a)=>{
+            
+            let bedC = a.Bedroom == 0 ? 0 : a.Bedroom;
+            let batC = a.Bathroom == 0 ? 0 : a.Bathroom;
+
+            
+            // if(parseInt(bedrooms) <= parseInt(bedC) && parseInt(bathrooms) <= parseInt(batC) && min_price <= a.Price && max_price >= a.Price){
+            if(parseInt(bedrooms) <= parseInt(bedC) && parseInt(batC) == parseInt(bathrooms) && min_price <= a.Price && max_price >= a.Price){
+                return a;
+            }
+        });
+		console.log(filtered, 'filtered 2');
+		return PaginationFunction(filtered);
+
+	}
+
+});
 
 //REMOVE DUPLICATE IN ARRAY
 function removeDuplicate(arr){
@@ -238,7 +280,7 @@ function PaginationFunction(items){
         dataSource: items,
         pageSize:3,
         callback: function(result, pagination) {
-            console.log(result, 'result');
+            // console.log(result, 'result');
             let structure = '';
 
 			structure = result.map(i=>{
