@@ -166,6 +166,7 @@ input#cpl-SearchInput {
     justify-content: center;
     align-items: center;
 	border: none !important;
+	cursor: pointer;
 }
 .cpl-InputContainer select {
     background: #E8E8E8 !important;
@@ -178,11 +179,17 @@ input#cpl-SearchInput {
     background: #efefef;
     width: 30% !important;
 }
-.cProperty-Content-wrap {
+.cpl-sub-wrapper {
     display: flex !important;
     justify-content: space-between;
     align-items: center;
+	margin: 20px 0 !important;
 }
+/* .cProperty-Content-wrap {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+} */
 .cpl-image-con {
     height: 160px !important;
     width: 100% !important;
@@ -207,6 +214,28 @@ input#cpl-SearchInput {
 .cpl-info-con p {
     margin: 0;
 }
+
+/*PAGINATION CSS*/
+.paginationjs .paginationjs-pages li{
+    border: none !important;
+	color: #222222 !important;
+}
+/* .paginationjs .paginationjs-pages li>a{
+    border-radius: 10px !important;
+} */
+.paginationjs .paginationjs-pages li.active>a{
+    background: #40A6E3 !important;
+	color: #ffffff !important;
+}
+.paginationjs{
+    margin-top: 20px;
+}
+/*PAGINATION CSS*/
+.cd-sub-wrapper {
+    display: flex !important;
+    flex-wrap: wrap;
+}
+
 /* desktop-tablet.css */
 @media (min-width: 875px) and (max-width: 1280px) {
 
