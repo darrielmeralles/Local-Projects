@@ -10,7 +10,7 @@ let data = {
 				Image: "https://jltadmin.m9corp.com//uploads/listings/1690568422_0.jpg",
 				Street_Address: "15 Eaglemere Drive",
 				City: "Eaglemere",
-				Price: "$448,900",
+				Price: "448,900",
 				Bedroom: "3",
 				Bathroom: "3",
 				Badge: "Coming Soon",
@@ -20,7 +20,7 @@ let data = {
 				Image: "https://jltadmin.m9corp.com//uploads/listings/1690565062_0.jpg",
 				Street_Address: "162 Joynson Crescent",
 				City: "Ridgewood South",
-				Price: "$488,900",
+				Price: "488,900",
 				Bedroom: "3",
 				Bathroom: "2",
 				Badge: "Coming Soon",
@@ -30,7 +30,7 @@ let data = {
 				Image: "https://jltadmin.m9corp.com//uploads/listings/1690215309_0.jpg",
 				Street_Address: "213 Ferndale Ave",
 				City: "Norwood Flats",
-				Price: "$549,900",
+				Price: "549,900",
 				Bedroom: "3",
 				Bathroom: "2",
 				Badge: "Coming Soon",
@@ -40,7 +40,7 @@ let data = {
 				Image: "https://jltadmin.m9corp.com//uploads/listings/1689972335_0.jpg",
 				Street_Address: "56 Lake Estate Drive",
 				City: "Gimli RM",
-				Price: "$634,900",
+				Price: "634,900",
 				Bedroom: "3",
 				Bathroom: "2",
 				Badge: "",
@@ -50,7 +50,7 @@ let data = {
 				Image: "https://jltadmin.m9corp.com//uploads/listings/1690909471_0.jpg",
 				Street_Address: "402 Kirkfield Street",
 				City: "Westwood",
-				Price: "$390,000",
+				Price: "390,000",
 				Bedroom: "4",
 				Bathroom: "1.5",
 				Badge: "",
@@ -66,6 +66,7 @@ let collection = new Collection()
 let device = data.device;
 let sampleListData;
 let propertyList= data.config.propertyList;
+let initialSort = data.config.sort;
 
 switch (device) {
 	case 'desktop':
@@ -88,7 +89,7 @@ dmAPI.runOnReady('init', function () {
 			console.log(propertyList, "propertyList");
 
 			//append onload
-			PaginationFunction(propertyList);
+			PaginationFunction(rangeFilter(propertyList));
 	
 		});
 	});
@@ -96,102 +97,52 @@ dmAPI.runOnReady('init', function () {
 
 // Keyword search
 $(element).find('.cpl-SearchInput').keyup(function(event) {
-	if (event.keyCode == '13') {
-        let keyword = $(this).val();
-        if(keyword != ""){
-            let result = searchByBusinessKey(propertyList,keyword);
-            result.map(function(i){
-                PaginationFunction(result);
-            });
-        }else{
-			PaginationFunction(propertyList);
-		}
+
+	let searchWord = $(this).val();
+    //check if search field is empty
+    if(!searchWord){
+        PaginationFunction(propertyList);//Append default
+    }else{
+        let arr = filtered();
+    	let searchResult = searchByKeyword(arr, searchWord);
+    	PaginationFunction(searchResult);
     }
+
 });
 //ONCLICK SEARCH
 $(element).find('.cpl-Search').click(function() {
-	let keyword = $(".cpl-SearchInput").val();
-	if(keyword != ""){
-		let result = searchByBusinessKey(propertyList,keyword);
-		result.map(function(i){
-			PaginationFunction(result);
-		});
-	}else{
-		PaginationFunction(propertyList);
-	}
+	PaginationFunction(filtered());
 });
 // RESET 
 $(element).find('.cpl-Reset').click(function() {
-	PaginationFunction(propertyList);
 	$(element).find(".cpl-SearchInput").val("");
+	$(element).find("#cpl-BathsInput").val("");
+	$(element).find("#cpl-BedroomsInput").val("");
+	$(element).find('#cpl-MinpriceInput').val(0);
+	$(element).find('#cpl-MaxpriceInput').val(0);
+	$(element).find('#cpl-SortbyInput').val(0);
+	PaginationFunction(rangeFilter(propertyList));
+	console.log("reset Btn")
+});
+//Sorting
+$('#cpl-SortbyInput').change(function(){
+    let sortValue = $(this).val();
+    PaginationFunction(propertyList, sortValue);
 });
 
-//FILTER ONCHANGE
-$('.cpl-InputContainer select').change(function(){
-	let keyword = $(element).find('.cpl-SearchInput').val();
-	let min_price = $(element).find('#cpl-MinpriceInput').val();
-	let max_price = $(element).find('#cpl-MaxpriceInput').val();
-	let sort_by = $(element).find('#cpl-SortbyInput').val();
-	let bathrooms = $(element).find('#cpl-BathsInput').val();
-	let bedrooms = $(element).find('#cpl-BedroomsInput').val();
-	let filters = {};
-	
-	// if(min_price !== null){
-	// 	filters.Price = min_price;
-	// }
 
-
-	console.log(filters, "filters");
-
-	if(keyword != ""){
-		let result = searchByBusinessKey(propertyList,keyword);
-		// let filtered = multiFilter(result, filters);
-		// PaginationFunction(filtered);
-
-		let filtered = multiFilter(result, filters).filter((a)=>{
-   
-            // let filterPrice = typeof a.price == "string" ? parseFloat(a.price.replace("$","").split(",").join("")):parseFloat(a.price);
-            
-            // let fPricing = isNaN(filterPrice) ? 0: filterPrice;
-            
-            // let filterArea = isNaN(parseFloat(a.landarea.split(",").join(""))) ? 0 :parseFloat(a.landarea.split(",").join(""));
-            
-            let bedC = a.Bedroom == 0 ? 0 : a.Bedroom;
-            let batC = a.Bathroom == 0 ? 0 : a.Bathroom;
-
-			// console.log(bedC, "bedC")
-			// console.log(batC, "batC")
-            
-            // if(parseInt(bedrooms) <= parseInt(bedC) && parseInt(bathrooms) <= parseInt(batC) && min_price <= a.Price && max_price >= a.Price){
-            if(parseInt(bedrooms) <= parseInt(bedC) && parseInt(bathrooms) <= parseInt(batC) ){
-                return a;
-            }
-        });
-		console.log(filtered, 'filtered');
-		return PaginationFunction(filtered);
-
-	}else{  
-		// let filtered = multiFilter(propertyList, filters);
-		// console.log(filtered, "filtered 2");
-		// PaginationFunction(filtered);
-
-		let filtered = multiFilter(propertyList, filters).filter((a)=>{
-            
-            let bedC = a.Bedroom == 0 ? 0 : a.Bedroom;
-            let batC = a.Bathroom == 0 ? 0 : a.Bathroom;
-
-            
-            // if(parseInt(bedrooms) <= parseInt(bedC) && parseInt(bathrooms) <= parseInt(batC) && min_price <= a.Price && max_price >= a.Price){
-            if(parseInt(bedrooms) <= parseInt(bedC) && parseInt(batC) == parseInt(bathrooms) && min_price <= a.Price && max_price >= a.Price){
-                return a;
-            }
-        });
-		console.log(filtered, 'filtered 2');
-		return PaginationFunction(filtered);
-
-	}
-
-});
+//FILTERED
+function filtered(){
+	let filterBaths = $(element).find('#cpl-BathsInput').val();
+	let filterBed = $(element).find('#cpl-BedroomsInput').val();
+	let filters = {
+		Bathroom:filterBaths,
+		Bedroom:filterBed
+	};
+	console.log(filters, "Filters");
+	console.log(multiFilter(propertyList,filters), "results");
+	return multiFilter(propertyList,filters);
+}
 
 //REMOVE DUPLICATE IN ARRAY
 function removeDuplicate(arr){
@@ -203,21 +154,22 @@ function convertDash(str){
 	return newStr.replace(/\+/g , "");
 }
 
-// MULTI FILTER FOR SPLIT CATEGORY
-function multiFilter(property, filters){
-    const filterKeys = Object.keys(filters);
-    return property.filter(function(eachObj){
-        return filterKeys.every(function(eachKey){
-            if (!filters[eachKey].length) {
-                return true; // passing an empty filter means that filter is ignored.
-            }
-            return eachObj[eachKey].includes(filters[eachKey]);
-        });
-    });
+// MULTI FILTER
+function multiFilter(car, filters){
+	const filterKeys = Object.keys(filters);
+	return car.filter(function(eachObj){
+		return filterKeys.every(function(eachKey){
+			if (!filters[eachKey].length) {
+				return true; // passing an empty filter means that filter is ignored.
+			}
+			return filters[eachKey].includes(eachObj[eachKey]);
+		});
+		
+	});
 }
 
-//SEARCH BY JOB KEY
-function searchByBusinessKey(arr,keyword){
+//SEARCH BY KEYWORDS
+function searchByKeyword(arr,keyword){
     let options = {
         shouldSort: true,
         threshold: 0.2,
@@ -259,6 +211,18 @@ function createBox(b){
     return j;
 }
 
+//PRICE RANGE FILTER
+function rangeFilter(gsxRawData){
+	let fromP = parseFloat($(element).find('#cpl-MinpriceInput').val()) == 0 ? 0: parseFloat($(element).find('#cpl-MinpriceInput').val());
+	let toP = parseFloat($(element).find('#cpl-MaxpriceInput').val()) == 0 ? 999999999999999999 : parseFloat($(element).find('#cpl-MaxpriceInput').val());
+	return gsxRawData.filter(function(i){
+		let price = parseFloat(i.Price.split(',').join(""));
+		if(fromP <= price && toP >= price){
+			return i;
+		}
+	});
+}
+
 //SPLIT FILTERS WITH COMMA
 function catFilter(obj, key) {
     let newObj = obj.map(i => {
@@ -275,18 +239,34 @@ function catFilter(obj, key) {
 };
 
 //PAGINATION 
-function PaginationFunction(items){
+function PaginationFunction(items, sort="LTH"){
+
+	let filterRange = rangeFilter(items);
+
+
+	console.log(filterRange, "filterRange");
+
+	//Lowest Price
+	if(sort == "LTH"){
+		filterRange.sort(function(a, b) {
+			return parseFloat(a.Price.replace(/,/g,'')) - parseFloat(b.Price.replace(/,/g,''));
+		});
+	}
+	//Highest Price
+	if(sort == "HTL"){
+		filterRange.sort(function(a, b) {
+			return parseFloat(b.Price.replace(/,/g,'')) - parseFloat(a.Price.replace(/,/g,''));
+		});
+	}
+
     $('.cProperty-Content-wrap').pagination({
-        dataSource: items,
+        dataSource: filterRange,
         pageSize:3,
         callback: function(result, pagination) {
-            // console.log(result, 'result');
             let structure = '';
-
 			structure = result.map(i=>{
 				return createBox(i);
 			 }).join("")
-
 			$(element).find(".cpl-sub-wrapper").html(structure);
         }
     });
