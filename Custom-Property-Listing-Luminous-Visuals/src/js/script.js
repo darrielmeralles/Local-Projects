@@ -103,7 +103,7 @@ let data = {
 				Price: "299,900",
 				Bedroom: "2",
 				Bathroom: "2",
-				Badge: "",
+				Badge: "Rented",
 				page_item_url: "432-Harbison-Ave-W"
 			}
 		],
@@ -158,7 +158,9 @@ $(element).find('.cpl-SearchInput').keyup(function(event) {
 });
 //ONCLICK SEARCH
 $(element).find('.cpl-Search').click(function() {
-	PaginationFunction(filtered());
+	let sortValue = $("#cpl-SortbyInput").val();
+	PaginationFunction(filtered(), sortValue);
+	// PaginationFunction(filtered());
 });
 // RESET 
 $(element).find('.cpl-Reset').click(function() {
@@ -172,11 +174,10 @@ $(element).find('.cpl-Reset').click(function() {
 	console.log("reset Btn")
 });
 //Sorting
-$('#cpl-SortbyInput').change(function(){
-    let sortValue = $(this).val();
-    PaginationFunction(propertyList, sortValue);
-});
-
+// $('#cpl-SortbyInput').change(function(){
+//     let sortValue = $(this).val();
+//     PaginationFunction(propertyList, sortValue);
+// });
 
 //FILTERED
 function filtered(){
@@ -240,8 +241,8 @@ function createBox(b){
     if(typeof b.page_item_url == "object"){
         itemLink = b.page_item_url.href;   
     }
-    
     let j = `<div class="cpl-content-box">
+				<div class="badge" style="background-image: url(https://lirp.cdn-website.com/65baa37c/dms3rep/multi/opt/${badgeSelect(b.Badge)})"></div>
 				<div class="cpl-image-con" style="background-image: url(${b.Image});"></div>
 				<div class="cpl-countdown-con"></div>
 				<div class="cpl-info-con">
@@ -249,13 +250,38 @@ function createBox(b){
 					<p class="street">${b.City}</p>
 					<div class="p-info">
 						<p class="price">$${b.Price}</p>
-						<p class="bed">${b.Bedroom}</p>
-						<p class="bath">${b.Bathroom}</p>
+						<p class="bed"><i class="fa-solid fa-bed"></i> ${b.Bedroom}</p>
+						<p class="bath"><i class="fa-solid fa-bath"></i> ${b.Bathroom}</p>
 					</div>
 					<button class="cpl-link cpl-Btn">View Listing</button>
 				</div>
 			</div>`
     return j;
+}
+
+//BADGE SELECTION
+function badgeSelect(a){
+	if(a == 'Coming Soon'){
+		return "comingsoon_listing-1920w.png";
+	}
+	if(a == 'Exclusive Listing'){
+		return "exclusive_listing-1920w.png";
+	}
+	if(a == 'Rented'){
+		return "rented-overlay-1920w.png";
+	}
+	if(a == 'Sold'){
+		return "sold-1920w.png";
+	}
+	if(a == 'Sold for Full Price'){
+		return "sold-full-1920w.png";
+	}
+	if(a == 'Sold In One Day'){
+		return "sold-oneday-1920w.png";
+	}
+	if(a == 'Sold Over List Price'){
+		return "sold-over-1920w.png";
+	}
 }
 
 //PRICE RANGE FILTER
