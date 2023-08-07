@@ -56,6 +56,56 @@ let data = {
 				Badge: "",
 				page_item_url: "402-Kirkfield-Street"
 			},
+			{
+				Image: "https://jltadmin.m9corp.com//uploads/listings/1689958512_0.jpg",
+				Street_Address: "49 Hargrave St",
+				City: "",
+				Price: "2,600,000",
+				Bedroom: "16",
+				Bathroom: "16",
+				Badge: "",
+				page_item_url: "49-Hargrave-St"
+			},
+			{
+				Image: "https://jltadmin.m9corp.com//uploads/listings/1690467958_0.jpg",
+				Street_Address: "666 Dudley Ave",
+				City: "Crescentwood",
+				Price: "286,000",
+				Bedroom: "3",
+				Bathroom: "1",
+				Badge: "",
+				page_item_url: "666-Dudley-Ave"
+			},
+			{
+				Image: "https://jltadmin.m9corp.com//uploads/listings/1690405172_0.jpg",
+				Street_Address: "77 Edmonton St (Unit 206)",
+				City: "Downtown",
+				Price: "155,000",
+				Bedroom: "2",
+				Bathroom: "2",
+				Badge: "",
+				page_item_url: "77-Edmonton-St-Unit-206"
+			},
+			{
+				Image: "https://jltadmin.m9corp.com//uploads/listings/1689190103_0.jpg",
+				Street_Address: "459 Elgin Avenue",
+				City: "Central",
+				Price: "210,000",
+				Bedroom: "4",
+				Bathroom: "2",
+				Badge: "",
+				page_item_url: "459-Elgin-Avenue"
+			},
+			{
+				Image: "https://jltadmin.m9corp.com//uploads/listings/1689190103_0.jpg",
+				Street_Address: "432 Harbison Ave W",
+				City: "Elmwood",
+				Price: "299,900",
+				Bedroom: "2",
+				Bathroom: "2",
+				Badge: "",
+				page_item_url: "432-Harbison-Ave-W"
+			}
 		],
 		sample:''
 	}
@@ -85,12 +135,9 @@ switch (device) {
 dmAPI.runOnReady('init', function () {
 	dmAPI.loadScript('https://irp-cdn.multiscreensite.com/e70fa563a8d442bc81646ad9d635638a/files/uploaded/fuse.js', function() { 
 		dmAPI.loadScript('https://irt-cdn.multiscreensite.com/8914113fe39e47bcb3040f2b64f71b02/files/uploaded/paginates.min.js', function() { 
-			
 			console.log(propertyList, "propertyList");
-
 			//append onload
 			PaginationFunction(rangeFilter(propertyList));
-	
 		});
 	});
 })
@@ -215,10 +262,6 @@ function createBox(b){
 function rangeFilter(gsxRawData){
 	let fromP = parseFloat($(element).find('#cpl-MinpriceInput').val());
 	let toP = parseFloat($(element).find('#cpl-MaxpriceInput').val());
-	console.log(fromP, "fromP");
-	console.log(toP, "toP");
-	// let fromP = parseFloat($(element).find('#cpl-MinpriceInput').val()) == 0 ? 0: parseFloat($(element).find('#cpl-MinpriceInput').val());
-	// let toP = parseFloat($(element).find('#cpl-MaxpriceInput').val()) == 0 ? 999999999999999999 : parseFloat($(element).find('#cpl-MaxpriceInput').val());
 	return gsxRawData.filter(function(i){
 		let price = parseFloat(i.Price.split(',').join(""));
 		if(fromP <= price && toP >= price){
@@ -246,8 +289,6 @@ function catFilter(obj, key) {
 function PaginationFunction(items, sort="LTH"){
 
 	let filterRange = rangeFilter(items);
-
-
 	console.log(filterRange, "filterRange");
 
 	//Lowest Price
@@ -265,7 +306,7 @@ function PaginationFunction(items, sort="LTH"){
 
     $('.cProperty-Content-wrap').pagination({
         dataSource: filterRange,
-        pageSize:3,
+        pageSize:6,
         callback: function(result, pagination) {
             let structure = '';
 			structure = result.map(i=>{

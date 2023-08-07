@@ -178,12 +178,14 @@ input#cpl-SearchInput {
 .cpl-content-box {
     background: #efefef;
     width: 30% !important;
+	margin: 10px 0 !important;
 }
 .cpl-sub-wrapper {
     display: flex !important;
     justify-content: space-between;
     align-items: center;
 	margin: 20px 0 !important;
+	flex-wrap: wrap;
 }
 /* .cProperty-Content-wrap {
     display: flex !important;
