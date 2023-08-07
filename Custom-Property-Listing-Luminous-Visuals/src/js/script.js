@@ -119,7 +119,7 @@ $(element).find('.cpl-Reset').click(function() {
 	$(element).find("#cpl-BathsInput").val("");
 	$(element).find("#cpl-BedroomsInput").val("");
 	$(element).find('#cpl-MinpriceInput').val(0);
-	$(element).find('#cpl-MaxpriceInput').val(0);
+	$(element).find('#cpl-MaxpriceInput').val(1900000);
 	$(element).find('#cpl-SortbyInput').val(0);
 	PaginationFunction(rangeFilter(propertyList));
 	console.log("reset Btn")
@@ -213,8 +213,12 @@ function createBox(b){
 
 //PRICE RANGE FILTER
 function rangeFilter(gsxRawData){
-	let fromP = parseFloat($(element).find('#cpl-MinpriceInput').val()) == 0 ? 0: parseFloat($(element).find('#cpl-MinpriceInput').val());
-	let toP = parseFloat($(element).find('#cpl-MaxpriceInput').val()) == 0 ? 999999999999999999 : parseFloat($(element).find('#cpl-MaxpriceInput').val());
+	let fromP = parseFloat($(element).find('#cpl-MinpriceInput').val());
+	let toP = parseFloat($(element).find('#cpl-MaxpriceInput').val());
+	console.log(fromP, "fromP");
+	console.log(toP, "toP");
+	// let fromP = parseFloat($(element).find('#cpl-MinpriceInput').val()) == 0 ? 0: parseFloat($(element).find('#cpl-MinpriceInput').val());
+	// let toP = parseFloat($(element).find('#cpl-MaxpriceInput').val()) == 0 ? 999999999999999999 : parseFloat($(element).find('#cpl-MaxpriceInput').val());
 	return gsxRawData.filter(function(i){
 		let price = parseFloat(i.Price.split(',').join(""));
 		if(fromP <= price && toP >= price){
