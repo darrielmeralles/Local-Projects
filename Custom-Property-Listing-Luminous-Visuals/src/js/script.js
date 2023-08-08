@@ -160,6 +160,7 @@ $(element).find('.cpl-SearchInput').keyup(function(event) {
 $(element).find('.cpl-Search').click(function() {
 	let sortValue = $("#cpl-SortbyInput").val();
 	PaginationFunction(filtered(), sortValue);
+	$(".cpl-content-box").fadeIn();
 	// PaginationFunction(filtered());
 });
 // RESET 
@@ -236,10 +237,23 @@ function createBox(b){
     if(typeof b.page_item_url == "object"){
         itemLink = b.page_item_url.href;   
     }
-    let j = `<div class="cpl-content-box">
+    let j = `<div class="cpl-content-box animate glow delay-1">
 				<div class="badge" style="background-image: url(https://lirp.cdn-website.com/65baa37c/dms3rep/multi/opt/${badgeSelect(b.Badge)})"></div>
-				<div class="cpl-image-con" style="background-image: url(${b.Image});"></div>
-				<div class="cpl-countdown-con"></div>
+				<div class="cpl-image-con" style="background-image: url(${b.Image});">
+
+				<div class="cpl-countdown-con">
+					<div id="countdown">
+						<ul>
+							<li>Days<span id="days"></span></li>
+							<li>Hours<span id="hours"></span></li>
+							<li>Mins<span id="minutes"></span></li>
+							<li>Sec<span id="seconds"></span></li>
+						</ul>
+					</div>
+				</div>
+
+				</div>
+		
 				<div class="cpl-info-con">
 					<p class="address">${b.Street_Address}</p>
 					<p class="street">${b.City}</p>
@@ -334,10 +348,54 @@ function PaginationFunction(items, sort="LTH"){
 			 }).join("")
 			 //display empty if no results found
 			if (typeof filterRange !== 'undefined' && filterRange.length === 0) {
-				$(element).find(".cpl-sub-wrapper").html(`<p class="emptyArr">No Results Found!</p>`);
+				$(element).find(".cpl-sub-wrapper").html(`<p class="emptyArr animate">No Results Found!</p>`);
 			}else{
 				$(element).find(".cpl-sub-wrapper").html(structure);
 			}
         }
     });
 }
+//COUNDOWN JS
+(function () {
+	const second = 1000,
+		  minute = second * 60,
+		  hour = minute * 60,
+		  day = hour * 24;
+  
+	//I'm adding this section so I don't have to keep updating this pen every year :-)
+	//remove this if you don't need it
+	let today = new Date(),
+		dd = String(today.getDate()).padStart(2, "0"),
+		mm = String(today.getMonth() + 1).padStart(2, "0"),
+		yyyy = today.getFullYear(),
+		nextYear = yyyy + 1,
+		dayMonth = "09/30/",
+		birthday = dayMonth + yyyy;
+	
+	today = mm + "/" + dd + "/" + yyyy;
+	if (today > birthday) {
+	  birthday = dayMonth + nextYear;
+	}
+	//end
+	
+	const countDown = new Date(birthday).getTime(),
+		x = setInterval(function() {    
+  
+		  const now = new Date().getTime(),
+		  distance = countDown - now;
+  
+		  document.getElementById("days").innerText = Math.floor(distance / (day)),
+		  document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+		  document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+		  document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+  
+		  //do something later when date is reached
+		  if (distance < 0) {
+			document.getElementById("headline").innerText = "It's my birthday!";
+			document.getElementById("countdown").style.display = "none";
+			document.getElementById("content").style.display = "block";
+			clearInterval(x);
+		  }
+		  //seconds
+		}, 0)
+}());

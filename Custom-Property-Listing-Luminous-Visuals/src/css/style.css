@@ -145,7 +145,7 @@ input#cpl-SearchInput {
     padding: 10px;
 }
 .emptyArr{
-	color: #222222;
+	color: red;
 	font-size: 20px !important;
 }
 .cpl-Label {
@@ -278,6 +278,52 @@ p.street {
 .cd-sub-wrapper {
     display: flex !important;
     flex-wrap: wrap;
+}
+.animate {
+	animation-name: animate-pop;
+	animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+	animation-duration: 0.5s;
+}
+  
+@keyframes animate-pop {
+	0% {
+		opacity: 0;
+		transform: scale(0.8, 0.8);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1, 1);
+	}
+}
+#countdown ul{
+	margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#countdown li {
+	display: inline-block;
+    font-size: 12px;
+    list-style-type: none;
+    padding: 0;
+	margin: 0 10px !important;
+	text-align: center;
+}
+  
+#countdown li span {
+	display: block;
+	font-size: 12px;
+}
+
+.cpl-countdown-con {
+	background: #40a6e3;
+    color: #ffffff;
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
 }
 
 /* desktop-tablet.css */
