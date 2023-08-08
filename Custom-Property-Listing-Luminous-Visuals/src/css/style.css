@@ -144,6 +144,10 @@ input#cpl-SearchInput {
     height: 40px;
     padding: 10px;
 }
+.emptyArr{
+	color: #222222;
+	font-size: 20px !important;
+}
 .cpl-Label {
     font-size: 14px !important;
 }

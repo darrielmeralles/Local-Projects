@@ -168,24 +168,19 @@ $(element).find('.cpl-Reset').click(function() {
 	$(element).find("#cpl-BathsInput").val("");
 	$(element).find("#cpl-BedroomsInput").val("");
 	$(element).find('#cpl-MinpriceInput').val(0);
-	$(element).find('#cpl-MaxpriceInput').val(1900000);
+	$(element).find('#cpl-MaxpriceInput').val(1000000000);
 	$(element).find('#cpl-SortbyInput').val(0);
 	PaginationFunction(rangeFilter(propertyList));
 	console.log("reset Btn")
 });
-//Sorting
-// $('#cpl-SortbyInput').change(function(){
-//     let sortValue = $(this).val();
-//     PaginationFunction(propertyList, sortValue);
-// });
 
 //FILTERED
 function filtered(){
 	let filterBaths = $(element).find('#cpl-BathsInput').val();
 	let filterBed = $(element).find('#cpl-BedroomsInput').val();
 	let filters = {
-		Bathroom:filterBaths,
-		Bedroom:filterBed
+		Bathroom: filterBaths,
+		Bedroom: filterBed
 	};
 	console.log(filters, "Filters");
 	console.log(multiFilter(propertyList,filters), "results");
@@ -315,7 +310,6 @@ function catFilter(obj, key) {
 function PaginationFunction(items, sort="LTH"){
 
 	let filterRange = rangeFilter(items);
-	console.log(filterRange, "filterRange");
 
 	//Lowest Price
 	if(sort == "LTH"){
@@ -338,7 +332,12 @@ function PaginationFunction(items, sort="LTH"){
 			structure = result.map(i=>{
 				return createBox(i);
 			 }).join("")
-			$(element).find(".cpl-sub-wrapper").html(structure);
+			 //display empty if no results found
+			if (typeof filterRange !== 'undefined' && filterRange.length === 0) {
+				$(element).find(".cpl-sub-wrapper").html(`<p class="emptyArr">No Results Found!</p>`);
+			}else{
+				$(element).find(".cpl-sub-wrapper").html(structure);
+			}
         }
     });
 }
