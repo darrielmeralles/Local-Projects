@@ -209,10 +209,9 @@ dmAPI.runOnReady('init', function () {
 	dmAPI.loadScript("https://irt-cdn.multiscreensite.com/5775367238d847b8b62d126ce25c20de/files/uploaded/mixitup.min.js", function () {
 		dmAPI.loadScript("https://irt-cdn.multiscreensite.com/a4fddbba6e6f4d71b2bb406911fe4018/files/uploaded/mixitup-multifilter.min.js",function () {
 		  dmAPI.loadScript('https://irt-cdn.multiscreensite.com/a4fddbba6e6f4d71b2bb406911fe4018/files/uploaded/mixitup-pagination.min.js',function () {
-				   dmAPI.loadScript(`https://maps.googleapis.com/maps/api/js?v=3.40&key=${apikey}`, function() {
+				dmAPI.loadScript(`https://maps.googleapis.com/maps/api/js?v=3.40&key=${apikey}`, function() {
 					   initialize();
-			
-			}); // end  googleapis
+				}); // end  googleapis
 		  }); // end multifilter
 	  }); // end mixitup
 	}); // end pagination

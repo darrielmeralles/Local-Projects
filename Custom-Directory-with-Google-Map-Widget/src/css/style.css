@@ -138,6 +138,9 @@ html {
     /* background: #d0d0d0; */
     width: 20%;
 }
+.custom-listing-map-Container{
+    height: 300px !important;
+}
 .cd-results-wrapper {
     width: 80% !important;
 }
