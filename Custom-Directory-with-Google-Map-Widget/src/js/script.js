@@ -5,8 +5,9 @@ let data = {
 	siteId: '',
 	elementId: '',
 	config: {
-		// apikey:"AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ",
-		initZoom: 7, // parseInt(data.config.initZoom);
+		    // apikey:"AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ",
+		    apikey:"AIzaSyBMr1pQsfm1SIgU54HgGx5YxM56EjyOV3c",
+		    initZoom: 7, // parseInt(data.config.initZoom);
         zoomDefault: 8,
         markerSize: 40,
         trigger: 'click', // onclick, mouseover
@@ -14,156 +15,53 @@ let data = {
         propSort: 'none', //alphabetical, new, old,
         newTab: "true",
         custom_layout: "horizontal", //vertical
-		propertyList: [{
-            'id': 1,
-            "propertyName":"Sample Property Name",
-            "propertyType": "Apartments",
-            "rentalType": "Residential",
-            "status": "For Sale",
-            "price":"5900",
-            "address":"Sample Address",
-            "location": "Philippines",
-            "street": "Sample Street",
-            "city": "Sample City",
-            "area":  "Sample Area",
-            "state": "Sample State",
-            "countryCode": "Sample Country Code",
-            "zipCode": "Sample Zip Code",
-            "lotSize": "412 sqm",
-            "landArea": "1000",
-            "room": "9+",
-            "bedroom":"1",
-            "bathroom": "1",
-            "featuredProperty": "Yes",
-            "garageAvailability": "Yes",
-            "garageCount": '1',
-            "dateAvailable": Date.now(),
-            "propertyImage": 'https://storage.needpix.com/rsynced_images/new-england-style-house-2826065_1280.jpg',
-            "properyDescription":`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-            "shortDescription": `Lorem Ipsum is simply dummy text of the printing and typesetting industry`,
-            "page_item_url": '/home',
-            "agent_name": "Holly R Smith",
-            "agent_email": "holly.smith@gmail.com",
-            "agent_number":"401-560-7098",
-            "agent_website": "dtoxforgood.com",
-            "agent_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYPLKn6p156dUAYMniVNEIPEuSxNMqSu3kMPK_qwOnYR3p2ITD",
-            "markericon": "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
-            "latitude": "-25.363",
-            "longitude": "131.044",
+        propertyList: [
+          {
+                'id': 1,
+                "business_name": "Marmaris Grill & Pizza",
+                "ratings": "4,3",
+                "spend": "€ 30,00",
+                "delevery_time": "30-55 min",
+                "sponsored": "Yes",
+                "free_delevery": "Yes",
+                "image": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/dpr_1.0/v1692793691/static-takeaway-com/images/restaurants/nl/R1P0P7QN/headers/header",
+                "logo": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1692793691/static-takeaway-com/images/restaurants/nl/R1P0P7QN/logo_465x320",
+                "markericon": "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
+                "latitude": "-25.363",
+                "longitude": "131.044",
 
-       },{
-            'id': 2,
-            "propertyName":"Sample Property Name 2",
-            "propertyType": "Apartments",
-            "rentalType": "Residential",
-            "status": "For Lease",
-            "price": "10000",
-            "address":"Sample Address",
-            "location": "China",
-            "street": "Sample Street",
-            "city": "Sample City",
-            "area":  "Sample Area",
-            "state": "Sample State",
-            "countryCode": "Sample Country Code",
-            "zipCode": "Sample Zip Code",
-            "lotSize": "412 sqm",
-            "landArea": 1000,
-            "room": "9+",
-            "bedroom":"1",
-            "bathroom": "1", 
-            "featuredProperty": "Yes",
-            "garageAvailability": "Yes",
-            "garageCount": '1',
-            "dateAvailable": Date.now(),
-            "propertyImage": 'https://storage.needpix.com/rsynced_images/new-england-style-house-2826065_1280.jpg',
-            "properyDescription":`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-            "shortDescription": `Lorem Ipsum is simply dummy text of the printing and typesetting industry`,
-            "page_item_url": '/home',
-            "agent_name": "Holly R Smith",
-            "agent_email": "holly.smith@gmail.com",
-            "agent_number":"401-560-7098",
-            "agent_website": "dtoxforgood.com",
-            "agent_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYPLKn6p156dUAYMniVNEIPEuSxNMqSu3kMPK_qwOnYR3p2ITD",
-            "markericon": "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
-            "latitude": "47.65577",
-            "longitude": "-122.31806",
+          },
+          {
+                'id': 2,
+                "business_name": "New York Pizza Badhoevedorp",
+                "ratings": "4",
+                "spend": "€ 9,99",
+                "delevery_time": "From 16",
+                "sponsored": "Yes",
+                "free_delevery": "Yes",
+                "image": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/chains/nl/newyorkpizza/headers/header",
+                "logo": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/chains/nl/newyorkpizza/logo_465x320",
+                "markericon": "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
+                "latitude": "-26.363",
+                "longitude": "131.044",
 
-        },{
-            'id': 3,
-            "propertyName":"Sample Property Name 3",
-            "propertyType": "Apartments",
-            "rentalType": "Residential",
-            "status": "For Lease",
-            "price": "990",
-            "address":"Sample Address",
-            "location": "China",
-            "street": "Sample Street",
-            "city": "Sample City",
-            "area":  "Sample Area",
-            "state": "Sample State",
-            "countryCode": "Sample Country Code",
-            "zipCode": "Sample Zip Code",
-            "lotSize": "412 sqm",
-            "landArea": 1000,
-            "room": "9+",
-            "bedroom":"1",
-            "bathroom": "1", 
-            "featuredProperty": "Yes",
-            "garageAvailability": "Yes",
-            "garageCount": '1',
-            "dateAvailable": Date.now(),
-            "propertyImage": 'https://storage.needpix.com/rsynced_images/new-england-style-house-2826065_1280.jpg',
-            "properyDescription":`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-            "shortDescription": `Lorem Ipsum is simply dummy text of the printing and typesetting industry`,
-            "page_item_url": '/home',
-            "agent_name": "Holly R Smith",
-            "agent_email": "holly.smith@gmail.com",
-            "agent_number":"401-560-7098",
-            "agent_website": "dtoxforgood.com",
-            "agent_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYPLKn6p156dUAYMniVNEIPEuSxNMqSu3kMPK_qwOnYR3p2ITD",
-            "markericon": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.iconpacks.net%2Ffree-icon%2Fpin-48.html&psig=AOvVaw1Ivx6UNA1cuaiF1ZDPWSpO&ust=1690415055268000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCPC7qPmEq4ADFQAAAAAdAAAAABAE",
-            "latitude": "-25.333",
-            "longitude": "131.044",
+          },
+          {
+                'id': 3,
+                "business_name": "Chicken Palace",
+                "ratings": "3.8",
+                "spend": "€ 29,99",
+                "delevery_time": "From 20:30",
+                "sponsored": "Yes",
+                "free_delevery": "Yes",
+                "image": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/v1693208718/static-takeaway-com/images/restaurants/nl/QOP053O/headers/header",
+                "logo": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/restaurants/nl/QOP053O/logo_465x320",
+                "markericon": "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
+                "latitude": "-26.263",
+                "longitude": "131.044",
 
-         },{
-            'id': 4,
-            "propertyName":"Sample Property Name 4",
-            "propertyType": "Apartments",
-            "rentalType": "Residential",
-            "status": "For Lease",
-            "price": "990",
-            "address":"Sample Address",
-            "location": "China",
-            "street": "Sample Street",
-            "city": "Sample City",
-            "area":  "Sample Area",
-            "state": "Sample State",
-            "countryCode": "Sample Country Code",
-            "zipCode": "Sample Zip Code",
-            "lotSize": "412 sqm",
-            "landArea": 1000,
-            "room": "9+",
-            "bedroom":"1",
-            "bathroom": "1", 
-            "featuredProperty": "Yes",
-            "garageAvailability": "Yes",
-            "garageCount": '1',
-            "dateAvailable": Date.now(),
-            "propertyImage": 'https://storage.needpix.com/rsynced_images/new-england-style-house-2826065_1280.jpg',
-            "properyDescription":`Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.`,
-            "shortDescription": `Lorem Ipsum is simply dummy text of the printing and typesetting industry`,
-            "page_item_url": '/home',
-            "agent_name": "Holly R Smith",
-            "agent_email": "holly.smith@gmail.com",
-            "agent_number":"401-560-7098",
-            "agent_website": "dtoxforgood.com",
-            "agent_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYPLKn6p156dUAYMniVNEIPEuSxNMqSu3kMPK_qwOnYR3p2ITD",
-            "marker_icon": "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
-            "latitude": "-25.365",
-            "longitude": "131.041",
-
-         }
-    	]
+          },
+        ]
 	}
 };
 
@@ -193,34 +91,121 @@ let apikey = data.config.apikey;
 let propertyList = data.config.propertyList;
 let completeData = [];
 let locationObj = {};
+let locations = {};
 let initZoom = parseInt(data.config.initZoom);
 let trigger = data.config.trigger;
 let markerClick = "true";
 let markerSize = parseInt(data.config.markerSize);
 let markericon = data.config.markericon;
+let newTab = true;
 let googleId = "map_" + Math.floor(Math.random(99999) * 99999);
 $(".custom-listing-map-Container").attr("id", googleId);
 
 dmAPI.runOnReady('init', function () {
-	// dmAPI.loadScript('PLUGIN LINK', function () {
-	// })
-	$(element).find('.radio').click(function() {
-		let val = $(this).data("val");
-		console.log(val, "val")
-	 });
 
-	dmAPI.loadScript(`https://maps.googleapis.com/maps/api/js?v=3.40&key=${apikey}`, function() {
-		// initialize();
-		initMap();
-	}); // end  googleapis
+	// $(element).find('.radio').click(function() {
+	// 	let val = $(this).data("val");
+	// 	console.log(val, "val")
+	//  });
+
+   dmAPI.loadScript('https://irp-cdn.multiscreensite.com/e70fa563a8d442bc81646ad9d635638a/files/uploaded/fuse.js', function() { 
+      dmAPI.loadScript('https://irt-cdn.multiscreensite.com/8914113fe39e47bcb3040f2b64f71b02/files/uploaded/paginates.min.js', function() { 
+        dmAPI.loadScript(`https://maps.googleapis.com/maps/api/js?v=3.40&key=${apikey}`, function() {
+          initialize();
+        });
+      });
+  });
+
 
 
 })
 
+async function initialize(){
+  await propertyList.forEach(function(i){
+      let dataA = {
+          "id": i.id,
+          "business_name": i.business_name,
+          "ratings": i.ratings,
+          "spend": i.spend,
+          "delevery_time": i.delevery_time,
+          "sponsored": i.sponsored,
+          "free_delevery": i.free_delevery,
+          "image": i.image,
+          "logo": i.logo,
+          "markericon": i.markericon,
+          "latitude": i.latitude,
+          "longitude": i.longitude
+      }
+      completeData.push(dataA);
+  });
+
+  locations.list = completeData;
+  PaginationFunction(completeData);
+  // initMap(completeData);
+}
+
+//PAGINATION 
+function PaginationFunction(items){
+  // let sordtedItems = sortItems(jobs);
+  // console.log(sordtedItems);
+
+  initMap(items);
+
+  $(element).find('.cd-res-main').pagination({
+      dataSource: items,
+      pageSize:2,
+      callback: function(result, pagination) {
+          console.log(result)
+          let structure = '';
+          structure = result.map(i=>{
+            return createRow(i);
+         }).join("")
+         $(element).find(".cd-results-con").html(structure);
+      }
+  });
+}
+
+function createRow(b){
+  let itemLink = window.location.href.includes(data.siteId)  ? `/site/${data.siteId}${b.page_item_url}?preview=true&nee=true&showOriginal=true&dm_checkSync=1&dm_try_mode=true&dm_device=${data.device}`: b.page_item_url;
+  if(typeof b.page_item_url == "object"){
+      itemLink = b.page_item_url.href;   
+  }
+  
+  let j = `<div class="cd-res-box">
+            <div class="cd-left-col" style="background-image: url(${b.image});">
+              <div class="cd-logo-wrapper">
+                <img src="${b.logo}" alt="">
+              </div>
+            </div>
+            <div class="cd-right-col">
+              <p class="business-name">${b.business_name}</p>
+              <p class="cd-ratings">
+                <i class="fa-solid fa-star"></i>
+                <span>${b.ratings} (34) . </span>
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span>Min. ${b.spend}</span>
+              </p>
+              <p class="del-time">
+                <i class="fa-regular fa-clock"></i>
+                <span>${b.delevery_time} . </span>
+                <i class="fa-solid fa-bicycle"></i>
+                <span>Free . </span>
+                <span>${b.sponsored}</span>
+              </p>
+              
+            </div>
+          </div>`
+  return j;
+}
+
 function initMap(obj){
+
 	console.log(obj,'obj');
+
 	let bounds = new google.maps.LatLngBounds();
-	let infowindow = new google.maps.InfoWindow();
+	let infowindow = new google.maps.InfoWindow({
+    maxWidth: 800
+  });
 	map = new google.maps.Map(document.getElementById(googleId), {
 		center: {
 			lat: 35.218382,
@@ -231,75 +216,75 @@ function initMap(obj){
 		zoomControl: false,
 	});
 	obj.map((i,index) => {
+
 	  console.log(i.latitude, i.longitude);
+
 	  let itemLink = window.location.href.includes(data.siteId)  ? `/site/${data.siteId}${i.page_item_url}?preview=true&insitepreview=true&dm_device=${data.device}`: i.page_item_url;
+
 	  if(typeof i.page_item_url === "object") itemLink = i.page_item_url;
   
 	  let marker = new google.maps.Marker({
-		position: new google.maps.LatLng(parseFloat(i.latitude), parseFloat(i.longitude)),
-		map,
-		icon: {
-			url: i.markericon,
-			scaledSize: new google.maps.Size(markerSize, markerSize)
-		},
-		id: "marker_" + i.index
+      position: new google.maps.LatLng(parseFloat(i.latitude), parseFloat(i.longitude)),
+      map,
+      // icon: {
+      //   url: i.markericon,
+      //   scaledSize: new google.maps.Size(markerSize, markerSize)
+      // },
+      id: "marker_" + i.index
 	  });
   
 	  bounds.extend(marker.position);
-	  if (locationObj.list.length > 1) {
+
+	  if (locations.list.length > 1) {
 		  map.fitBounds(bounds);
 	  }
+
 	  if(markerClick){
-		google.maps.event.addListener(marker,trigger, (marker, j => {
-		  console.log(j,'jjj');
-			let name = `<div className="property-map-info-name" data-id="${i.id}">${i.propertyName}</div>`;
-			let address = `<div className="property-map-info-address">${i.address}</div>`
-			let email = `<div class="googlemap-InfoWindow-Email">
-					  <label>Email:</label>
-					  <span><a href="mailto:${i.contactemail}">${i.contactemail}</a></span>
-				  </div>`
-  
-			let telephone = `<div class="property-map-info-Telephone">
-				<label>Telephone:</label>
-				<span><a href="tel:${i.contactphone}">${i.contactphone}</a></span>
-			</div>`
-  
-			let website = `<div class="property-map-info-Website">
-				<label>Website:</label>
-				<span><a href="${i.contactwebsite}" target="${newTab}">${i.contactwebsite}</a></span>
-			</div>`
-			let logo =  `<div class="property-map-info-Image"><img src="${i.image}"></div>` 
-  
-			let form = `
-					  <div class="property-map-info-Window">
-						  <div class="googleMap-Container-Left">
-							  ${logo}
-						  </div>
-						  <div class="googleMap-Container-Right">
-							  ${name}
-							  ${address}
-							  ${email}
-							  ${telephone}
-							  ${website}
-						  </div>
-					  </div>
-				`;
-  
-				$(element).on(trigger, ".cInner-Container", function() {
-				  console.log('click pin map');
-				  let markerIndex = $(this).attr("data-index");
-				  console.log(markerIndex , "markerIndex ");
-				  if (marker.id == markerIndex) {
-					  google.maps.event.trigger(marker, trigger);
-				  }
-				});
-				  return function( ){
-					console.log(infowindow,'infowindow');
-					infowindow.setContent(form);
-					infowindow.open(map, marker)
-				  }
-  
+		  google.maps.event.addListener(marker,trigger, (marker, j => {
+
+          let right_column =  `<div class="cd-left-col" style="background-image: url(${i.image});">
+                                  <div class="cd-logo-wrapper">
+                                    <img src="${i.logo}" alt="">
+                                  </div>
+                              </div>`;
+
+          let left_column = `<div class="cd-right-col">
+                                <p class="business-name">${i.business_name}</p>
+                                <p class="cd-ratings">
+                                    <i class="fa-solid fa-star"></i>
+                                    <span>${i.ratings} (34) . </span>
+                                    <i class="fa-solid fa-bag-shopping"></i>
+                                    <span>Min. ${i.spend}</span>
+                                </p>
+                                <p class="del-time">
+                                    <i class="fa-regular fa-clock"></i>
+                                    <span>${i.delevery_time} . </span>
+                                    <i class="fa-solid fa-bicycle"></i>
+                                    <span>${i.free_delevery} . </span>
+                                    <span>${i.sponsored}</span>
+                                </p>
+                            </div>`
+      
+          let form = `<div class="cd-res-box-map">
+                        ${right_column}
+                        ${left_column}
+                    </div>`;
+    
+          $(element).on(trigger, ".cInner-Container", function() {
+            console.log('click pin map');
+            let markerIndex = $(this).attr("data-index");
+            console.log(markerIndex , "markerIndex ");
+            if (marker.id == markerIndex) {
+              google.maps.event.trigger(marker, trigger);
+            }
+          });
+            return function( ){
+            console.log(infowindow,'infowindow');
+            infowindow.setContent(form);
+            infowindow.open(map, marker)
+            }
+    
 			  })(marker, i));
 	  }
 	})
-  }
+}

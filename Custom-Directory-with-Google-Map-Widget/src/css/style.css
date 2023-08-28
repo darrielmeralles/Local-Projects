@@ -139,7 +139,7 @@ html {
     width: 20%;
 }
 .custom-listing-map-Container{
-    height: 300px !important;
+    height: 600px !important;
 }
 .cd-results-wrapper {
     width: 80% !important;
@@ -204,6 +204,14 @@ select#cd-SortbyInput{
     overflow: hidden;
 	margin: 15px 0;
 }
+.cd-res-box-map {
+	width: 100%;
+    height: 150px;
+    background: #ffffff;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+}
 .cd-left-col {
     width: 40%;
     height: 100%;
@@ -249,6 +257,35 @@ p.cd-ratings i, p.del-time i {
 	user-select: none;
   }
   
+/* map css  */
+.gm-style-iw-d {
+    max-height: 100% !important;
+    overflow: hidden !important;
+}
+.gm-style-iw.gm-style-iw-c {
+    width: 900px !important;
+	height: 147px !important;
+    max-height: 200px !important;
+	padding: 0 !important;
+}
+/* map css  */
+/*PAGINATION CSS*/
+.paginationjs .paginationjs-pages li{
+    border: none !important;
+	color: #222222 !important;
+}
+/* .paginationjs .paginationjs-pages li>a{
+    border-radius: 10px !important;
+} */
+.paginationjs .paginationjs-pages li.active>a{
+    background: #F15D00 !important;
+	color: #ffffff !important;
+}
+.paginationjs{
+    margin-top: 20px;
+}
+/*PAGINATION CSS*/
+
   /* Hide the browser's default radio button */
   .container input {
 	position: absolute;
