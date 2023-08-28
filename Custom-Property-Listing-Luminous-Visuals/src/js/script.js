@@ -156,6 +156,7 @@ $(element).find('.cpl-SearchInput').keyup(function(event) {
     }
 
 });
+
 //ONCLICK SEARCH
 $(element).find('.cpl-Search').click(function() {
 	let sortValue = $("#cpl-SortbyInput").val();

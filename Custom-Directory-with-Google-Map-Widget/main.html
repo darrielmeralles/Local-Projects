@@ -23,8 +23,12 @@
 		<div class="c-Directory-Main-Container">
 			<div class="cd-filter-wrapp">
 				<p class="filter-name">Type of Business</p>
-				<label class="container">Restaurants
-					<input class="radio" data-val="Restaurants" type="radio" checked="checked" name="radio">
+				  <label class="container">Show All
+					<input class="radio" data-val="All" type="radio" checked="checked" name="radio">
+					<span class="checkmark"></span>
+				  </label>
+				  <label class="container">Restaurants
+					<input class="radio" data-val="Restaurants" type="radio" name="radio">
 					<span class="checkmark"></span>
 				  </label>
 				  <label class="container">Groceries
@@ -44,14 +48,14 @@
 
 				<div class="cd-searchbar-wrapper">
 
-					<input type="text" id="cd-SearchInput" class="cpl-SearchInput" placeholder="Places and Items..."> 
+					<input type="text" id="cd-SearchInput" class="cd-SearchInput" placeholder="Places and Items..."> 
 
 					<div class="cd-sort-wrapper">
 						<div class="cd-Label">Sort By:</div> 
 						<select name="cd-sortby" id="cd-SortbyInput"> 
 							<option value="0" class="hfsOption">Best Match</option>
 							<option value="HTL" class="hfsOption">Reviews</option>
-							<option value="LTH" class="hfsOption">Spent</option>
+							<option value="LTH" class="hfsOption">Min. Order Amount</option>
 						</select>
 					</div>
 

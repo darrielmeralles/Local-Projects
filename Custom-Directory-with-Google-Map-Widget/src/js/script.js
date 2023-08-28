@@ -17,50 +17,56 @@ let data = {
         custom_layout: "horizontal", //vertical
         propertyList: [
           {
-                'id': 1,
-                "business_name": "Marmaris Grill & Pizza",
-                "ratings": "4,3",
-                "spend": "€ 30,00",
-                "delevery_time": "30-55 min",
-                "sponsored": "Yes",
-                "free_delevery": "Yes",
-                "image": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/dpr_1.0/v1692793691/static-takeaway-com/images/restaurants/nl/R1P0P7QN/headers/header",
-                "logo": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1692793691/static-takeaway-com/images/restaurants/nl/R1P0P7QN/logo_465x320",
-                "markericon": "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
-                "latitude": "-25.363",
-                "longitude": "131.044",
+                id: 1,
+                business_name: "Marmaris Grill & Pizza",
+                business_type: "Restaurants",
+                address: "Restaurants",
+                ratings: "4.3",
+                spend: "30.00",
+                delevery_time: "30-55 min",
+                sponsored: "Yes",
+                free_delevery: "Yes",
+                image: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/dpr_1.0/v1692793691/static-takeaway-com/images/restaurants/nl/R1P0P7QN/headers/header",
+                logo: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1692793691/static-takeaway-com/images/restaurants/nl/R1P0P7QN/logo_465x320",
+                markericon: "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
+                latitude: "-25.363",
+                longitude: "131.044",
 
           },
           {
-                'id': 2,
-                "business_name": "New York Pizza Badhoevedorp",
-                "ratings": "4",
-                "spend": "€ 9,99",
-                "delevery_time": "From 16",
-                "sponsored": "Yes",
-                "free_delevery": "Yes",
-                "image": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/chains/nl/newyorkpizza/headers/header",
-                "logo": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/chains/nl/newyorkpizza/logo_465x320",
-                "markericon": "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
-                "latitude": "-26.363",
-                "longitude": "131.044",
+                id: 2,
+                business_name: "New York Pizza Badhoevedorp",
+                business_type: "Groceries",
+                address: "Restaurants",
+                ratings: "4",
+                spend: "9.99",
+                delevery_time: "From 16",
+                sponsored: "Yes",
+                free_delevery: "Yes",
+                image: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/chains/nl/newyorkpizza/headers/header",
+                logo: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/chains/nl/newyorkpizza/logo_465x320",
+                markericon: "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
+                latitude: "-26.363",
+                longitude: "131.044",
 
           },
           {
-                'id': 3,
-                "business_name": "Chicken Palace",
-                "ratings": "3.8",
-                "spend": "€ 29,99",
-                "delevery_time": "From 20:30",
-                "sponsored": "Yes",
-                "free_delevery": "Yes",
-                "image": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/v1693208718/static-takeaway-com/images/restaurants/nl/QOP053O/headers/header",
-                "logo": "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/restaurants/nl/QOP053O/logo_465x320",
-                "markericon": "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
-                "latitude": "-26.263",
-                "longitude": "131.044",
+                id: 3,
+                business_name: "Chicken Palace",
+                business_type: "Pharmacy",
+                address: "Restaurants",
+                ratings: "3.8",
+                spend: "29.99",
+                delevery_time: "From 20:30",
+                sponsored: "Yes",
+                free_delevery: "Yes",
+                image: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/v1693208718/static-takeaway-com/images/restaurants/nl/QOP053O/headers/header",
+                logo: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/restaurants/nl/QOP053O/logo_465x320",
+                markericon: "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
+                latitude: "-26.263",
+                longitude: "131.044",
 
-          },
+          }
         ]
 	}
 };
@@ -103,11 +109,6 @@ $(".custom-listing-map-Container").attr("id", googleId);
 
 dmAPI.runOnReady('init', function () {
 
-	// $(element).find('.radio').click(function() {
-	// 	let val = $(this).data("val");
-	// 	console.log(val, "val")
-	//  });
-
    dmAPI.loadScript('https://irp-cdn.multiscreensite.com/e70fa563a8d442bc81646ad9d635638a/files/uploaded/fuse.js', function() { 
       dmAPI.loadScript('https://irt-cdn.multiscreensite.com/8914113fe39e47bcb3040f2b64f71b02/files/uploaded/paginates.min.js', function() { 
         dmAPI.loadScript(`https://maps.googleapis.com/maps/api/js?v=3.40&key=${apikey}`, function() {
@@ -120,11 +121,76 @@ dmAPI.runOnReady('init', function () {
 
 })
 
+console.log(completeData, "completeData sa labas");
+
+// Keyword search
+$(element).find('.cd-SearchInput').keyup(function(event) {
+
+	let searchWord = $(this).val();
+    //check if search field is empty
+    if(!searchWord){
+        PaginationFunction(completeData);//Append default
+    }else{
+    	let searchResult = searchByKeyword(completeData, searchWord);
+    	PaginationFunction(searchResult);
+    }
+
+});
+
+$(element).find('.radio').click(function() {
+  let val = $(this).data("val");
+  console.log(val, "val")
+
+  let filters = {
+    business_type: val
+  };
+
+  if(val != "All"){
+    let res = multiFilter(completeData,filters);
+    PaginationFunction(res);
+  }else{
+    PaginationFunction(completeData);
+  }
+
+});
+
+//FILTER ONCHANGE
+$('.cd-sort-wrapper select').change(function(){
+  let keyword = $('.cd-SearchInput').val();
+  let type = $('.radio').val();
+  let sortVal = $(this).val();
+  let filters = {
+    business_type: type
+  };
+
+  console.log(type, "type");
+  console.log(sortVal, "sortVal");
+  console.log(keyword, "keyword");
+
+  PaginationFunction(completeData, sortVal)
+
+
+  // if(keyword != ""){
+  //     let result = searchByKeyword(completeData,keyword);
+  //     let filtered = multiFilter(result, filters);
+  //     PaginationFunction(filtered, sortVal);
+  //     console.log("may laman");
+  // }else{  
+  //     let filtered = multiFilter(completeData, filters);
+  //     PaginationFunction(filtered, sortVal);
+  //     console.log("walang laman");
+  // }
+
+});
+
+
 async function initialize(){
   await propertyList.forEach(function(i){
       let dataA = {
           "id": i.id,
           "business_name": i.business_name,
+          "business_type": i.business_type,
+          "address": i.address,
           "ratings": i.ratings,
           "spend": i.spend,
           "delevery_time": i.delevery_time,
@@ -144,10 +210,67 @@ async function initialize(){
   // initMap(completeData);
 }
 
+//SEARCH BY KEYWORDS
+function searchByKeyword(arr,keyword){
+  let options = {
+      shouldSort: true,
+      threshold: 0.2,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: [
+          "business_name"
+      ]
+  };
+  let fuse = new Fuse(arr, options);
+  let result = fuse.search(keyword);
+  return result;
+}
+
+//PRICE RANGE FILTER
+function sortPrice(gsxRawData){
+	let fromP = parseFloat($(element).find('#cpl-MinpriceInput').val());
+	let toP = parseFloat($(element).find('#cpl-MaxpriceInput').val());
+	return gsxRawData.filter(function(i){
+		let price = parseFloat(i.Price.split(',').join(""));
+		if(fromP <= price && toP >= price){
+			return i;
+		}
+	});
+}
+
+// MULTI FILTER
+function multiFilter(car, filters){
+	const filterKeys = Object.keys(filters);
+	return car.filter(function(eachObj){
+		return filterKeys.every(function(eachKey){
+			if (!filters[eachKey].length) {
+				return true; // passing an empty filter means that filter is ignored.
+			}
+			return filters[eachKey].includes(eachObj[eachKey]);
+		});
+		
+	});
+}
+
 //PAGINATION 
-function PaginationFunction(items){
-  // let sordtedItems = sortItems(jobs);
-  // console.log(sordtedItems);
+function PaginationFunction(items, sort = "HTL"){
+ 
+  // let filterRange = rangeFilter(items);
+
+	//Lowest Price
+	if(sort == "LTH"){
+		items.sort(function(a, b) {
+			return parseFloat(a.spend.replace(/,/g,'')) - parseFloat(b.spend.replace(/,/g,''));
+		});
+	}
+	//Highest Ratings
+	if(sort == "HTL"){
+		items.sort(function(a, b) {
+			return parseFloat(b.ratings.replace(/,/g,'')) - parseFloat(a.ratings.replace(/,/g,''));
+		});
+	}
 
   initMap(items);
 
@@ -171,7 +294,7 @@ function createRow(b){
       itemLink = b.page_item_url.href;   
   }
   
-  let j = `<div class="cd-res-box">
+  let j = `<div class="cd-res-box animate">
             <div class="cd-left-col" style="background-image: url(${b.image});">
               <div class="cd-logo-wrapper">
                 <img src="${b.logo}" alt="">
@@ -183,7 +306,7 @@ function createRow(b){
                 <i class="fa-solid fa-star"></i>
                 <span>${b.ratings} (34) . </span>
                 <i class="fa-solid fa-bag-shopping"></i>
-                <span>Min. ${b.spend}</span>
+                <span>Min. € ${b.spend}</span>
               </p>
               <p class="del-time">
                 <i class="fa-regular fa-clock"></i>
@@ -254,7 +377,7 @@ function initMap(obj){
                                     <i class="fa-solid fa-star"></i>
                                     <span>${i.ratings} (34) . </span>
                                     <i class="fa-solid fa-bag-shopping"></i>
-                                    <span>Min. ${i.spend}</span>
+                                    <span>Min. € ${i.spend}</span>
                                 </p>
                                 <p class="del-time">
                                     <i class="fa-regular fa-clock"></i>
