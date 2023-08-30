@@ -142,15 +142,16 @@ html {
 	 padding: 50px 0;
 	 margin: 0;
 	 flex-wrap: wrap;
-	 justify-content: space-between;
+	 justify-content: flex-start;
 	 align-items: center;
 }
  ul.blocks li.block {
-	 display: inline-block;
-	 vertical-align: bottom;
-	 position: relative;
-	 margin-bottom: 50px;
-	 width: 32.1%;
+	display: inline-block;
+    vertical-align: bottom;
+    position: relative;
+    margin-bottom: 10px;
+    width: 31%;
+    margin: 10px;
 }
  ul.blocks li.block .window.macpro {
 	 top: 17px;
@@ -160,7 +161,7 @@ html {
 	 width: 100%;
 	 object-fit: cover;
 	 object-position: top;
-	 height: 248px;
+	 height: 400px;
 }
  ul.blocks li.block .window.imac {
 	 width: 292px;
