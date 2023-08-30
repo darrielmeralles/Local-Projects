@@ -210,6 +210,17 @@ async function initialize(){
   // initMap(completeData);
 }
 
+// AUTO SUGGEST LAYOUT
+function suggestStructure(obj) {
+	let output = ''
+	asc_SortItems(removeDuplicates(obj, 'name'), 'releasedDate').map(j => {
+		let i = j.item ? j.item : j
+		output += `<div class="widgetShowcase-Suggest-Option" data-value="${i.name}">${i.name}</div>`
+
+	})
+	return $(element).find('div.widgetShowcase-Search-Suggest').html(output)
+}
+
 //SEARCH BY KEYWORDS
 function searchByKeyword(arr,keyword){
   let options = {

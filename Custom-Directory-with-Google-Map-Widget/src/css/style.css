@@ -128,6 +128,20 @@ html {
 /*End Error Handling*/
 
 /* - - - - - -  ADD CSS HERE - - - - - - */
+div.widgetShowcase-Search-Suggest {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    z-index: 2;
+    min-height: 42.5px;
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-radius: 4px;
+    margin-top: 5px;
+    box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.5);
+}
 .c-Directory-Main-Container {
 	display: flex;
 	background: #ffffff;
