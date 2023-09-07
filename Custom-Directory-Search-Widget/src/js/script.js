@@ -1,3 +1,7 @@
+// Ref: https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js
+
+// apikey:"AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ",
+
 let element = $('.widget-abc123');
 let data = {
 	device: 'desktop', //desktop, tablet, mobile
@@ -103,6 +107,10 @@ switch (device) {
 
 
 dmAPI.runOnReady('init', function () {
+	// dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ&libraries=places', function () {
+	// 	google.maps.event.addDomListener(window, 'load', initialize);
+		
+	// })
 	dmAPI.loadScript('https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js', function () {
 
 		$(element).find('.budiSuggest').html('');
@@ -111,6 +119,23 @@ dmAPI.runOnReady('init', function () {
 
 	})
 })
+
+function initialize() {
+
+	var input = document.getElementById('searchTextField');
+
+	var autocomplete = new google.maps.places.Autocomplete(input);
+
+	google.maps.event.addListener(autocomplete, 'place_changed', function () {
+		var place = autocomplete.getPlace();
+		document.getElementById('city2').value = place.name;
+		document.getElementById('cityLat').value = place.geometry.location.lat();
+		document.getElementById('cityLng').value = place.geometry.location.lng();
+	});
+
+  }
+
+
 
 //Auto Suggest
 $(element).find('.cb-search-Input').keyup(function () {
