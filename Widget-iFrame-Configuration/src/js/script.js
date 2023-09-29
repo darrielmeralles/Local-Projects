@@ -35,29 +35,9 @@ switch (device) {
 
 
 dmAPI.runOnReady('init', function () {
-	dmAPI.loadScript('PLUGIN LINK', function () {
-
-		// ? Uncomment this if you want to ue the CONNECT DATA feature
-		// sampleListData = collection.data(sampleList) 
-
-		if (sampleListData.length == 0) {
-
-			if (data.inEditor) {
-				$(element).html(`<div class="widget-noCollection-Title">${noCollectMessage}</div><div class="widget-noCollection-Subtext">${noCollectSubMessage}</div>`)
-			} else {
-				$(element).hide()
-			}
-			return
-
-		} else {
-			
-			setTimeout(preloader(), 2000)
-		}
-
-	})
+	
 })
 
-function preloader() {
-	$(element).find('div.widget-Loader-Container').fadeOut().remove()
-	$(element).find('div.widgetName-Main-Container').fadeIn()
-}
+function resizeIframe(obj) {
+    obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+  }

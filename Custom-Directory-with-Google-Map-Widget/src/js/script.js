@@ -5,8 +5,9 @@ let data = {
 	siteId: '',
 	elementId: '',
 	config: {
-		    // apikey:"AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ",
-		    apikey:"AIzaSyBMr1pQsfm1SIgU54HgGx5YxM56EjyOV3c",
+		    // apikey:"AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ", //Other but working
+		    apikey:"AIzaSyAPXbTPYbaYYyR6dAk1KaeAVqM7fAzBqEE", //Gilles
+		    // apikey:"AIzaSyBMr1pQsfm1SIgU54HgGx5YxM56EjyOV3c", //Dev
 		    initZoom: 7, // parseInt(data.config.initZoom);
         zoomDefault: 8,
         markerSize: 40,
@@ -24,7 +25,7 @@ let data = {
                 ratings: "4.3",
                 spend: "30.00",
                 delevery_time: "30-55 min",
-                sponsored: "Yes",
+                sponsored: "No",
                 free_delevery: "Yes",
                 image: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/dpr_1.0/v1692793691/static-takeaway-com/images/restaurants/nl/R1P0P7QN/headers/header",
                 logo: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1692793691/static-takeaway-com/images/restaurants/nl/R1P0P7QN/logo_465x320",
@@ -41,7 +42,7 @@ let data = {
                 ratings: "4",
                 spend: "9.99",
                 delevery_time: "From 16",
-                sponsored: "Yes",
+                sponsored: "Active",
                 free_delevery: "Yes",
                 image: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/chains/nl/newyorkpizza/headers/header",
                 logo: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/chains/nl/newyorkpizza/logo_465x320",
@@ -58,7 +59,7 @@ let data = {
                 ratings: "3.8",
                 spend: "29.99",
                 delevery_time: "From 20:30",
-                sponsored: "Yes",
+                sponsored: "Active",
                 free_delevery: "Yes",
                 image: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/v1693208718/static-takeaway-com/images/restaurants/nl/QOP053O/headers/header",
                 logo: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/restaurants/nl/QOP053O/logo_465x320",
@@ -154,6 +155,13 @@ $(element).find('.radio').click(function() {
 
 });
 
+$(element).find('.cd-layout-icon').click(function() {
+   $(".custom-listing-map-Container").toggleClass("show");
+   $(".cd-res-main").toggleClass("hide");
+   $(".map").toggleClass("show");
+   $(".list").toggleClass("hide");
+});
+
 //FILTER ONCHANGE
 $('.cd-sort-wrapper select').change(function(){
   let keyword = $('.cd-SearchInput').val();
@@ -206,8 +214,29 @@ async function initialize(){
   });
 
   locations.list = completeData;
-  PaginationFunction(completeData);
+
+  // let sortUp = completeData.sort((a, b) => (a.sponsored === b.sponsored) ? 0 : a.sponsored === "Active" ? -1 : 1);
+
+  // console.log(completeData, "completeData");
+
+  // console.log(sortUp, "sample sponsored sorrt")
+
+  PaginationFunction(sortSponsored(completeData, "sponsored"));
+  // PaginationFunction(completeData);
   // initMap(completeData);
+}
+
+//FUNCTION SORT SPONSORED
+function sortSponsored(arr, sponsored){
+
+  console.log(arr, "arr");
+  console.log(arr.sponsored, "arr sponsored");
+
+	let newArr = arr.sort((a, b) => (a.sponsored === b.sponsored) ? 0 : a.sponsored === "Active" ? -1 : 1);
+
+  console.log(newArr, "newArr");
+
+  return newArr;
 }
 
 // AUTO SUGGEST LAYOUT
@@ -264,6 +293,8 @@ function multiFilter(car, filters){
 		
 	});
 }
+
+
 
 //PAGINATION 
 function PaginationFunction(items, sort = "HTL"){
@@ -324,7 +355,7 @@ function createRow(b){
                 <span>${b.delevery_time} . </span>
                 <i class="fa-solid fa-bicycle"></i>
                 <span>Free . </span>
-                <span>${b.sponsored}</span>
+                <span class="${b.sponsored == "Active" ? "" : "hideEl"}">Sponsored</span>
               </p>
               
             </div>

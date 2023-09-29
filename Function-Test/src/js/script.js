@@ -37,19 +37,42 @@ switch (device) {
 dmAPI.runOnReady('init', function () {
 
 
-	 let arr = [{name: "abc", age: "20", status: "Active"}, {name: "xyz", age: "21", status: "Inactive"}, {name: "pqr", age: "22", status: "Active"}]
+	 let arr = [
+		{
+			name: "abc", 
+			age: "20", 
+			status: "Yes"
+		}, {
+			name: "xyz", 
+			age: "21", 
+			status: "Inactive"
+		}, {
+			name: "pqr", 
+			age: "22", 
+			status: "Yes"
+		}, {
+			name: "new", 
+			age: "22", 
+			status: "Yes"
+		}
+	]
 	 
 	 
 	 console.log(arr);
 
-	 let sorted =  arr.sort((a, b) => (a.status === b.status) ? 0 : a.status === "Active" ? -1 : 1);
+	 let f = sortSponsored(arr, "Yes");
+
+	console.log(f, "function");
+
+
+	//  let sorted =  arr.sort((a, b) => (a.status === b.status) ? 0 : a.status === "Active" ? -1 : 1);
 	 
-	 console.log(sorted, "sorted");
+	//  console.log(sorted, "sorted");
 
 	 let sorted2 =  arr.sort((a, b) => (a.age === b.age) ? 0 : a.age === "22" ? -1 : 1);
 	 console.log(sorted2, "sorted2");
 
-	 sorted2.map((item) => {
+	 f.map((item) => {
 		console.log(item, "item");
 
 		let output = `<div class="con">
@@ -63,6 +86,10 @@ dmAPI.runOnReady('init', function () {
 	})
 
 })
+
+function sortSponsored(arr, status){
+	return arr.sort((a, b) => (a.status === b.status) ? 0 : a.status === "Yes" ? -1 : 1);
+}
 
 function handleData(arr, status) {
 	if(!arr || arr.length == 0) return
