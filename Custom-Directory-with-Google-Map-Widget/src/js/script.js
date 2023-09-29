@@ -6,8 +6,8 @@ let data = {
 	elementId: '',
 	config: {
 		    // apikey:"AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ", //Other but working
-		    apikey:"AIzaSyAPXbTPYbaYYyR6dAk1KaeAVqM7fAzBqEE", //Gilles
-		    // apikey:"AIzaSyBMr1pQsfm1SIgU54HgGx5YxM56EjyOV3c", //Dev
+		    // apikey:"AIzaSyAPXbTPYbaYYyR6dAk1KaeAVqM7fAzBqEE", //Gilles
+		    apikey:"AIzaSyBMr1pQsfm1SIgU54HgGx5YxM56EjyOV3c", //Dev
 		    initZoom: 7, // parseInt(data.config.initZoom);
         zoomDefault: 8,
         markerSize: 40,
@@ -365,7 +365,10 @@ function createRow(b){
 
 function initMap(obj){
 
-	console.log(obj,'obj');
+	console.log(obj,'obj sa map');
+	console.log(obj.length,'obj lenght');
+  let count = obj.length;
+  $(".counter").html(count);
 
 	let bounds = new google.maps.LatLngBounds();
 	let infowindow = new google.maps.InfoWindow({
