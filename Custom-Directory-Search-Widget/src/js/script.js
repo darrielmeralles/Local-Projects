@@ -1,5 +1,7 @@
 // Ref: https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js
 
+// https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-multiple-countries
+
 // apikey:"AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ",
 
 let element = $('.widget-abc123');
@@ -107,10 +109,10 @@ switch (device) {
 
 
 dmAPI.runOnReady('init', function () {
-	// dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ&libraries=places', function () {
-	// 	google.maps.event.addDomListener(window, 'load', initialize);
+	dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ&libraries=places', function () {
+		google.maps.event.addDomListener(window, 'load', initialize);
 		
-	// })
+	})
 	dmAPI.loadScript('https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js', function () {
 
 		$(element).find('.budiSuggest').html('');
@@ -119,6 +121,12 @@ dmAPI.runOnReady('init', function () {
 
 	})
 })
+
+$(".fa-circle-xmark").click(function(){
+	$(this).hide();
+	$(".budiSuggest").hide();
+	$(element).find('.cb-search-Input').val("");
+});
 
 function initialize() {
 
@@ -140,8 +148,15 @@ function initialize() {
 //Auto Suggest
 $(element).find('.cb-search-Input').keyup(function () {
     let inputValue = $(element).find(this).val().toLowerCase();
+	let valLength = inputValue.length;
 
-	console.log("inputValue", inputValue);
+	$(".budiSuggest").show();
+
+	if(valLength != 0){
+		$(".fa-circle-xmark").show();
+	}else{
+		$(".fa-circle-xmark").hide();
+	}
 
     $(element).find('.budiSuggest div').each(function (i) {
         let divText = $(element).find(this).text().toLowerCase();
@@ -157,6 +172,13 @@ $(element).find('.cb-search-Input').keyup(function () {
             $(element).find('.budiSuggest div').hide();
         });
     });
+
+	$(".budiSuggestDiv").click(function(){
+		console.log("click suggdest");
+		let txt = $(this).text();
+		console.log(txt, "txt");
+		$(element).find('.cb-search-Input').val(txt);
+	});
 
 });
 
