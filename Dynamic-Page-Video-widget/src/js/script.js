@@ -21,7 +21,8 @@ let noCollectSubMessage = 'This will be hidden on preview and live site.' ///dat
 let sampleListData;
 
 let tab_list = data.config.tab_list;
-let video = "https://www.youtube.com/embed/LXb3EKWsInQ";
+let video = "https://vimeo.com/871531331";
+// let video = "https://www.youtube.com/embed/LXb3EKWsInQ";
 // let video = data.config.video;
 let sources = {
     youtube: 'https://youtube.com/embed/',
