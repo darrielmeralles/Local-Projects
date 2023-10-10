@@ -10,9 +10,9 @@ let data = {
 				State: "Alabama",
 				Region: "South East",
 				Rep_Group: "Five Star Packaging",
-				Contact: "Randy Heaton, Jason Heaton",
-				Email: "randyheaton@fivestarpackaging.net, jasonheaton@fivestarpackaging.net",
-				Phone: "205-529-6590, 205-903-3963"
+				Contact: "Randy Heaton",
+				Email: "randyheaton@gmail.com",
+				Phone: "205-529-6590"
 			},
 			{
 				State: "Alaska",
@@ -303,12 +303,15 @@ function tooltipContent(stateId){
         //TIPPY TOOLTIP CONFIG
 		tippy(stateId, {
 			content: appendToMap,
-			animation: 'scale',
+			// animation: 'scale',
+			animation: 'fade',
 			inertia: true,
 			maxWidth: 220,
 			allowHTML: true,
 			followCursor: true,
 			interactive: true,
+			theme: 'light-border',
+			// trigger: 'click',
 			appendTo: document.body
 		});
     });            

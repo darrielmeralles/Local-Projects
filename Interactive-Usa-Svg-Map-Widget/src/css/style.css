@@ -68,7 +68,8 @@ g:hover{
 }
 .tooltip{
     transition: 0.3s ease-in-out;
-	fill: #cfcfcf !important;
+	/* fill: #cfcfcf !important; */
+	fill: rgb(210, 214, 217) !important;
 }
 
 
@@ -97,7 +98,7 @@ g:hover{
     margin: 7px 0px;
 }
 .tooltip_con_details {
-    background: #ffffff;
+    background: #ffffff !important;
     width: 32.26%;
     padding: 10px;
     margin: 5px;
@@ -113,57 +114,37 @@ g:hover{
 
 .state_name{
     color: red;
+	font-size: 20px !important;
 }
 /* details css */
 
-/* btn css */
-.mapbtn_container{
-    max-width: 1149px;
-    margin: 0 auto;
+
+/* TIPPY BOX CSS */
+.tippy-box {
+    position: relative;
+    background-color: #efefef;
+    color: #1b1b1b;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+    white-space: normal;
+    outline: 0;
+    transition-property: transform,visibility,opacity;
+	padding: 10px;
 }
-.mapbtn_wrap{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
+.tooltip_con p {
+    margin: 5px 0 0 0 !important;
 }
-.btnwrap {
-    height: 55px;
-    width: 320px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    cursor: pointer;
+.tippy-arrow {
+    width: 16px;
+    height: 16px;
+    color: #efefef;
 }
-.mapbtn_wrap .btnwrap:nth-child(1){
-    background: #C5C7F0;
-    color: black;
-}
-.mapbtn_wrap .btnwrap:nth-child(2){
-    background: #BEFFFF;
-    color: black;
-}
-.mapbtn_wrap .btnwrap:nth-child(3){
-    background: #FFFFBD;
-    color: black;
-}
-.mapbtn_wrap .btnwrap:nth-child(4){
-    background: #41FF47;
-    color: black;
-}
-.mapbtn_wrap .btnwrap:nth-child(5){
-    background: #FFC9CC;
-    color: black;
-}
-.mapbtn_wrap .btnwrap:nth-child(6){
-    background: #d3d3d3;
-    color: black;
-}
+/* TIPPY BOX CSS */
+
 
 /* btn css */
-.tooltip_con p{
+/* .tooltip_con p{
     font-size: 12px;
     line-height: 12px;
 }
@@ -206,7 +187,7 @@ g:hover{
     top: 0px;
     left: 0px;
     z-index: 1;
-    background-color: #212121;
+    background-color: #ffffff;
     color: #ffffff;
     border: 0px solid #ffffff;
     border-radius: 5px;
@@ -234,7 +215,7 @@ g:hover{
     background-color: rgb(255 255 255) !important;
     color: #4f307c !important;
 }
-.tooltip_templates { display: none; }
+.tooltip_templates { display: none; } */
 
 
 /* desktop-tablet.css */
