@@ -5,7 +5,24 @@ let data = {
 	siteId: '',
 	elementId: '',
 	config: {
-		// sampleList: [{}],
+		stateList: [
+			{
+				State: "Alabama",
+				Region: "South East",
+				Rep_Group: "Five Star Packaging",
+				Contact: "Randy Heaton, Jason Heaton",
+				Email: "randyheaton@fivestarpackaging.net, jasonheaton@fivestarpackaging.net",
+				Phone: "205-529-6590, 205-903-3963"
+			},
+			{
+				State: "Alaska",
+				Region: "West",
+				Rep_Group: "CuBE Packaging Solutions Inc",
+				Contact: "John Alexanian",
+				Email: "john@cubep.com",
+				Phone: "877-260-2823 x224"
+			},
+		],
 		spreadsheet: "https://docs.google.com/spreadsheets/d/1yP7gG6KbPyw5tokq2hL7E9zY3D04vjl7ygh4rmgsE_s/edit?usp=sharing",
 		sample:''
 	}
@@ -13,21 +30,8 @@ let data = {
 
 let collection = new Collection()
 let device = data.device;
-let sampleList = data.config.sampleList;
-let sample = data.config.sample;
+let stateList = data.config.stateList;
 
-let sheetObj;
-// COLLECTION USING DUDA JS API
-let collect = new Collection();
-
-let spreadSheets = data.config.spreadsheet;
-let sheet = spreadSheets.substr(spreadSheets.indexOf('d/') + 2).replace('/edit?usp=sharing', '');
-let sheetDetails = {
-    sheetid: sheet,
-    sheetname: "Sheet1",
-    apikey: "AIzaSyAO95R71N7Ha4Z8smai-y23QuKE2Rrq4U0"
-};
-let responseData = collect.response(sheetDetails);
 let items = [],
     filter = [],
     arryContents = [],
@@ -35,11 +39,6 @@ let items = [],
 let filters = {};    
 let filter2 = {}; 
 
-
-
-
-// let noCollectMessage = 'No data was found.' ///data.config.noCollectMessage
-// let noCollectSubMessage = 'This will be hidden on preview and live site.' ///data.config.noCollectSubMessage
 let sampleListData;
 
 switch (device) {
@@ -56,198 +55,17 @@ switch (device) {
 //ADD MULTIPLE LINK SOURCE HERE
 
 
-// dmAPI.runOnReady('init', function () {
-// 	dmAPI.loadScript('PLUGIN LINK', function () {
-
-// 	})
-// })
-
-let gsxdata = responseData.then(resp =>{
-    sheetObj = resp;
-    sheetObj.map(function(i) {
-        pushItem.push({
-            "State": i.state,
-            "Rep_Group": i.repgroup,
-            "Contact": i.contact,
-            "Email": i.email,
-            "Phone": i.phone,
-            "Region": i.region
-        });
-    });
-    appenditem(pushItem);
-    appendtomap(pushItem);
-    
-    //CLICKING REGION GROUP FILTER
-    $('.btnwrap').click(function(){
-            let btntxt = $(this).html();
-            
-            switch(btntxt) {
-                case "WEST":
-                    filters.Region = "West";
-                    filteredRegion();
-                    $('.svgmap').css('fill','#D3D3D3');
-                    $('.west').css('fill','#C5C7F0');
-                break;
-                case "MID WEST":
-                    filters.Region = "Mid West";
-                    filteredRegion();
-                    $('.svgmap').css('fill','#D3D3D3');
-                    $('.mid-west').css('fill','#BEFFFF');
-                break;
-                case "SOUTH WEST":
-                    filters.Region = "South West";
-                    filteredRegion();
-                    $('.svgmap').css('fill','#D3D3D3');
-                    $('.south-west').css('fill','#FFFFBD');
-                break;
-                case "SOUTH EAST":
-                    filters.Region = "South East";
-                    filteredRegion();
-                    $('.svgmap').css('fill','#D3D3D3');
-                    $('.south-east').css('fill','#41FF47');
-                break;
-                case "NORTH EAST":
-                    filters.Region = "North East";
-                    filteredRegion();
-                    $('.svgmap').css('fill','#D3D3D3');
-                    $('.north-east').css('fill','#FFC9CC');
-                break;
-                case "SHOW ALL":
-                    $('.usamap_wrap').empty();
-                    appenditem(pushItem);
-                    $('.west').css('fill','#d3d3d3');
-                    $('.mid-west').css('fill','#d3d3d3');
-                    $('.south-west').css('fill','#d3d3d3');
-                    $('.south-east').css('fill','#d3d3d3');
-                    $('.north-east').css('fill','#d3d3d3');
-                break;
-            } 
-        });
-    
-    //API DETECTION AUTOMATICALLY DETECTS COUNTRY IP ADDRESS
-    // $.getJSON('https://ipapi.co/162.253.131.115/json/', function(data){
-    $.getJSON('https://ipapi.co/json/', function(data){
-                let ipAdd = data.region_code;
-                console.log(ipAdd, "Country Code");
-                console.log(data);
-                switch(ipAdd) {
-                // WEST REGION
-                case "WA":
-                case "OR":
-                case "CA":
-                case "NV":
-                case "ID":
-                case "MT":
-                case "WY":
-                case "UT":
-                case "CO":
-                case "AK":
-                case "HI":
-                    filters.Region = "West";
-                    filteredRegion();
-                    $('.svgmap').css('fill','#D3D3D3');
-                    $('.west').css('fill','#A79FD2');
-                break;
-                // MIDWEST REGION
-                case "ND":
-                case "SD":
-                case "NE":
-                case "KS":
-                case "MN":
-                case "IA":
-                case "MO":
-                case "WI":
-                case "IL":
-                case "MI":
-                case "IN":
-                case "OH":
-                    filters.Region = "Mid West";
-                    filteredRegion();
-                    $('.svgmap').css('fill','#D3D3D3');
-                    $('.mid-west').css('fill','#BEFFFF')
-                break;
-                // SOUTHWEST REGION
-                case "AZ":
-                case "NM":
-                case "OK":
-                case "TX":
-                    filters.Region = "South East";
-                    filteredRegion();
-                    $('.svgmap').css('fill','#D3D3D3');
-                    $('.south-west').css('fill','#FFFFBD');
-                break;
-                // SOUTHEEAST REGION
-                case "AR":
-                case "LA":
-                case "MS":
-                case "AL":
-                case "TN":
-                case "KY":
-                case "GA":
-                case "FL":
-                case "SC":
-                case "NC":
-                case "WV":
-                case "VA":
-                    filters.Region = "South East";
-                    filteredRegion();
-                    $('.svgmap').css('fill','#D3D3D3');
-                    $('.south-east').css('fill','#41FF47');
-                break;
-                // NORTHEAST REGION
-                case "PA":
-                case "MD":
-                case "DE":
-                case "NJ":
-                case "NY":
-                case "CT":
-                case "RI":
-                case "MA":
-                case "NH":
-                case "VT":
-                case "ME":
-                    filters.Region = "North East";
-                    filteredRegion();
-                    $('.svgmap').css('fill','#D3D3D3');
-                    $('.north-east').css('fill','#FFC9CC');
-                break;
-                //CANADA COUNTRY CODE
-                case "YT":
-                case "BC":
-                case "NT":
-                case "AB":
-                case "SK":
-                case "NU":
-                case "MB":
-                case "ON":
-                case "QC":
-                case "NL":
-                case "NB":
-                case "PE":
-                case "NS":
-                    $('.tabs .tab:nth-child(2) a').addClass('active');
-                    $('.tabs .tab:nth-child(1) a').removeClass('active');
-                    $('#test1').css('display','none');
-                    $('#test2').css('display','block');
-                    console.log("canada countries");
-                break;
-                default:
-                    console.log("Ip Address not found")
-                    $('.usamap_wrap').empty();
-                    appenditem(pushItem);
-                    $('.west').css('fill','#C5C7F0');
-                    $('.mid-west').css('fill','#BEFFFF');
-                    $('.south-west').css('fill','#FFFFBD');
-                    $('.south-east').css('fill','#41FF47');
-                    $('.north-east').css('fill','#FFC9CC');
-                // code block
-            } 
-        })  
-});
+dmAPI.runOnReady('init', function () {
+	dmAPI.loadScript('https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js', function() {
+		dmAPI.loadScript('https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js', function() {
+			appendtomap(stateList);			
+		});  
+	});
+})
 
 //DYNAMICALLY APPEND DATA FROM GSX TO MAP TOOLTIP
-function appendtomap(pushItem) {
-    pushItem.map(function(data) {
+function appendtomap(stateList) {
+    stateList.map(function(data) {
         let stateList = data.State;
         // console.log(stateList, "sate List");
         switch(stateList) {
@@ -455,39 +273,8 @@ function appendtomap(pushItem) {
     }); 
 }
 
-//FILTER REGIONS AND APPEND TO CONTAINER
-function filteredRegion(){
-    filtered = multiFilter(pushItem, filters);
-    $('.usamap_wrap').empty();
-    appenditem(filtered);
-}
-// function appenditem
-function appenditem(pushItem) {
-    pushItem.map(function(data) {
-        let emailsData = data.Email;
-        let eachEmailsData = emailsData.split(',');
-        let phoneData = data.Phone;
-        let eachPhoneData = phoneData.split(',');
-        let appendData=`<div class='tooltip_con_details'>
-                            <p class="state_name"><b>${data.State}</b></p>
-                            <p><b>${data.Rep_Group}</b></p>
-                            <p><b>Contact:</b> ${data.Contact}</p>
-                            <p><b>T:</b> ${
-                                eachPhoneData.map(function(i){
-                                    return output = `<a href="tel:${i}">${i}</a>`;    
-                                })
-                            }</p>
-                            <p><b>E:</b> ${
-                                eachEmailsData.map(function(i){
-                                    return output = `<a href = "mailto: ${i}">${i}</a>`;    
-                                })
-                            }</p>
-                        </div>`;             
-        $('.usamap_wrap').append(appendData);
-    }); //pushItem Map
-}
 function tooltipContent(stateId){
-    filtered2 = multiFilter(pushItem, filter2);
+    filtered2 = multiFilter(stateList, filter2);
     console.log(filtered2);
     filtered2.map(function(data2) {
         let emailsData2 = data2.Email;
@@ -513,23 +300,17 @@ function tooltipContent(stateId){
                                 }
                             </p>
                           </div>`;
-        //TIPPY TOOLTIP PLUGIN
-        dmAPI.runOnReady('tippyJs',function(){
-            dmAPI.loadScript('https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js', function() {
-                dmAPI.loadScript('https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js', function() {
-                    tippy(stateId, {
-                        content: appendToMap,
-                        animation: 'scale',
-                        inertia: true,
-                        maxWidth: 220,
-                        allowHTML: true,
-                        followCursor: true,
-                        interactive: true,
-                        appendTo: document.body
-                    });  
-                });  
-            });
-        });
+        //TIPPY TOOLTIP CONFIG
+		tippy(stateId, {
+			content: appendToMap,
+			animation: 'scale',
+			inertia: true,
+			maxWidth: 220,
+			allowHTML: true,
+			followCursor: true,
+			interactive: true,
+			appendTo: document.body
+		});
     });            
 }
 
@@ -543,33 +324,6 @@ function multiFilter(property, filters){
             return filters[eachKey] == eachObj[eachKey];
         });
     });
-}
-
-// GSX
-function Collection() {
-    this.ajax = function () {
-        return $.ajax({
-            url: `https://sheets.googleapis.com/v4/spreadsheets/${sheetDetails.sheetid}/values/${sheetDetails.sheetname}?key=${sheetDetails.apikey}`,
-        });
-    };
-    this.response = function (sheetDetails) {
-        let sheet = this.ajax(sheetDetails);
-        return sheet.then(resp => {
-            header = resp.values[0];
-            let values = resp.values.filter((i, index) => index !== 0);
-            let included = header.map(i => removeSpecial(i).toLowerCase());
-
-            return values.map(i => {
-                let items = {};
-                header.map((k, index) => {
-                    items[removeSpecial(k.toLowerCase())] = i[index];
-                });
-                items.keyword = included.map(b => items[b].toLowerCase()).join(",");
-                return items;
-            });
-        });
-
-    };
 }
 
 function removeSpecial(str) {
