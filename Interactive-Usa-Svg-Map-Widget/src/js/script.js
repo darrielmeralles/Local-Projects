@@ -371,8 +371,8 @@ function tooltipContent(stateId){
 			allowHTML: true,
 			followCursor: true,
 			interactive: true,
-			theme: 'light-border',
-			// trigger: 'click',
+			theme: 'dark',
+			trigger: 'click',
 			appendTo: document.body
 		});
     });            

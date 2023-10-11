@@ -137,7 +137,7 @@ g:hover{
 }
 
 .state_name{
-    color: red;
+    /* color: red; */
 	font-size: 20px !important;
 }
 /* details css */
@@ -157,6 +157,71 @@ g:hover{
 	padding: 10px;
     max-width: 500px !important;
 }
+/* THEMES */
+/* Tomato */
+.tippy-box[data-theme~='tomato'] {
+    background-color: tomato !important;
+    color: yellow !important;
+}
+.tippy-box[data-theme~='tomato'] a{
+    color: yellow !important;
+}
+.tippy-box[data-theme~='tomato'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: tomato;
+  }
+.tippy-box[data-theme~='tomato'][data-placement^='bottom'] > .tippy-arrow::before {
+border-bottom-color: tomato;
+}
+.tippy-box[data-theme~='tomato'][data-placement^='left'] > .tippy-arrow::before {
+border-left-color: tomato;
+}
+.tippy-box[data-theme~='tomato'][data-placement^='right'] > .tippy-arrow::before {
+border-right-color: tomato;
+}
+/* Tomato */
+/* White  */
+.tippy-box[data-theme~='white'] {
+    background-color: rgb(252, 252, 252) !important;
+    color: #222222 !important;
+}
+.tippy-box[data-theme~='white'] a{
+    color: #222222 !important;
+}
+.tippy-box[data-theme~='white'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: rgb(252, 252, 252) 
+  }
+.tippy-box[data-theme~='white'][data-placement^='bottom'] > .tippy-arrow::before {
+border-bottom-color:rgb(252, 252, 252) 
+}
+.tippy-box[data-theme~='white'][data-placement^='left'] > .tippy-arrow::before {
+border-left-color: rgb(252, 252, 252) 
+}
+.tippy-box[data-theme~='white'][data-placement^='right'] > .tippy-arrow::before {
+border-right-color: rgb(252, 252, 252) 
+}
+/* White  */
+/* Dark  */
+.tippy-box[data-theme~='dark'] {
+    background-color: rgb(0, 0, 0) !important;
+    color: #ffffff !important;
+}
+.tippy-box[data-theme~='dark'] a{
+    color: #ffffff !important;
+}
+.tippy-box[data-theme~='dark'][data-placement^='top'] > .tippy-arrow::before {
+    border-top-color: rgb(0, 0, 0) 
+  }
+.tippy-box[data-theme~='dark'][data-placement^='bottom'] > .tippy-arrow::before {
+border-bottom-color:rgb(0, 0, 0) 
+}
+.tippy-box[data-theme~='dark'][data-placement^='left'] > .tippy-arrow::before {
+border-left-color: rgb(0, 0, 0) 
+}
+.tippy-box[data-theme~='dark'][data-placement^='right'] > .tippy-arrow::before {
+border-right-color: rgb(0, 0, 0) 
+}
+/* White  */
+/* THEME */
 .tooltip_con p {
     margin: 5px 0 0 0 !important;
 }
