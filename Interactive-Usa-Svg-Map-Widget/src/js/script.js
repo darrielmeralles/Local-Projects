@@ -8,19 +8,51 @@ let data = {
 		stateList: [
 			{
 				State: "Alabama",
-				Region: "South East",
-				Rep_Group: "Five Star Packaging",
+				Id: "AL",
+				Rep_Group: "",
 				Contact: "Randy Heaton",
 				Email: "randyheaton@gmail.com",
-				Phone: "205-529-6590"
+				Phone: "205-529-6590",
+				Image: "",
+                Video: "https://www.youtube.com/embed/exI_hD_4jAM?si=LBaVl7j3UQ-iMXWd",
+                Button_Link: "https://www.google.com/",
+                Color: "green"
 			},
 			{
 				State: "Alaska",
-				Region: "West",
+                Id: "AK",
 				Rep_Group: "CuBE Packaging Solutions Inc",
 				Contact: "John Alexanian",
 				Email: "john@cubep.com",
-				Phone: "877-260-2823 x224"
+				Phone: "877-260-2823 x224",
+                Image: "https://images.pexels.com/photos/17035575/pexels-photo-17035575/free-photo-of-calla-lily-in-droplets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                Video: "https://player.vimeo.com/video/871122886?h=bdd8c927a7",
+                Button_Link: "",
+                Color: "pink"
+			},
+			{
+				State: "Tennesse",
+                Id: "TN",
+				Rep_Group: "CuBE Packaging Solutions Inc",
+				Contact: "John Alexanian",
+				Email: "john@cubep.com",
+				Phone: "877-260-2823 x224",
+                Image: "https://images.pexels.com/photos/17035575/pexels-photo-17035575/free-photo-of-calla-lily-in-droplets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                Video: "https://player.vimeo.com/video/871122886?h=bdd8c927a7",
+                Button_Link: "",
+                Color: "pink"
+			},
+			{
+				State: "North Carolina",
+                Id: "NC",
+				Rep_Group: "CuBE Packaging Solutions Inc",
+				Contact: "John Alexanian",
+				Email: "john@cubep.com",
+				Phone: "877-260-2823 x224",
+                Image: "https://images.pexels.com/photos/17035575/pexels-photo-17035575/free-photo-of-calla-lily-in-droplets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                Video: "https://player.vimeo.com/video/871122886?h=bdd8c927a7",
+                Button_Link: "",
+                Color: "pink"
 			},
 		],
 		spreadsheet: "https://docs.google.com/spreadsheets/d/1yP7gG6KbPyw5tokq2hL7E9zY3D04vjl7ygh4rmgsE_s/edit?usp=sharing",
@@ -58,7 +90,18 @@ switch (device) {
 dmAPI.runOnReady('init', function () {
 	dmAPI.loadScript('https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js', function() {
 		dmAPI.loadScript('https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js', function() {
-			appendtomap(stateList);			
+
+            //ADD STATE COLOR
+            stateList.map(function(i){
+                console.log(i.Id, "i");
+                $(element).find('#'+i.Id).css({
+                    'fill': i.Color
+                });    
+            });
+
+            //APPEND INFO TO POPUP
+			appendtomap(stateList);	
+
 		});  
 	});
 })
@@ -282,24 +325,42 @@ function tooltipContent(stateId){
         let phoneData2 = data2.Phone;
         let eachPhoneData2 = phoneData2.split(',');
         let appendToMap =`<div class='tooltip_con'>
-                            <p class="state_name"><b>${data2.State}</b></p>
-                            <p><b>${data2.Rep_Group}</b></p>
-                            <p><b>Contact:</b> ${data2.Contact}</p>
-                            <p><b>T:</b>
+                            <p class="state_name ${!!data2.State ? "" :"hideEl"}"><b>${data2.State}</b></p>
+                            <p class="${!!data2.Rep_Group ? "" :"hideEl"}"><b>${data2.Rep_Group}</b></p>
+                            <p class="${!!data2.Contact ? "" :"hideEl"}"><b>Contact:</b> ${data2.Contact}</p>
+                            <p ${!!data2.Phone ? "" :"hideEl"}><b>T:</b>
                                 ${
                                     eachPhoneData2.map(function(i){
                                         return output = `<a href="tel:${i}">${i}</a>`;    
                                     })
                                 }
                             </p>
-                            <p><b>E:</b>
+                            <p ${!!data2.Email ? "" :"hideEl"}><b>E:</b>
                                 ${
                                     eachEmailsData2.map(function(i){
                                         return output = `<a href = "mailto: ${i}">${i}</a>`;    
                                     })
                                 }
                             </p>
-                          </div>`;
+                          </div>
+
+                          <div class="image-container ${!!data2.Image ? "" :"hideEl"}" style="background-image: url(${data2.Image})">
+                          </div>
+                          
+                          <div class="video-container">
+
+                                <iframe class="${data2.Video.includes('youtube') && !!data2.Video ? "": "hideEl"}" width="auto" height="auto" src="${data2.Video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+                                <iframe class="${data2.Video.includes('vimeo') && !!data2.Video ? "": "hideEl"}" src="${data2.Video}" width="auto" height="auto" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+
+                          </div> 
+
+                          <div class="btn-container  ${!!data2.Button_Link ? "": "hideEl"}">
+                                <button class="btn-link"><span class="text">Learn More</span></div>
+                          </div>
+                     
+                          
+                          `;
         //TIPPY TOOLTIP CONFIG
 		tippy(stateId, {
 			content: appendToMap,

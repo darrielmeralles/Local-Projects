@@ -69,7 +69,31 @@ g:hover{
 .tooltip{
     transition: 0.3s ease-in-out;
 	/* fill: #cfcfcf !important; */
-	fill: rgb(210, 214, 217) !important;
+	fill: rgb(210, 214, 217);
+}
+
+.image-container {
+    height: 150px;
+    width: 300px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    margin-top: 20px;
+}
+.video-container, .btn-container{
+    margin-top: 20px;
+    max-width: 300px;
+}
+.btn-link{
+    height: 45px;
+    width: 150px;
+    border: none;
+    outline: none;
+    background-color: #cdcdcd;
+    cursor: pointer;
+}
+.hideEl, .hideel{
+    display: none !important;
 }
 
 
@@ -131,6 +155,7 @@ g:hover{
     outline: 0;
     transition-property: transform,visibility,opacity;
 	padding: 10px;
+    max-width: 500px !important;
 }
 .tooltip_con p {
     margin: 5px 0 0 0 !important;
