@@ -54,6 +54,19 @@ let data = {
                 Button_Link: "",
                 Color: "red"
 			},
+			{
+				State: "Florida",
+                Id: "FL",
+				Rep_Group: "",
+				Contact: "",
+				Email: "",
+				Phone: "",
+                Image: "",
+                Description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+                Video: "",
+                Button_Link: "https://www.google.com/",
+                Color: "yellow"
+			},
 		],
 		spreadsheet: "https://docs.google.com/spreadsheets/d/1yP7gG6KbPyw5tokq2hL7E9zY3D04vjl7ygh4rmgsE_s/edit?usp=sharing",
 		sample:''
@@ -325,6 +338,7 @@ function tooltipContent(stateId){
         let phoneData2 = data2.Phone;
         let eachPhoneData2 = phoneData2.split(',');
         let appendToMap =`<div class='tooltip_con'>
+
                             <p class="state_name ${!!data2.State ? "" :"hideEl"}"><b>${data2.State}</b></p>
                             <p class="${!!data2.Rep_Group ? "" :"hideEl"}"><b>${data2.Rep_Group}</b></p>
                             <p class="${!!data2.Contact ? "" :"hideEl"}"><b>Contact:</b> ${data2.Contact}</p>
@@ -342,22 +356,27 @@ function tooltipContent(stateId){
                                     })
                                 }
                             </p>
+                            
+                            <p class="${!!data2.Description ? "" :"hideEl"}">${data2.Description}</p>
+
+                            <div class="image-container ${!!data2.Image ? "" :"hideEl"}" style="background-image: url(${data2.Image})">
+                            </div>
+                            
+                            <div class="video-container">
+  
+                                  <iframe class="${data2.Video.includes('youtube') && !!data2.Video ? "": "hideEl"}" width="200px" height="auto" src="${data2.Video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  
+                                  <iframe class="${data2.Video.includes('vimeo') && !!data2.Video ? "": "hideEl"}" src="${data2.Video}" width="200px" height="100px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+  
+                            </div> 
+  
+                            <div class="btn-container  ${!!data2.Button_Link ? "": "hideEl"}">
+                                  <button class="btn-link"><span class="text">Learn More</span></div>
+                            </div>
+
                           </div>
 
-                          <div class="image-container ${!!data2.Image ? "" :"hideEl"}" style="background-image: url(${data2.Image})">
-                          </div>
-                          
-                          <div class="video-container">
 
-                                <iframe class="${data2.Video.includes('youtube') && !!data2.Video ? "": "hideEl"}" width="auto" height="auto" src="${data2.Video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-                                <iframe class="${data2.Video.includes('vimeo') && !!data2.Video ? "": "hideEl"}" src="${data2.Video}" width="auto" height="auto" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-
-                          </div> 
-
-                          <div class="btn-container  ${!!data2.Button_Link ? "": "hideEl"}">
-                                <button class="btn-link"><span class="text">Learn More</span></div>
-                          </div>
                      
                           
                           `;
@@ -371,8 +390,8 @@ function tooltipContent(stateId){
 			allowHTML: true,
 			followCursor: true,
 			interactive: true,
-			theme: 'tomato',
-			// trigger: 'click',
+			theme: 'dark',
+			trigger: 'click',
 			appendTo: document.body
 		});
     });            

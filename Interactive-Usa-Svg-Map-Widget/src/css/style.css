@@ -74,23 +74,25 @@ g:hover{
 
 .image-container {
     height: 150px;
-    width: 300px;
+    width: 200px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50%;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .video-container, .btn-container{
     margin-top: 10px;
     max-width: 300px;
 }
 .btn-link{
-    height: 45px;
-    width: 150px;
+    height: 35px;
+    width: 100px;
     border: none;
     outline: none;
-    background-color: #cdcdcd;
+    background-color: #FEBF10;
     cursor: pointer;
+    border-radius: 20px;
+    color: #ffffff;
 }
 .hideEl, .hideel{
     display: none !important;
@@ -138,7 +140,7 @@ g:hover{
 
 .state_name{
     /* color: red; */
-	font-size: 20px !important;
+	font-size: 14px !important;
 }
 /* details css */
 
@@ -149,13 +151,13 @@ g:hover{
     background-color: #efefef;
     color: #1b1b1b;
     border-radius: 4px;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 1.4;
     white-space: normal;
     outline: 0;
     transition-property: transform,visibility,opacity;
 	padding: 10px;
-    max-width: 500px !important;
+    /* max-width: 500px !important; */
 }
 /* THEMES */
 /* Tomato */
