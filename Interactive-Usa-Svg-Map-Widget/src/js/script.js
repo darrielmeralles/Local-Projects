@@ -14,18 +14,18 @@ let data = {
 				Email: "randyheaton@gmail.com",
 				Phone: "205-529-6590",
 				Image: "",
-                Video: "https://www.youtube.com/embed/exI_hD_4jAM?si=LBaVl7j3UQ-iMXWd",
+                Video: "",
                 Button_Link: "https://www.google.com/",
                 Color: "green"
 			},
 			{
 				State: "Alaska",
                 Id: "AK",
-				Rep_Group: "CuBE Packaging Solutions Inc",
-				Contact: "John Alexanian",
-				Email: "john@cubep.com",
-				Phone: "877-260-2823 x224",
-                Image: "https://images.pexels.com/photos/17035575/pexels-photo-17035575/free-photo-of-calla-lily-in-droplets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+				Rep_Group: "",
+				Contact: "",
+				Email: "",
+				Phone: "",
+                Image: "",
                 Video: "https://player.vimeo.com/video/871122886?h=bdd8c927a7",
                 Button_Link: "",
                 Color: "pink"
@@ -33,26 +33,26 @@ let data = {
 			{
 				State: "Tennesse",
                 Id: "TN",
-				Rep_Group: "CuBE Packaging Solutions Inc",
-				Contact: "John Alexanian",
-				Email: "john@cubep.com",
-				Phone: "877-260-2823 x224",
+				Rep_Group: "",
+				Contact: "",
+				Email: "",
+				Phone: "",
                 Image: "https://images.pexels.com/photos/17035575/pexels-photo-17035575/free-photo-of-calla-lily-in-droplets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                Video: "https://player.vimeo.com/video/871122886?h=bdd8c927a7",
+                Video: "",
                 Button_Link: "",
-                Color: "pink"
+                Color: "blue"
 			},
 			{
 				State: "North Carolina",
                 Id: "NC",
-				Rep_Group: "CuBE Packaging Solutions Inc",
-				Contact: "John Alexanian",
-				Email: "john@cubep.com",
-				Phone: "877-260-2823 x224",
-                Image: "https://images.pexels.com/photos/17035575/pexels-photo-17035575/free-photo-of-calla-lily-in-droplets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                Video: "https://player.vimeo.com/video/871122886?h=bdd8c927a7",
+				Rep_Group: "",
+				Contact: "",
+				Email: "",
+				Phone: "",
+                Image: "",
+                Video: "https://www.youtube.com/embed/NNS5Piu-EII?si=tox-MDSixk8YA9DL",
                 Button_Link: "",
-                Color: "pink"
+                Color: "red"
 			},
 		],
 		spreadsheet: "https://docs.google.com/spreadsheets/d/1yP7gG6KbPyw5tokq2hL7E9zY3D04vjl7ygh4rmgsE_s/edit?usp=sharing",
@@ -328,14 +328,14 @@ function tooltipContent(stateId){
                             <p class="state_name ${!!data2.State ? "" :"hideEl"}"><b>${data2.State}</b></p>
                             <p class="${!!data2.Rep_Group ? "" :"hideEl"}"><b>${data2.Rep_Group}</b></p>
                             <p class="${!!data2.Contact ? "" :"hideEl"}"><b>Contact:</b> ${data2.Contact}</p>
-                            <p ${!!data2.Phone ? "" :"hideEl"}><b>T:</b>
+                            <p class="${!!data2.Phone ? "" :"hideEl"}"><b>T:</b>
                                 ${
                                     eachPhoneData2.map(function(i){
                                         return output = `<a href="tel:${i}">${i}</a>`;    
                                     })
                                 }
                             </p>
-                            <p ${!!data2.Email ? "" :"hideEl"}><b>E:</b>
+                            <p class="${!!data2.Email ? "" :"hideEl"}"><b>E:</b>
                                 ${
                                     eachEmailsData2.map(function(i){
                                         return output = `<a href = "mailto: ${i}">${i}</a>`;    
@@ -371,8 +371,8 @@ function tooltipContent(stateId){
 			allowHTML: true,
 			followCursor: true,
 			interactive: true,
-			theme: 'dark',
-			trigger: 'click',
+			theme: 'tomato',
+			// trigger: 'click',
 			appendTo: document.body
 		});
     });            
