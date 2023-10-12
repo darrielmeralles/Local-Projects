@@ -13,8 +13,9 @@ let data = {
 				Contact: "Randy Heaton",
 				Email: "randyheaton@gmail.com",
 				Phone: "205-529-6590",
-				Image: "",
-                Video: "",
+				Image: "https://images.pexels.com/photos/17035575/pexels-photo-17035575/free-photo-of-calla-lily-in-droplets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                Description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+                Video: "https://www.youtube.com/embed/NNS5Piu-EII?si=tox-MDSixk8YA9DL",
                 Button_Link: "https://www.google.com/",
                 Color: "green"
 			},
@@ -22,48 +23,51 @@ let data = {
 				State: "Alaska",
                 Id: "AK",
 				Rep_Group: "",
-				Contact: "",
-				Email: "",
-				Phone: "",
-                Image: "",
+				Contact: "Randy Heaton",
+				Email: "randyheaton@gmail.com",
+				Phone: "205-529-6590",
+                Image: "https://images.pexels.com/photos/17035575/pexels-photo-17035575/free-photo-of-calla-lily-in-droplets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                Description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
                 Video: "https://player.vimeo.com/video/871122886?h=bdd8c927a7",
-                Button_Link: "",
+                Button_Link: "https://www.google.com/",
                 Color: "pink"
 			},
 			{
 				State: "Tennesse",
                 Id: "TN",
 				Rep_Group: "",
-				Contact: "",
-				Email: "",
-				Phone: "",
+				Contact: "Randy Heaton",
+				Email: "randyheaton@gmail.com",
+				Phone: "205-529-6590",
                 Image: "https://images.pexels.com/photos/17035575/pexels-photo-17035575/free-photo-of-calla-lily-in-droplets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                Video: "",
-                Button_Link: "",
+                Description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
+                Video: "https://www.youtube.com/embed/NNS5Piu-EII?si=tox-MDSixk8YA9DL",
+                Button_Link: "https://www.google.com/",
                 Color: "blue"
 			},
 			{
 				State: "North Carolina",
                 Id: "NC",
 				Rep_Group: "",
-				Contact: "",
-				Email: "",
-				Phone: "",
-                Image: "",
+				Contact: "Randy Heaton",
+				Email: "randyheaton@gmail.com",
+				Phone: "205-529-6590",
+                Image: "https://images.pexels.com/photos/17035575/pexels-photo-17035575/free-photo-of-calla-lily-in-droplets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                Description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
                 Video: "https://www.youtube.com/embed/NNS5Piu-EII?si=tox-MDSixk8YA9DL",
-                Button_Link: "",
+                Button_Link: "https://www.google.com/",
                 Color: "red"
 			},
 			{
 				State: "Florida",
                 Id: "FL",
 				Rep_Group: "",
-				Contact: "",
-				Email: "",
-				Phone: "",
-                Image: "",
+				Contact: "Randy Heaton",
+				Email: "randyheaton@gmail.com",
+				Phone: "205-529-6590",
+                Image: "https://images.pexels.com/photos/17035575/pexels-photo-17035575/free-photo-of-calla-lily-in-droplets.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 Description: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-                Video: "",
+                Video: "https://www.youtube.com/embed/NNS5Piu-EII?si=tox-MDSixk8YA9DL",
                 Button_Link: "https://www.google.com/",
                 Color: "yellow"
 			},
@@ -83,6 +87,7 @@ let items = [],
     pushItem = [];
 let filters = {};    
 let filter2 = {}; 
+let layout = "layout1";
 
 let sampleListData;
 
@@ -340,39 +345,47 @@ function tooltipContent(stateId){
         let appendToMap =`<div class='tooltip_con'>
 
                             <p class="state_name ${!!data2.State ? "" :"hideEl"}"><b>${data2.State}</b></p>
-                            <p class="${!!data2.Rep_Group ? "" :"hideEl"}"><b>${data2.Rep_Group}</b></p>
-                            <p class="${!!data2.Contact ? "" :"hideEl"}"><b>Contact:</b> ${data2.Contact}</p>
-                            <p class="${!!data2.Phone ? "" :"hideEl"}"><b>T:</b>
-                                ${
-                                    eachPhoneData2.map(function(i){
-                                        return output = `<a href="tel:${i}">${i}</a>`;    
-                                    })
-                                }
-                            </p>
-                            <p class="${!!data2.Email ? "" :"hideEl"}"><b>E:</b>
-                                ${
-                                    eachEmailsData2.map(function(i){
-                                        return output = `<a href = "mailto: ${i}">${i}</a>`;    
-                                    })
-                                }
-                            </p>
-                            
-                            <p class="${!!data2.Description ? "" :"hideEl"}">${data2.Description}</p>
 
-                            <div class="image-container ${!!data2.Image ? "" :"hideEl"}" style="background-image: url(${data2.Image})">
+                            <div class="${ layout === "layout1" ? "" :"hideEl"}">
+                                <p class="${!!data2.Rep_Group ? "" :"hideEl"}"><b>${data2.Rep_Group}</b></p>
+                                <p class="${!!data2.Contact ? "" :"hideEl"}"><b>Contact:</b> ${data2.Contact}</p>
+                                <p class="${!!data2.Phone ? "" :"hideEl"}"><b>T:</b>
+                                    ${
+                                        eachPhoneData2.map(function(i){
+                                            return output = `<a href="tel:${i}">${i}</a>`;    
+                                        })
+                                    }
+                                </p>
+                                <p class="${!!data2.Email ? "" :"hideEl"}"><b>E:</b>
+                                    ${
+                                        eachEmailsData2.map(function(i){
+                                            return output = `<a href = "mailto: ${i}">${i}</a>`;    
+                                        })
+                                    }
+                                </p>
+                            </div>
+
+                            <div class="${ layout === "layout2" ? "" :"hideEl"}">
+                                <p class="${!!data2.Description ? "" :"hideEl"}">${data2.Description}</p>
+                                <div class="btn-container  ${!!data2.Button_Link ? "": "hideEl"}">
+                                    <button class="btn-link"><span class="text">Learn More</span></div>
+                                </div>
                             </div>
                             
-                            <div class="video-container">
-  
+                            <div class="${ layout === "layout3" ? "" :"hideEl"}">
+                                <div class="image-container ${!!data2.Image ? "" :"hideEl"}" style="background-image: url(${data2.Image})">
+                                </div>
+                            </div>
+                            
+                            <div class="video-container ${ layout === "layout4" ? "" :"hideEl"}">
+
                                   <iframe class="${data2.Video.includes('youtube') && !!data2.Video ? "": "hideEl"}" width="200px" height="auto" src="${data2.Video}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   
                                   <iframe class="${data2.Video.includes('vimeo') && !!data2.Video ? "": "hideEl"}" src="${data2.Video}" width="200px" height="100px" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
   
                             </div> 
   
-                            <div class="btn-container  ${!!data2.Button_Link ? "": "hideEl"}">
-                                  <button class="btn-link"><span class="text">Learn More</span></div>
-                            </div>
+                           
 
                           </div>
 
@@ -383,8 +396,8 @@ function tooltipContent(stateId){
         //TIPPY TOOLTIP CONFIG
 		tippy(stateId, {
 			content: appendToMap,
-			// animation: 'scale',
-			animation: 'fade',
+			animation: 'scale',
+			// animation: 'fade',
 			inertia: true,
 			maxWidth: 220,
 			allowHTML: true,
