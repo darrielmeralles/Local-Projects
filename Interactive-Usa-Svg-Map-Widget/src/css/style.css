@@ -159,6 +159,12 @@ g:hover{
 	padding: 10px;
     /* max-width: 500px !important; */
 }
+
+.tippy-box[data-animation='rotate'][data-state='hidden'] {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+
 /* THEMES */
 /* Tomato */
 .tippy-box[data-theme~='tomato'] {

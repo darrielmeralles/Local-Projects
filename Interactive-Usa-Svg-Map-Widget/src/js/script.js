@@ -396,7 +396,8 @@ function tooltipContent(stateId){
         //TIPPY TOOLTIP CONFIG
 		tippy(stateId, {
 			content: appendToMap,
-			animation: 'scale',
+			animation: 'rotate',
+			// animation: 'scale',
 			// animation: 'fade',
 			inertia: true,
 			maxWidth: 220,
@@ -404,7 +405,7 @@ function tooltipContent(stateId){
 			followCursor: true,
 			interactive: true,
 			theme: 'dark',
-			trigger: 'click',
+			// trigger: 'click',
 			appendTo: document.body
 		});
     });            
