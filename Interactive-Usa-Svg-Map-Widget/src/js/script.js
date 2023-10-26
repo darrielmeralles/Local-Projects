@@ -440,3 +440,207 @@ if (!document.getElementById(cssId))
     link.crossOrigin = 'anonymous';
     head.appendChild(link);
 }
+
+
+let states = [
+	{
+		State: "AL",
+		state_name: "Alabama"
+	},
+	{
+		State: "AK",
+		state_name: "Alaska"
+	},
+	{
+		State: "AZ",
+		state_name: "Arizona"
+	},
+	{
+		State: "AR",
+		state_name: "Arkansas"
+	},
+	{
+		State: "CA",
+		state_name: "California"
+	},
+	{
+		State: "CO",
+		state_name: "Colorado"
+	},
+	{
+		State: "CT",
+		state_name: "Connecticut"
+	},
+	{
+		State: "DE",
+		state_name: "Delaware"
+	},
+	{
+		State: "FL",
+		state_name: "Florida"
+	},
+	{
+		State: "GA",
+		state_name: "Georgia"
+	},
+	{
+		State: "HI",
+		state_name: "Hawaii"
+	},
+	{
+		State: "ID",
+		state_name: "Idaho"
+	},
+	{
+		State: "IL",
+		state_name: "Illinois"
+	},
+	{
+		State: "IN",
+		state_name: "Indiana"
+	},
+	{
+		State: "IA",
+		state_name: "Iowa"
+	},
+	{
+		State: "KS",
+		state_name: "Kansas"
+	},
+	{
+		State: "KY",
+		state_name: "Kentucky"
+	},
+	{
+		State: "LA",
+		state_name: "Louisiana"
+	},
+	{
+		State: "ME",
+		state_name: "Maine"
+	},
+	{
+		State: "MD",
+		state_name: "Maryland"
+	},
+	{
+		State: "MA",
+		state_name: "Massachusetts"
+	},
+	{
+		State: "MI",
+		state_name: "Michigan"
+	},
+	{
+		State: "MN",
+		state_name: "Minnesota"
+	},
+	{
+		State: "MS",
+		state_name: "Mississippi"
+	},
+	{
+		State: "MO",
+		state_name: "Missouri"
+	},
+	{
+		State: "MT",
+		state_name: "Montana"
+	},
+	{
+		State: "NE",
+		state_name: "Nebraska"
+	},
+	{
+		State: "NV",
+		state_name: "Nevada"
+	},
+	{
+		State: "NH",
+		state_name: "New Hampshire"
+	},
+	{
+		State: "NJ",
+		state_name: "New Jersey"
+	},
+	{
+		State: "NM",
+		state_name: "New Mexico"
+	},
+	{
+		State: "NY",
+		state_name: "New York"
+	},
+	{
+		State: "NC",
+		state_name: "North Carolina"
+	},
+	{
+		State: "ND",
+		state_name: "North Dakota"
+	},
+	{
+		State: "OH",
+		state_name: "Ohio"
+	},
+	{
+		State: "OK",
+		state_name: "Oklahoma"
+	},
+	{
+		State: "OR",
+		state_name: "Oregon"
+	},
+	{
+		State: "PA",
+		state_name: "Pennsylvania"
+	},
+	{
+		State: "RI",
+		state_name: "Rhode Island"
+	},
+	{
+		State: "SC",
+		state_name: "South Carolina"
+	},
+	{
+		State: "SD",
+		state_name: "South Dakota"
+	},
+	{
+		State: "TN",
+		state_name: "Tennesse"
+	},
+	{
+		State: "TX",
+		state_name: "Texas"
+	},
+	{
+		State: "UT",
+		state_name: "Utah"
+	},
+	{
+		State: "VT",
+		state_name: "Vermont"
+	},
+	{
+		State: "VA",
+		state_name: "Virginia"
+	},
+	{
+		State: "WA",
+		state_name: "Washington"
+	},
+	{
+		State: "WV",
+		state_name: "West Virginia"
+	},
+	{
+		State: "WI",
+		state_name: "Wisconsin"
+	},
+	{
+		State: "WY",
+		state_name: "Wyoming"
+	},
+]
