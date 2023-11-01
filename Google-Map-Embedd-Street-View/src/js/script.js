@@ -5,6 +5,7 @@ let data = {
 	siteId: '',
 	elementId: '',
 	config: {
+		apikey:"AIzaSyAPXbTPYbaYYyR6dAk1KaeAVqM7fAzBqEE", //Gilles
 		sampleList: [{}],
 		sample:''
 	}
@@ -14,7 +15,7 @@ let collection = new Collection()
 
 let device = data.device;
 let sampleList = data.config.sampleList;
-let sample = data.config.sample;
+let apikey = data.config.apikey;
 
 let noCollectMessage = 'No data was found.' ///data.config.noCollectMessage
 let noCollectSubMessage = 'This will be hidden on preview and live site.' ///data.config.noCollectSubMessage
@@ -35,13 +36,27 @@ switch (device) {
 
 
 dmAPI.runOnReady('init', function () {
-	fileSize();
+	dmAPI.loadScript(`https://maps.googleapis.com/maps/api/js?v=3.54&key=${apikey}`, function() {
+		initialize();
+	  });
 })
 
-function fileSize(){
-	let f = "https://www.africau.edu/images/default/sample.pdf"
-	var fileSize = f.size; 
-    var fileSizeInKB = (fileSize/1024); 
-
-	console.log(fileSize, "fileSize");
-}
+function initialize() {
+	const fenway = { lat: 42.345573, lng: -71.098326 };
+	const map = new google.maps.Map(document.getElementById("map"), {
+	  center: fenway,
+	  zoom: 14,
+	});
+	const panorama = new google.maps.StreetViewPanorama(
+	  document.getElementById("pano"),
+	  {
+		position: fenway,
+		pov: {
+		  heading: 34,
+		  pitch: 10,
+		},
+	  },
+	);
+  
+	map.setStreetView(panorama);
+  }

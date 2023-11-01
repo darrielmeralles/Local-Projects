@@ -129,13 +129,6 @@ html {
 
 /* - - - - - -  ADD CSS HERE - - - - - - */
 
-.con {
-    background: red;
-    margin: 10px;
-    color: white;
-    /* padding: 20px !important; */
-}
-
 /* desktop-tablet.css */
 @media (min-width: 875px) and (max-width: 1280px) {
 

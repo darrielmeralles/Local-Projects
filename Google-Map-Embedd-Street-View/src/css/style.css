@@ -128,51 +128,14 @@ html {
 /*End Error Handling*/
 
 /* - - - - - -  ADD CSS HERE - - - - - - */
-.widget_row {
-    padding: 20px 20px !important;
+
+#map,
+#pano {
+  float: left;
+  height: 500px !important;
+  width: 50%;
 }
-.widget_row .no_style{
-    list-style-type: none; 
-	padding: 0 !important;
-}
-.widget_row:nth-child(even) {
-    background: #efefef;
-}
-.center_title{
-	text-align: center !important;
-}
-p.title {
-    font-size: 20px;
-    font-weight: bold;
-}
-ul.feat_list li {
-    display: flex;
-}
-ul.feat_list li:nth-child(even) {
-    flex-direction: row-reverse;
-}
-/* ul.feat_list li:nth-child(even) .feat_col1 {
-    padding-left: 40px;
-} */
-.feat_col{
-	margin: auto !important;
-	width: 50% !important;
-	padding: 20px 20px !important;
-}
-p.feat_title {
-    font-size: 18px;
-    font-weight: bold;
-}
-ul.layout_list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-	padding: 0 !important;
-}
-ul.layout_list li {
-    width: 25%;
-}
+
 
 /* desktop-tablet.css */
 @media (min-width: 875px) and (max-width: 1280px) {
