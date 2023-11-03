@@ -94,12 +94,15 @@ let map;
 let placesService;
 const markers = [];
 let circle;
+let markerCluster;
 const predefinedLocations = [
 	{ name: 'Mary Mediatrix of All Grace Parish', lat: 13.9257684, lng: 121.1718262 }, // Example predefined locations
 	{ name: 'Amiya Rosa Phase 2', lat: 13.9262997, lng: 121.1455341 },
 	{ name: 'Archdiocesan Shrine and Parish of St. Anthony of Padua', lat: 13.9241927, lng: 121.1487052 },
 	{ name: 'Blue Bay Beach Resort', lat: 13.6726549, lng: 121.4519088 }
   ];
+
+let defaddress = "10 Ayala Hwy, Lipa, 4218 Batangas";
 
 let noCollectMessage = 'No data was found.' ///data.config.noCollectMessage
 let noCollectSubMessage = 'This will be hidden on preview and live site.' ///data.config.noCollectSubMessage
@@ -120,83 +123,101 @@ switch (device) {
 
 
 dmAPI.runOnReady('init', function () {
-	dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ&libraries=places,geometry', function () {
-		initMap()
+	dmAPI.loadScript('https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js', function () {
+		dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ&libraries=places,geometry', function () {
+			initMap();
+			searchPlaces(defaddress);
+		})
 	})
 })
 
+$(".searchBtn").click(function(){
+	let address = document.getElementById('addressInput').value;
+	searchPlaces(address);
+});
+
 function initMap() {
 	map = new google.maps.Map(document.getElementById('map'), {
-	  center: { lat: 0, lng: 0 },
-	  zoom: 15
+		center: { lat: 13.9511538, lng: 121.1602778 },
+		zoom: 15
 	});
-  }
 
-  function searchPlaces() {
-	const address = document.getElementById('addressInput').value;
+	markerCluster = new MarkerClusterer(map, markers, {
+		imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+		gridSize: 50,
+		maxZoom: 15,
+	});
+}
 
-	// Geocode the address to get the LatLng
+function searchPlaces(address) {
+	// const address = document.getElementById('addressInput').value;
+
 	const geocoder = new google.maps.Geocoder();
 	geocoder.geocode({ address: address }, (results, status) => {
-	  if (status === 'OK' && results[0]) {
-		clearMarkers();
-		const location = results[0].geometry.location;
-		map.setCenter(location);
+		if (status === 'OK' && results[0]) {
+			clearMarkers();
+			const location = results[0].geometry.location;
+			map.setCenter(location);
 
-		const radius = 10000; // Set your desired radius in meters
+			const radius = 10000;
 
-		// Create a circular radius on the map
-		if (circle) {
-		  circle.setMap(null);
-		}
-		circle = new google.maps.Circle({
-		  map: map,
-		  center: location,
-		  radius: radius,
-		  fillColor: '#FF0000',
-		  fillOpacity: 0.2,
-		  strokeColor: '#FF0000',
-		  strokeOpacity: 0.8,
-		  strokeWeight: 2
-		});
-
-		const locationsInsideRadius = [];
-
-		// Place pins for predefined locations within the radius
-		predefinedLocations.forEach((location) => {
-		  const latLng = new google.maps.LatLng(location.lat, location.lng);
-		  const distance = google.maps.geometry.spherical.computeDistanceBetween(latLng, circle.getCenter());
-
-		  if (distance <= radius) {
-			const marker = new google.maps.Marker({
-			  position: latLng,
-			  map: map,
-			  title: location.name
+			if (circle) {
+				circle.setMap(null);
+			}
+			circle = new google.maps.Circle({
+				map: map,
+				center: location,
+				radius: radius,
+				fillColor: '#FF0000',
+				fillOpacity: 0.2,
+				strokeColor: '#FF0000',
+				strokeOpacity: 0.8,
+				strokeWeight: 2
 			});
-			markers.push(marker);
 
-			// Add the location to the list
-			locationsInsideRadius.push(location.name);
-		  }
-		});
+			const locationsInsideRadius = [];
 
-		// Display the list of predefined locations inside the radius
-		const locationsList = document.getElementById('locationsList');
-		locationsList.innerHTML = '';
-		locationsInsideRadius.forEach((locationName) => {
-		  const listItem = document.createElement('li');
-		  listItem.textContent = locationName;
-		  locationsList.appendChild(listItem);
-		});
-	  } else {
-		alert('Geocode was not successful for the following reason: ' + status);
-	  }
+			predefinedLocations.forEach((location) => {
+				const latLng = new google.maps.LatLng(location.lat, location.lng);
+				const distance = google.maps.geometry.spherical.computeDistanceBetween(latLng, circle.getCenter());
+
+				if (distance <= radius) {
+					const marker = new google.maps.Marker({
+						position: latLng,
+						title: location.name
+					});
+					markers.push(marker);
+					locationsInsideRadius.push(location);
+					// locationsInsideRadius.push(location.name);
+				}
+			});
+
+			markerCluster.addMarkers(markers);
+
+			console.log(locationsInsideRadius, "locationsInsideRadius");
+
+			const locationsList = document.getElementById('locationsList');
+
+			locationsList.innerHTML = '';
+
+			//append results below
+			locationsInsideRadius.map(function(x) {
+				let ouput = `<li>${x.name}</li>`;
+				$('#locationsList').append(ouput);
+			 });
+
+			// locationsInsideRadius.forEach((locationName) => {
+			// 	const listItem = document.createElement('li');
+			// 	listItem.textContent = locationName;
+			// 	locationsList.appendChild(listItem);
+			// });
+		} else {
+			alert('Geocode was not successful for the following reason: ' + status);
+		}
 	});
-  }
+}
 
-  function clearMarkers() {
-	markers.forEach((marker) => {
-	  marker.setMap(null);
-	});
+function clearMarkers() {
+	markerCluster.clearMarkers();
 	markers.length = 0;
-  }
+}
