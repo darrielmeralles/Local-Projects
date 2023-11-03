@@ -90,6 +90,17 @@ let device = data.device;
 let sampleList = data.config.sampleList;
 let propertyList = data.config.propertyList;
 
+let map;
+let placesService;
+const markers = [];
+let circle;
+const predefinedLocations = [
+	{ name: 'Mary Mediatrix of All Grace Parish', lat: 13.9257684, lng: 121.1718262 }, // Example predefined locations
+	{ name: 'Amiya Rosa Phase 2', lat: 13.9262997, lng: 121.1455341 },
+	{ name: 'Archdiocesan Shrine and Parish of St. Anthony of Padua', lat: 13.9241927, lng: 121.1487052 },
+	{ name: 'Blue Bay Beach Resort', lat: 13.6726549, lng: 121.4519088 }
+  ];
+
 let noCollectMessage = 'No data was found.' ///data.config.noCollectMessage
 let noCollectSubMessage = 'This will be hidden on preview and live site.' ///data.config.noCollectSubMessage
 let sampleListData;
@@ -109,86 +120,83 @@ switch (device) {
 
 
 dmAPI.runOnReady('init', function () {
-
-	dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ&libraries=places', function () {
-		google.maps.event.addDomListener(window, 'load', initialize);
-		
-	})
-	dmAPI.loadScript('https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js', function () {
-
-		$(element).find('.budiSuggest').html('');
-
-		removeDuplicates(propertyList, "business_name").forEach((i) => $(element).find('.budiSuggest').append(`<div class="budiSuggestDiv"><i class="fa-solid fa-location-dot"></i>  ${i.business_name}</div>`));
-
+	dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ&libraries=places,geometry', function () {
+		initMap()
 	})
 })
 
-$(".fa-circle-xmark").click(function(){
-	$(this).hide();
-	$(".budiSuggest").hide();
-	$(element).find('.cb-search-Input').val("");
-});
-
-function initialize() {
-
-	var input = document.getElementById('searchTextField');
-
-	var autocomplete = new google.maps.places.Autocomplete(input);
-
-	google.maps.event.addListener(autocomplete, 'place_changed', function () {
-		var place = autocomplete.getPlace();
-		document.getElementById('city2').value = place.name;
-		document.getElementById('cityLat').value = place.geometry.location.lat();
-		document.getElementById('cityLng').value = place.geometry.location.lng();
+function initMap() {
+	map = new google.maps.Map(document.getElementById('map'), {
+	  center: { lat: 0, lng: 0 },
+	  zoom: 15
 	});
-
   }
 
+  function searchPlaces() {
+	const address = document.getElementById('addressInput').value;
 
+	// Geocode the address to get the LatLng
+	const geocoder = new google.maps.Geocoder();
+	geocoder.geocode({ address: address }, (results, status) => {
+	  if (status === 'OK' && results[0]) {
+		clearMarkers();
+		const location = results[0].geometry.location;
+		map.setCenter(location);
 
-//Auto Suggest
-$(element).find('.cb-search-Input').keyup(function () {
-    let inputValue = $(element).find(this).val().toLowerCase();
-	let valLength = inputValue.length;
+		const radius = 10000; // Set your desired radius in meters
 
-	$(".budiSuggest").show();
+		// Create a circular radius on the map
+		if (circle) {
+		  circle.setMap(null);
+		}
+		circle = new google.maps.Circle({
+		  map: map,
+		  center: location,
+		  radius: radius,
+		  fillColor: '#FF0000',
+		  fillOpacity: 0.2,
+		  strokeColor: '#FF0000',
+		  strokeOpacity: 0.8,
+		  strokeWeight: 2
+		});
 
-	if(valLength != 0){
-		$(".fa-circle-xmark").show();
-	}else{
-		$(".fa-circle-xmark").hide();
-	}
+		const locationsInsideRadius = [];
 
-    $(element).find('.budiSuggest div').each(function (i) {
-        let divText = $(element).find(this).text().toLowerCase();
-        if (!divText.includes(inputValue)) {
-            $(this).hide();
-        } else if ($(element).find('.cb-search-Input').val() === "") {
-            $(this).hide();
-        } else {
-            $(this).show();
-        }
-        $(element).find(this).on("click", function () {
-            $(element).find('.budiSearchInput').val($(this).text());
-            $(element).find('.budiSuggest div').hide();
-        });
-    });
+		// Place pins for predefined locations within the radius
+		predefinedLocations.forEach((location) => {
+		  const latLng = new google.maps.LatLng(location.lat, location.lng);
+		  const distance = google.maps.geometry.spherical.computeDistanceBetween(latLng, circle.getCenter());
 
-	$(".budiSuggestDiv").click(function(){
-		console.log("click suggdest");
-		let txt = $(this).text();
-		console.log(txt, "txt");
-		$(element).find('.cb-search-Input').val(txt);
+		  if (distance <= radius) {
+			const marker = new google.maps.Marker({
+			  position: latLng,
+			  map: map,
+			  title: location.name
+			});
+			markers.push(marker);
+
+			// Add the location to the list
+			locationsInsideRadius.push(location.name);
+		  }
+		});
+
+		// Display the list of predefined locations inside the radius
+		const locationsList = document.getElementById('locationsList');
+		locationsList.innerHTML = '';
+		locationsInsideRadius.forEach((locationName) => {
+		  const listItem = document.createElement('li');
+		  listItem.textContent = locationName;
+		  locationsList.appendChild(listItem);
+		});
+	  } else {
+		alert('Geocode was not successful for the following reason: ' + status);
+	  }
 	});
+  }
 
-});
-
-//Remove Array Duplicates
-function removeDuplicates(array, key) {
-    return array.reduce(function (arr, item) {
-        const removed = arr.filter(function (i) {
-            return i[key] !== item[key];
-        });
-        return [...removed, item];
-    }, []);
-};
+  function clearMarkers() {
+	markers.forEach((marker) => {
+	  marker.setMap(null);
+	});
+	markers.length = 0;
+  }
