@@ -130,6 +130,8 @@ const markers = [];
 let circle;
 let markerCluster;
 
+let radiusLoc = [];
+
 let googleId = "map_" + Math.floor(Math.random(99999) * 99999);
 $(".custom-listing-map-Container").attr("id", googleId);
 
@@ -159,7 +161,7 @@ dmAPI.runOnReady('init', function () {
 			dmAPI.loadScript('https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js', function () {
 				dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ&libraries=places,geometry', function () {
 					initMap();
-					searchPlaces(defaddress);
+					searchPlaces(defaddress, propertyList);
 				})
 			})
 		})
@@ -193,6 +195,29 @@ $('.cd-sort-wrapper select').change(function(){
 	PaginationFunction(completeData, sortVal);
 }); 
 
+$(element).find('.radio').click(function() {
+	let val = $(this).data("val");
+	console.log(val, "val")
+
+	// filterLocations(val);
+
+	let filters = {
+		business_type: val
+	};
+
+	if(val != "All"){
+		let res = multiFilter(propertyList,filters);
+		// initMap();
+		searchPlaces(defaddress, res)
+		console.log(res, "res");
+	}else{
+		// initMap();
+		searchPlaces(defaddress, propertyList)
+		console.log(propertyList, "propertyList");
+	}
+
+});
+
 function initMap() {
 	map = new google.maps.Map(document.getElementById(`${googleId}`), {
 		center: { 
@@ -210,8 +235,8 @@ function initMap() {
 	});
 }
 
-// function searchPlaces(address) {
-function searchPlaces(address) {
+function searchPlaces(address, filteredProp) {
+	console.log(filteredProp, "filteredProp function");
 	// const address = document.getElementById('addressInput').value;
 
 	let bounds = new google.maps.LatLngBounds();
@@ -241,7 +266,9 @@ function searchPlaces(address) {
 
 			const locationsInsideRadius = [];
 
-			propertyList.forEach((location) => {
+			// let filteredProp = [];
+
+			filteredProp.forEach((location) => {
 				
 				const latLng = new google.maps.LatLng(location.lat, location.lng);
 				const distance = google.maps.geometry.spherical.computeDistanceBetween(latLng, circle.getCenter());
@@ -251,6 +278,7 @@ function searchPlaces(address) {
 					const marker = new google.maps.Marker({
 						position: latLng,
 						map,
+						category: location.business_type,
 						id: "marker_" + location.index
 						// title: location.business_name
 					});
@@ -319,48 +347,38 @@ function searchPlaces(address) {
 
 			console.log(locationsInsideRadius, "locationsInsideRadius.");
 
-			// PaginationFunction(locationsInsideRadius);
+			showFilteredLocations('all');
 
-			$(element).find('.radio').click(function() {
-				let val = $(this).data("val");
-				console.log(val, "val")
-			  
-				let filters = {
-				  business_type: val
-				};
-			  
-				if(val != "All"){
-				  let res = multiFilter(locationsInsideRadius,filters);
-				  PaginationFunction(res);
-				}else{
-				  PaginationFunction(locationsInsideRadius);
-				}
-			  
-			});
-
+			PaginationFunction(locationsInsideRadius);
 
 
 		} else {
 			alert('Geocode was not successful for the following reason: ' + status);
 		}
+		
 	});
+	
 }
+
 
 function clearMarkers() {
 	markerCluster.clearMarkers();
 	markers.length = 0;
 }
 
-function filterMarkers(category) {
-	markers.forEach((marker) => {
-		console.log(markers, "markers");
-	  if (category === 'all' || marker.category === category) {
-		marker.setVisible(true);
-	  } else {
-		marker.setVisible(false);
-	  }
-	});
+function filterLocations(category) {
+	showFilteredLocations(category);
   }
+
+function showFilteredLocations(category) {
+	markers.forEach((marker) => {
+		if (category === 'all' || marker.category === category) {
+		marker.setMap(map);
+		} else {
+		marker.setMap(null);
+		}
+	});
+}
 
 function createRow(b){
 	let itemLink = window.location.href.includes(data.siteId)  ? `/site/${data.siteId}${b.page_item_url}?preview=true&nee=true&showOriginal=true&dm_checkSync=1&dm_try_mode=true&dm_device=${data.device}`: b.page_item_url;
