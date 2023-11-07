@@ -102,8 +102,8 @@ let data = {
 				  business_name: "Amsterdam Airport Schiphol",
 				  business_type: "Groceries",
 				  address: "Restaurants",
-				  ratings: "3.8",
-				  spend: "29.99",
+				  ratings: "3.9",
+				  spend: "29.98",
 				  delevery_time: "From 20:30",
 				  sponsored: "Yes",
 				  free_delevery: "Yes",
@@ -179,27 +179,14 @@ $(element).find('.cd-layout-icon').click(function() {
 	$(".list").toggleClass("hide");
  });
 
-//FILTER ONCHANGE
 $('.cd-sort-wrapper select').change(function(){
-	let keyword = $('.cd-SearchInput').val();
-	let type = $('.radio').val();
 	let sortVal = $(this).val();
-	let filters = {
-	  business_type: type
-	};
-  
-	console.log(type, "type");
-	console.log(sortVal, "sortVal");
-	console.log(keyword, "keyword");
-  
-	PaginationFunction(completeData, sortVal);
+	searchPlaces(defaddress, res, sortVal);
 }); 
 
 $(element).find('.radio').click(function() {
 	let val = $(this).data("val");
 	console.log(val, "val")
-
-	// filterLocations(val);
 
 	let filters = {
 		business_type: val
@@ -207,15 +194,19 @@ $(element).find('.radio').click(function() {
 
 	if(val != "All"){
 		let res = multiFilter(propertyList,filters);
-		// initMap();
-		searchPlaces(defaddress, res)
-		console.log(res, "res");
+		searchPlaces(defaddress, res);
+		//FILTER ONCHANGE
+		$('.cd-sort-wrapper select').change(function(){
+			let sortVal = $(this).val();
+			searchPlaces(defaddress, res, sortVal);
+		}); 
 	}else{
-		// initMap();
-		searchPlaces(defaddress, propertyList)
-		console.log(propertyList, "propertyList");
+		searchPlaces(defaddress, propertyList);
+		$('.cd-sort-wrapper select').change(function(){
+			let sortVal = $(this).val();
+			searchPlaces(defaddress, res, sortVal);
+		});
 	}
-
 });
 
 function initMap() {
@@ -235,7 +226,7 @@ function initMap() {
 	});
 }
 
-function searchPlaces(address, filteredProp) {
+function searchPlaces(address, filteredProp, sortVal) {
 	console.log(filteredProp, "filteredProp function");
 	// const address = document.getElementById('addressInput').value;
 
@@ -266,8 +257,6 @@ function searchPlaces(address, filteredProp) {
 
 			const locationsInsideRadius = [];
 
-			// let filteredProp = [];
-
 			filteredProp.forEach((location) => {
 				
 				const latLng = new google.maps.LatLng(location.lat, location.lng);
@@ -280,10 +269,7 @@ function searchPlaces(address, filteredProp) {
 						map,
 						category: location.business_type,
 						id: "marker_" + location.index
-						// title: location.business_name
 					});
-
-					console.log(markers, "markers sa loob");
 
 					//DISPLAY ALL RESULTS ON THE MAP
 					bounds.extend(marker.position);
@@ -321,7 +307,7 @@ function searchPlaces(address, filteredProp) {
 					});
 
 					markers.push(marker);
-					// locationsInsideRadius.push(location.business_name);
+
 					locationsInsideRadius.push({
 						id: location.id,
 						business_name: location.business_name,
@@ -345,12 +331,9 @@ function searchPlaces(address, filteredProp) {
 			// Add the markers to the markerCluster
 			markerCluster.addMarkers(markers);
 
-			console.log(locationsInsideRadius, "locationsInsideRadius.");
-
 			showFilteredLocations('all');
 
-			PaginationFunction(locationsInsideRadius);
-
+			PaginationFunction(locationsInsideRadius, sortVal);
 
 		} else {
 			alert('Geocode was not successful for the following reason: ' + status);
@@ -359,7 +342,6 @@ function searchPlaces(address, filteredProp) {
 	});
 	
 }
-
 
 function clearMarkers() {
 	markerCluster.clearMarkers();
