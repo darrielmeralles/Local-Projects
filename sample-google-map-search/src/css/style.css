@@ -21,23 +21,6 @@ html {
 }
 
 /* Start CSS Here */
-.widgetName-Main-Container,
-.widgetName-Main-Container a,
-.widgetName-Main-Container div,
-.widgetName-Main-Container img,
-.widgetName-Main-Container label,
-.widgetName-Main-Container input,
-.widgetName-Main-Container select {
-	position: relative;
-	display: block;
-	width: 100%;
-	height: auto;
-	padding: 0;
-	margin: 0;
-	line-height: 1.5em;
-	text-decoration: none;
-	box-sizing: border-box;
-}
 
 /*Loader CSS*/
 .widget-Loader-Container {
@@ -128,6 +111,59 @@ html {
 /*End Error Handling*/
 
 /* - - - - - -  ADD CSS HERE - - - - - - */
+.gm-style-iw{
+	width: 500px !important;
+}
+.cd-res-box {
+	width: 100%;
+    height: 150px;
+    background: #ffffff;
+    display: flex;
+    box-shadow: 0px 3px 8px 0px rgb(0 0 0 / 25%);
+    border-radius: 10px;
+    overflow: hidden;
+	margin: 15px 0;
+}
+.cd-res-box-map {
+	width: 100%;
+    height: 150px;
+    background: #ffffff;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.cd-left-col {
+    width: 40%;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+	position: relative;
+}
+.cd-right-col {
+    padding: 20px;
+    text-align: left !important;
+}
+.cd-logo-wrapper {
+	background: #ffffff;
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.cd-logo-wrapper img {
+    width: 100%;
+}
+p.cd-ratings i, p.del-time i {
+    color: #F15D00;
+}
 
 /* desktop-tablet.css */
 @media (min-width: 875px) and (max-width: 1280px) {
