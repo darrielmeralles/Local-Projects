@@ -100,7 +100,7 @@ const predefinedLocations = [
 	{ name: 'Amiya Rosa Phase 2', lat: 13.9262997, lng: 121.1455341 },
 	{ name: 'Archdiocesan Shrine and Parish of St. Anthony of Padua', lat: 13.9241927, lng: 121.1487052 },
 	{ name: 'Blue Bay Beach Resort', lat: 13.6726549, lng: 121.4519088 }
-  ];
+];
 
 let defaddress = "10 Ayala Hwy, Lipa, 4218 Batangas";
 
