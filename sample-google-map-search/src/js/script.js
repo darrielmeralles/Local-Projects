@@ -185,6 +185,7 @@ $('.cd-sort-wrapper select').change(function(){
 }); 
 
 $(element).find('.radio').click(function() {
+	initMap();
 	let val = $(this).data("val");
 	console.log(val, "val")
 
