@@ -255,6 +255,8 @@ function searchPlaces(address) {
 						// title: location.business_name
 					});
 
+					console.log(markers, "markers sa loob");
+
 					//DISPLAY ALL RESULTS ON THE MAP
 					bounds.extend(marker.position);
 					map.fitBounds(bounds);
@@ -348,6 +350,17 @@ function clearMarkers() {
 	markerCluster.clearMarkers();
 	markers.length = 0;
 }
+
+function filterMarkers(category) {
+	markers.forEach((marker) => {
+		console.log(markers, "markers");
+	  if (category === 'all' || marker.category === category) {
+		marker.setVisible(true);
+	  } else {
+		marker.setVisible(false);
+	  }
+	});
+  }
 
 function createRow(b){
 	let itemLink = window.location.href.includes(data.siteId)  ? `/site/${data.siteId}${b.page_item_url}?preview=true&nee=true&showOriginal=true&dm_checkSync=1&dm_try_mode=true&dm_device=${data.device}`: b.page_item_url;

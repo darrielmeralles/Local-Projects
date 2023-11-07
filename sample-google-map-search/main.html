@@ -22,6 +22,12 @@
 		<input type="text" id="addressInput" placeholder="Enter an address">
 		<button class="searchBtn">Search</button>
 	</div>
+	<h2>Filter Markers:</h2>
+  <input type="radio" name="filter" value="all" checked="checked" onclick="filterMarkers(this.value)"> All
+  <input type="radio" name="filter" value="locationA" onclick="filterMarkers(this.value)"> Location A
+  <input type="radio" name="filter" value="locationB" onclick="filterMarkers(this.value)"> Location B
+  <input type="radio" name="filter" value="locationC" onclick="filterMarkers(this.value)"> Location C
+  
 	<div class="c-Directory-Main-Container widget-abc123">
 		<div class="cd-filter-wrapp">
 			<p class="filter-name">Type of Business</p>
