@@ -114,6 +114,108 @@ html {
 .gm-style-iw{
 	width: 500px !important;
 }
+div.widgetShowcase-Search-Suggest {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    z-index: 2;
+    min-height: 42.5px;
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-radius: 4px;
+    margin-top: 5px;
+    box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 0px 12px 24px -12px rgba(0, 0, 0, 0.5);
+}
+.hideEl{
+	display: none !important;
+}
+p.cd-res-counter {
+    text-align: left !important;
+}
+.c-Directory-Main-Container {
+	display: flex;
+	background: #ffffff;
+    padding: 20px;
+    /* border: 1px solid black; */
+}
+.cd-filter-wrapp {
+   text-align: left !important;
+    width: 20%;
+}
+.custom-listing-map-Container{
+    height: 600px !important;
+	display: none;
+}
+.cd-results-wrapper {
+    width: 80% !important;
+}
+p.filter-name {
+    font-size: 18px;
+    margin: 0 0 10px 0!important;
+	font-weight: bold;
+}
+p.business-name {
+    font-size: 18px;
+    margin: 0 0 10px 0;
+	font-weight: bold;
+}
+.cd-searchbar-wrapper {
+    display: flex;
+}
+input#cd-SearchInput {
+    width: 60%;
+    border-radius: 5px;
+    border: 1px solid #9a9a9a;
+    padding: 0 10px;
+    height: 30px;
+    margin-right: 20px;
+}
+select#cd-SortbyInput{
+	border-radius: 5px;
+    border: 1px solid #9a9a9a;
+    padding: 0 10px;
+    height: 30px;
+    margin-right: 20px;
+}
+.cd-sort-wrapper {
+	display: flex;
+    justify-content: flex-start;
+    width: 40%;
+    align-items: center;
+}
+.show{
+	display: block !important;
+}
+.hide{
+	display: none !important;
+}
+.map{
+	display: none;
+}
+.cd-layout-icon {
+    /* width: 10%; */
+	display: flex;
+    justify-content: center;
+    align-items: center;
+	height: 40px;
+    width: 50px;
+	background-color: #EBE9E8;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.cd-layout-icon i {
+    font-size: 20px;
+    color: grey;
+}
+.cd-Label {
+    margin-right: 10px;
+    width: 100px;
+}
+.cd-results-con {
+    margin-top: 20px;
+}
 .cd-res-box {
 	width: 100%;
     height: 150px;
@@ -163,6 +265,115 @@ html {
 }
 p.cd-ratings i, p.del-time i {
     color: #F15D00;
+}
+/* The container */
+.container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 14px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+  }
+  
+/* map css  */
+.gm-style-iw-d {
+    max-height: 100% !important;
+    overflow: hidden !important;
+}
+.gm-style-iw.gm-style-iw-c {
+    width: 900px !important;
+	height: 147px !important;
+    max-height: 200px !important;
+	padding: 0 !important;
+}
+/* map css  */
+/*PAGINATION CSS*/
+.paginationjs .paginationjs-pages li{
+    border: none !important;
+	color: #222222 !important;
+}
+/* .paginationjs .paginationjs-pages li>a{
+    border-radius: 10px !important;
+} */
+.animate {
+	animation-name: animate-pop;
+	animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+	animation-duration: 0.15s;
+}
+  
+@keyframes animate-pop {
+	0% {
+		opacity: 0;
+		transform: scale(0.8, 0.8);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1, 1);
+	}
+}
+.paginationjs .paginationjs-pages li.active>a{
+    background: #F15D00 !important;
+	color: #ffffff !important;
+}
+.paginationjs{
+    margin-top: 20px;
+}
+/*PAGINATION CSS*/
+
+/* Hide the browser's default radio button */
+.container input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 22px;
+width: 22px;
+background-color: #eee;
+border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+background-color: #F15D00;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+top: 6px;
+left: 6px;
+width: 10px;
+height: 10px;
+border-radius: 50%;
+background: white;
 }
 
 /* desktop-tablet.css */

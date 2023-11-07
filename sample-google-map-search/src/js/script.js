@@ -100,7 +100,7 @@ let data = {
 			{
 				  id: 6,
 				  business_name: "Amsterdam Airport Schiphol",
-				  business_type: "Pharmacy",
+				  business_type: "Groceries",
 				  address: "Restaurants",
 				  ratings: "3.8",
 				  spend: "29.99",
@@ -129,6 +129,9 @@ let placesService;
 const markers = [];
 let circle;
 let markerCluster;
+
+let googleId = "map_" + Math.floor(Math.random(99999) * 99999);
+$(".custom-listing-map-Container").attr("id", googleId);
 
 let defaddress = "Sloterweg 139, 1171 CL Badhoevedorp, Netherlands";
 
@@ -167,12 +170,31 @@ $(".searchBtn").click(function(){
 	let address = document.getElementById('addressInput').value;
 	searchPlaces(address);
 });
+$(element).find('.cd-layout-icon').click(function() {
+	$(".custom-listing-map-Container").toggleClass("show");
+	$(".cd-res-main").toggleClass("hide");
+	$(".map").toggleClass("show");
+	$(".list").toggleClass("hide");
+ });
+
+//FILTER ONCHANGE
+$('.cd-sort-wrapper select').change(function(){
+	let keyword = $('.cd-SearchInput').val();
+	let type = $('.radio').val();
+	let sortVal = $(this).val();
+	let filters = {
+	  business_type: type
+	};
+  
+	console.log(type, "type");
+	console.log(sortVal, "sortVal");
+	console.log(keyword, "keyword");
+  
+	PaginationFunction(completeData, sortVal);
+}); 
 
 function initMap() {
-
-
-
-	map = new google.maps.Map(document.getElementById('map'), {
+	map = new google.maps.Map(document.getElementById(`${googleId}`), {
 		center: { 
 			lat: 52.3381103, 
 			lng: 4.7788957 
@@ -219,16 +241,18 @@ function searchPlaces(address) {
 
 			const locationsInsideRadius = [];
 
-			// predefinedLocations.forEach((location) => {
 			propertyList.forEach((location) => {
 				
 				const latLng = new google.maps.LatLng(location.lat, location.lng);
 				const distance = google.maps.geometry.spherical.computeDistanceBetween(latLng, circle.getCenter());
 
 				if (distance <= radius) {
+					
 					const marker = new google.maps.Marker({
 						position: latLng,
-						title: location.business_name
+						map,
+						id: "marker_" + location.index
+						// title: location.business_name
 					});
 
 					//DISPLAY ALL RESULTS ON THE MAP
@@ -293,13 +317,26 @@ function searchPlaces(address) {
 
 			console.log(locationsInsideRadius, "locationsInsideRadius.");
 
-			PaginationFunction(locationsInsideRadius);
+			// PaginationFunction(locationsInsideRadius);
 
-			// let structure = '';
-			// structure = locationsInsideRadius.map(i=>{
-			// 	return createRow(i);
-			// }).join("")
-			// $(element).find("#locationsList").html(structure);
+			$(element).find('.radio').click(function() {
+				let val = $(this).data("val");
+				console.log(val, "val")
+			  
+				let filters = {
+				  business_type: val
+				};
+			  
+				if(val != "All"){
+				  let res = multiFilter(locationsInsideRadius,filters);
+				  PaginationFunction(res);
+				}else{
+				  PaginationFunction(locationsInsideRadius);
+				}
+			  
+			});
+
+
 
 		} else {
 			alert('Geocode was not successful for the following reason: ' + status);
@@ -347,21 +384,20 @@ function createRow(b){
 
 //PAGINATION 
 function PaginationFunction(items, sort = "HTL"){
-  
 
 	console.log(items, "items");
 	  //Lowest Price
-	//   if(sort == "LTH"){
-	// 	  items.sort(function(a, b) {
-	// 		  return parseFloat(a.spend.replace(/,/g,'')) - parseFloat(b.spend.replace(/,/g,''));
-	// 	  });
-	//   }
-	//   //Highest Ratings
-	//   if(sort == "HTL"){
-	// 	  items.sort(function(a, b) {
-	// 		  return parseFloat(b.ratings.replace(/,/g,'')) - parseFloat(a.ratings.replace(/,/g,''));
-	// 	  });
-	//   }
+	  if(sort == "LTH"){
+		  items.sort(function(a, b) {
+			  return parseFloat(a.spend.replace(/,/g,'')) - parseFloat(b.spend.replace(/,/g,''));
+		  });
+	  }
+	  //Highest Ratings
+	  if(sort == "HTL"){
+		  items.sort(function(a, b) {
+			  return parseFloat(b.ratings.replace(/,/g,'')) - parseFloat(a.ratings.replace(/,/g,''));
+		  });
+	  }
   
   
 	$(element).find('.cd-res-main').pagination({
@@ -377,6 +413,20 @@ function PaginationFunction(items, sort = "HTL"){
 		}
 	});
   }
+
+  // MULTI FILTER
+function multiFilter(car, filters){
+	const filterKeys = Object.keys(filters);
+	return car.filter(function(eachObj){
+		return filterKeys.every(function(eachKey){
+			if (!filters[eachKey].length) {
+				return true; // passing an empty filter means that filter is ignored.
+			}
+			return filters[eachKey].includes(eachObj[eachKey]);
+		});
+		
+	});
+}
 
   const paginateCss = 'paginationCss';
 if (!document.getElementById(paginateCss)){
