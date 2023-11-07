@@ -113,6 +113,23 @@ let data = {
 				  lat: "52.3130253",
 				  lng: "4.7724781",
   
+			},
+			{
+				  id: 7,
+				  business_name: "Castle De Haar",
+				  business_type: "Groceries",
+				  address: "Restaurants",
+				  ratings: "3.9",
+				  spend: "29.98",
+				  delevery_time: "From 20:30",
+				  sponsored: "Yes",
+				  free_delevery: "Yes",
+				  image: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_136,w_288/f_auto/q_auto/v1693208718/static-takeaway-com/images/restaurants/nl/QOP053O/headers/header",
+				  logo: "https://res.cloudinary.com/tkwy-prod-eu/image/upload/c_thumb,h_82,w_120/f_auto/q_auto/dpr_1.0/v1693208718/static-takeaway-com/images/restaurants/nl/QOP053O/logo_465x320",
+				  markericon: "https://irt-cdn.multiscreensite.com/512c27b4888a492d9e99f35f8d9a8042/dms3rep/multi/maps-and-flags.svg",
+				  lat: "52.1214529",
+				  lng: "4.9860063",
+  
 			}
 		  ]
 	}
@@ -128,6 +145,7 @@ let map;
 let placesService;
 const markers = [];
 let circle;
+let centerDot; // Marker for the center of the radius
 let markerCluster;
 
 let radiusLoc = [];
@@ -135,7 +153,10 @@ let radiusLoc = [];
 let googleId = "map_" + Math.floor(Math.random(99999) * 99999);
 $(".custom-listing-map-Container").attr("id", googleId);
 
+// let defaddress = document.getElementById('addressInput').value;
 let defaddress = "Sloterweg 139, 1171 CL Badhoevedorp, Netherlands";
+
+console.log(defaddress, "defaddress");
 
 let noCollectMessage = 'No data was found.' ///data.config.noCollectMessage
 let noCollectSubMessage = 'This will be hidden on preview and live site.' ///data.config.noCollectSubMessage
@@ -168,22 +189,40 @@ dmAPI.runOnReady('init', function () {
 	})
 })
 
+//search button
 $(".searchBtn").click(function(){
 	let address = document.getElementById('addressInput').value;
-	searchPlaces(address);
+	searchPlaces(address, propertyList);
 });
+
+//layout icon click
 $(element).find('.cd-layout-icon').click(function() {
 	$(".custom-listing-map-Container").toggleClass("show");
 	$(".cd-res-main").toggleClass("hide");
 	$(".map").toggleClass("show");
 	$(".list").toggleClass("hide");
  });
-
+//sort filter
 $('.cd-sort-wrapper select').change(function(){
 	let sortVal = $(this).val();
-	searchPlaces(defaddress, res, sortVal);
+	searchPlaces(defaddress, propertyList, sortVal);
 }); 
+// Keyword search
+$(element).find('.cd-SearchInput').keyup(function(event) {
+	let searchWord = $(this).val();
+    //check if search field is empty
+    if(!searchWord){
+        // PaginationFunction(completeData);//Append default
+		searchPlaces(defaddress, propertyList);
+    }else{
+    	let searchResult = searchByKeyword(propertyList, searchWord);
+    	// PaginationFunction(searchResult);
+		searchPlaces(defaddress, searchResult);
+    }
 
+});
+
+//radio button filter
 $(element).find('.radio').click(function() {
 	initMap();
 	let val = $(this).data("val");
@@ -196,17 +235,18 @@ $(element).find('.radio').click(function() {
 	if(val != "All"){
 		let res = multiFilter(propertyList,filters);
 		searchPlaces(defaddress, res);
-		//FILTER ONCHANGE
+		//sort filter
 		$('.cd-sort-wrapper select').change(function(){
 			let sortVal = $(this).val();
 			searchPlaces(defaddress, res, sortVal);
 		}); 
 	}else{
 		searchPlaces(defaddress, propertyList);
+		//sort filter
 		$('.cd-sort-wrapper select').change(function(){
 			let sortVal = $(this).val();
-			searchPlaces(defaddress, res, sortVal);
-		});
+			searchPlaces(defaddress, propertyList, sortVal);
+		}); 
 	}
 });
 
@@ -240,7 +280,7 @@ function searchPlaces(address, filteredProp, sortVal) {
 			const location = results[0].geometry.location;
 			map.setCenter(location);
 
-			const radius = 10000;
+			const radius = 100000;
 
 			if (circle) {
 				circle.setMap(null);
@@ -255,6 +295,16 @@ function searchPlaces(address, filteredProp, sortVal) {
 				strokeOpacity: 0.8,
 				strokeWeight: 2
 			});
+
+			// Add a simple dot as the center of the radius
+			centerDot = new google.maps.Circle({
+				map: map,
+				center: location,
+				radius: 100, // Adjust the size as needed
+				fillColor: 'blue',
+				fillOpacity: 0.5,
+				strokeWeight: 0
+			  });
 
 			const locationsInsideRadius = [];
 
@@ -273,8 +323,8 @@ function searchPlaces(address, filteredProp, sortVal) {
 					});
 
 					//DISPLAY ALL RESULTS ON THE MAP
-					bounds.extend(marker.position);
-					map.fitBounds(bounds);
+					// bounds.extend(marker.position);
+					// map.fitBounds(bounds);
 
 					// Add an info window to the marker
 					const infoWindow = new google.maps.InfoWindow({
@@ -309,6 +359,8 @@ function searchPlaces(address, filteredProp, sortVal) {
 
 					markers.push(marker);
 
+					
+
 					locationsInsideRadius.push({
 						id: location.id,
 						business_name: location.business_name,
@@ -329,6 +381,10 @@ function searchPlaces(address, filteredProp, sortVal) {
 				}
 			});
 
+			//display results counter
+			let count = locationsInsideRadius.length;
+			$(element).find(".counter").html(count);
+
 			// Add the markers to the markerCluster
 			markerCluster.addMarkers(markers);
 
@@ -345,9 +401,22 @@ function searchPlaces(address, filteredProp, sortVal) {
 }
 
 function clearMarkers() {
-	markerCluster.clearMarkers();
+	if (circle) {
+	  circle.setMap(null);
+	}
+	if (centerDot) {
+	  centerDot.setMap(null);
+	}
+	markers.forEach((marker) => {
+	  marker.setMap(null);
+	});
 	markers.length = 0;
-}
+  }
+
+// function clearMarkers() {
+// 	markerCluster.clearMarkers();
+// 	markers.length = 0;
+// }
 
 function filterLocations(category) {
 	showFilteredLocations(category);
@@ -361,6 +430,23 @@ function showFilteredLocations(category) {
 		marker.setMap(null);
 		}
 	});
+}
+//SEARCH BY KEYWORDS
+function searchByKeyword(arr,keyword){
+	let options = {
+		shouldSort: true,
+		threshold: 0.2,
+		location: 0,
+		distance: 100,
+		maxPatternLength: 32,
+		minMatchCharLength: 1,
+		keys: [
+			"business_name"
+		]
+	};
+	let fuse = new Fuse(arr, options);
+	let result = fuse.search(keyword);
+	return result;
 }
 
 function createRow(b){
