@@ -128,6 +128,10 @@ html {
 /*End Error Handling*/
 
 /* - - - - - -  ADD CSS HERE - - - - - - */
+input#searchTextField {
+    height: 30px;
+    width: 100% !important;
+}
 .widgetName-Main-Container {
 	display: flex;
     border: 1px solid #aaa9a9;

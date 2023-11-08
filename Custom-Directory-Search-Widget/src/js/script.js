@@ -123,6 +123,12 @@ dmAPI.runOnReady('init', function () {
 	})
 })
 
+
+$(".srch").click(function(){
+	let sVal = $(element).find('#searchTextField').val();
+	console.log(sVal, "sval");
+});
+
 $(".fa-circle-xmark").click(function(){
 	$(this).hide();
 	$(".budiSuggest").hide();
@@ -143,8 +149,6 @@ function initialize() {
 	});
 
   }
-
-
 
 //Auto Suggest
 $(element).find('.cb-search-Input').keyup(function () {
