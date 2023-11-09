@@ -180,7 +180,7 @@ dmAPI.runOnReady('init', function () {
 	dmAPI.loadScript('https://irp-cdn.multiscreensite.com/e70fa563a8d442bc81646ad9d635638a/files/uploaded/fuse.js', function() {
 		dmAPI.loadScript('https://irt-cdn.multiscreensite.com/8914113fe39e47bcb3040f2b64f71b02/files/uploaded/paginates.min.js', function() { 	
 			dmAPI.loadScript('https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js', function () {
-				dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ&libraries=places,geometry', function () {
+				dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyAPXbTPYbaYYyR6dAk1KaeAVqM7fAzBqEE&libraries=places,geometry', function () {
 					initMap();
 					searchPlaces(defaddress, propertyList);
 				})
