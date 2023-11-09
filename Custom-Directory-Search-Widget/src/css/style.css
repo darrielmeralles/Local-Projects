@@ -128,173 +128,81 @@ html {
 /*End Error Handling*/
 
 /* - - - - - -  ADD CSS HERE - - - - - - */
-input#searchTextField {
-    height: 30px;
-    width: 100% !important;
-}
-.widgetName-Main-Container {
-	display: flex;
-    border: 1px solid #aaa9a9;
-	padding: 5px 5px 5px 20px;
-    border-radius: 50px;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20px;
-    background: #ffffff;
-}
-input#cb-search-Input {
-	height: 30px;
-    width: 99%;
-    border: 0;
-    outline: none;
-    font-size: 18px;
-}
-.search-con {
-    width: 84%;
-}
-.showIcon{
-	display: block;
-}
-.fa-circle-xmark{
-	display: none;
-}
-.btn-con {
-    /* background: red; */
-    width: 10%;
-}
-.btn-con button {
+
+#search-container {
+    position: relative;
+    width: 300px; /* Adjust the width as needed */
+  }
+
+  #search-input {
+    width: 400px;
     height: 40px;
-    width: 100%;
-    border: none;
-    background: #F15D00;
-    color: #ffffff;
     border-radius: 50px;
-}
-.budiSuggest {
-	display: block;
-    position: absolute;
-    top: 66px;
-    left: 0;
-    background-color: #ffffff;
-    z-index: 5;
-    width: 100%;
-    -webkit-box-shadow: 0 4px 6px 0 rgba(0,0,0,.02), 0 2px 12px -2px rgba(0,0,0,.08), 0 3px 6px 0 rgba(0,0,0,.06);
-    box-shadow: 0 4px 6px 0 rgba(0,0,0,.02), 0 2px 12px -2px rgba(0,0,0,.08), 0 3px 6px 0 rgba(0,0,0,.06);
+    border: 1px solid #aaa9a9 !important;
+    padding: 0 18px;
+    outline: none;
+    font-size: 16px;
+  }
+
+  p.sudgest {
+    margin-left: 10px;
+    font-weight: bold;
 }
 
-.budiSuggest div {
-    padding: 15px;
-    transition: .20s ease-in-out;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    text-transform: capitalize;
+  #autocomplete-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border: 1px solid #ccc;
+    max-height: 150px;
+    overflow-y: auto;
     display: none;
-	cursor: pointer;
+    box-shadow: 0 4px 6px 0 rgba(0,0,0,.02), 0 2px 12px -2px rgba(0,0,0,.08), 0 3px 6px 0 rgba(0,0,0,.06);
+    border-radius: 10px;
+    margin-top: 5px;
+    padding: 10px;
+  }
+
+  .results-wrapper::before{
+    content:"Suggesties";
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .result-item {
+    padding: 5px;
+    cursor: pointer;
+    display: flex;
+    text-align: left !important;
+    justify-content: flex-start;
+    width: 400px;
+    padding: 10px;
+    align-items: center;
+    font-size: 16px;
 }
-.widgetName-Main-Container i {
-	color: #F15D00;
+
+.result-item:hover {
+    background: #f5f5f5;
+}
+
+.result-item p{
+    margin: 0 0 0 10px;
+}
+.result-item i{
+    color: #733FFE;
     font-size: 20px;
 }
-.budiSuggestDiv i.fa-location-dot{
-	margin-right: 10px;
+#autocomplete-results::-webkit-scrollbar{
+    width:6px;
+    border-left:1px solid #E6ECF8;
+}
+#autocomplete-results::-webkit-scrollbar-thumb{
+    background-color:#733FFE;
+    border-radius: 10px;
 }
 
-.budiSuggest div:hover{
-	background-color: #f0f0f0;
-    color: #222222;
-}
-
-.budiSuggestDiv.suggestActive{
-    background-color: #254667;
-    color: #FFF;
-}
-
-
-/* AUTO SUDGEST CSS */
-.pac-container {
-    background-color: #fff;
-    position: absolute!important;
-    z-index: 1000;
-    border-radius: 2px;
-    border-top: 1px solid #d9d9d9;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    overflow: hidden
-}
-
-.pac-logo:after {
-    content: "";
-    padding: 1px 1px 1px 0;
-    height: 16px;
-    text-align: right;
-    display: block;
-    background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3.png);
-    background-position: right;
-    background-repeat: no-repeat;
-    background-size: 120px 14px
-}
-.hdpi.pac-logo:after {
-    background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/powered-by-google-on-white3_hdpi.png)
-}
-.pac-item {
-    cursor: default;
-    padding: 0 4px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    line-height: 30px;
-    text-align: left;
-    border-top: 1px solid #e6e6e6;
-    font-size: 11px;
-    color: #999
-}
-.pac-item:hover {
-    background-color: #fafafa
-}
-.pac-item-selected,
-.pac-item-selected:hover {
-    background-color: #ebf2fe
-}
-.pac-matched {
-    font-weight: 700
-}
-.pac-item-query {
-    font-size: 13px;
-    padding-right: 3px;
-    color: #000
-}
-/* .pac-icon {
-    width: 25px;
-    height: 30px;
-    margin-right: 7px;
-    margin-top: 6px;
-    display: inline-block;
-    vertical-align: top;
-    background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons.png);
-    background-size: 48px;
-} */
-.hdpi .pac-icon {
-    background-image: url(https://maps.gstatic.com/mapfiles/api-3/images/autocomplete-icons_hdpi.png)
-}
-.pac-icon-search {
-    background-position: -1px -1px
-}
-.pac-item-selected .pac-icon-search {
-    background-position: -18px -1px
-}
-.pac-icon-marker {
-    background-position: -20px -161px;
-    /* background-position: -1px -161px */
-}
-.pac-item-selected .pac-icon-marker {
-    background-position: -18px -161px
-}
-.pac-placeholder {
-    color: gray
-}
 /* AUTO SUDGEST CSS */
 
 /* desktop-tablet.css */

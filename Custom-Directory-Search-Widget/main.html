@@ -21,27 +21,14 @@
 
 	<div class="widget-abc123">
 
-		<!-- <input id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" />  
-		<input type="hidden" id="city2" name="city2" />
-		<input type="hidden" id="cityLat" name="cityLat" />
-		<input type="hidden" id="cityLng" name="cityLng" /> -->
-
-		<div class="widgetName-Main-Container">
-			<i class="fa-solid fa-location-dot"></i>
-			<div class="search-con">
-
-				<!-- <input id="cb-search-Input" class="cb-search-Input" type="text" placeholder="Address..." name="search" autocomplete="off">
-				<div class="budiSuggest"></div>  -->
-				<input id="searchTextField" type="text" size="50" placeholder="Enter a location" autocomplete="on" runat="server" />  
-				<input type="hidden" id="city2" name="city2" />
-				<input type="hidden" id="cityLat" name="cityLat" />
-				<input type="hidden" id="cityLng" name="cityLng" />
-			</div>
-			<i class="fa-regular fa-circle-xmark"></i>
-			<div class="btn-con">
-				<button class="srch">Search</button>
-			</div>
-		</div>
+		<div id="search-container">
+			<input id="search-input" type="text" placeholder="Search for a location">
+		  </div>
+		
+		  <div id="autocomplete-results">
+			<p class="sudgest">Suggesties</p>
+			<div id="results-wrapper"></div>
+		  </div>
 
 	</div>
 

@@ -109,17 +109,9 @@ switch (device) {
 
 
 dmAPI.runOnReady('init', function () {
-
 	dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ&libraries=places', function () {
-		google.maps.event.addDomListener(window, 'load', initialize);
+		initialize();
 		
-	})
-	dmAPI.loadScript('https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.js', function () {
-
-		$(element).find('.budiSuggest').html('');
-
-		removeDuplicates(propertyList, "business_name").forEach((i) => $(element).find('.budiSuggest').append(`<div class="budiSuggestDiv"><i class="fa-solid fa-location-dot"></i>  ${i.business_name}</div>`));
-
 	})
 })
 
@@ -136,63 +128,55 @@ $(".fa-circle-xmark").click(function(){
 });
 
 function initialize() {
+	const input = document.getElementById('search-input');
+	const autocompleteService = new google.maps.places.AutocompleteService();
 
-	var input = document.getElementById('searchTextField');
+	const resultsContainer = document.getElementById('autocomplete-results');
 
-	var autocomplete = new google.maps.places.Autocomplete(input);
+	input.addEventListener('input', function() {
+	  const query = input.value;
 
-	google.maps.event.addListener(autocomplete, 'place_changed', function () {
-		var place = autocomplete.getPlace();
-		document.getElementById('city2').value = place.name;
-		document.getElementById('cityLat').value = place.geometry.location.lat();
-		document.getElementById('cityLng').value = place.geometry.location.lng();
+	  if (query) {
+		autocompleteService.getPlacePredictions(
+		  { input: query },
+		  function(predictions) {
+			if (predictions) {
+			//   resultsContainer.innerHTML = ''; // Clear previous results
+			$("#results-wrapper").empty(); // Clear previous results
+
+			  predictions.forEach(function(prediction) {
+
+				console.log(prediction.description, "predection");
+
+				let output = `<div class="result-item">
+								<i class="fa-solid fa-location-dot"></i>
+								<p>${prediction.description}</p>
+							</div>`
+
+				$("#results-wrapper").append(output);
+
+				$( ".result-item" ).click(function() {
+					let val = $(this).find("p").text()
+					console.log(val, "val");
+					input.value = val;
+					resultsContainer.style.display = 'none';
+					// $('.sudgest').css("display", "none");
+				});
+
+			  });
+
+			  resultsContainer.style.display = 'block';
+			//   $('.sudgest').css("display", "block");
+			} else {
+			  resultsContainer.style.display = 'none';
+			//   $('.sudgest').css("display", "none");
+			}
+		  }
+		);
+	  } else {
+		resultsContainer.style.display = 'none';
+		// $('.sudgest').css("display", "none");
+	  }
 	});
-
   }
 
-//Auto Suggest
-$(element).find('.cb-search-Input').keyup(function () {
-    let inputValue = $(element).find(this).val().toLowerCase();
-	let valLength = inputValue.length;
-
-	$(".budiSuggest").show();
-
-	if(valLength != 0){
-		$(".fa-circle-xmark").show();
-	}else{
-		$(".fa-circle-xmark").hide();
-	}
-
-    $(element).find('.budiSuggest div').each(function (i) {
-        let divText = $(element).find(this).text().toLowerCase();
-        if (!divText.includes(inputValue)) {
-            $(this).hide();
-        } else if ($(element).find('.cb-search-Input').val() === "") {
-            $(this).hide();
-        } else {
-            $(this).show();
-        }
-        $(element).find(this).on("click", function () {
-            $(element).find('.budiSearchInput').val($(this).text());
-            $(element).find('.budiSuggest div').hide();
-        });
-    });
-
-	$(".budiSuggestDiv").click(function(){
-		console.log("click suggdest");
-		let txt = $(this).text();
-		console.log(txt, "txt");
-		$(element).find('.cb-search-Input').val(txt);
-	});
-
-});
-
-//Remove Array Duplicates
-function removeDuplicates(array, key) {
-    return array.reduce(function (arr, item) {
-        const removed = arr.filter(function (i) {
-            return i[key] !== item[key];
-        });
-        return [...removed, item];
-    }, []);
-};
