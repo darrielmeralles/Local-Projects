@@ -25,7 +25,7 @@ let data = {
                 ratings: "4.5",
                 spend: "10",
                 delevery_time: "À partir de 12:00",
-                sponsored: "Yes",
+                sponsored: "No",
                 free_delevery: "Yes",
                 image: "https://irp.cdn-website.com/b2d4b892/dms3rep/multi/pizza-nap.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 logo: "https://irp.cdn-website.com/b2d4b892/dms3rep/multi/nove-pizzeria.jpg",
@@ -38,10 +38,10 @@ let data = {
                 business_name: "Maman",
                 business_type: "Restaurants",
                 address: "Restaurants",
-                ratings: "4.5",
+                ratings: "4.9",
                 spend: "10",
                 delevery_time: "À partir de 12:00",
-                sponsored: "No",
+                sponsored: "Yes",
                 free_delevery: "No",
                 image: "https://irp.cdn-website.com/b2d4b892/dms3rep/multi/pokebowl.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 logo: "https://irp.cdn-website.com/b2d4b892/dms3rep/multi/maman-huy.jpg",
@@ -57,7 +57,7 @@ let data = {
                 ratings: "4.5",
                 spend: "50",
                 delevery_time: "À partir de 12:00",
-                sponsored: "No",
+                sponsored: "Yes",
                 free_delevery: "No",
                 image: "https://irp.cdn-website.com/b2d4b892/dms3rep/multi/brunch+%281%29.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 logo: "https://irp.cdn-website.com/b2d4b892/dms3rep/multi/obrunch.jpg",
@@ -89,7 +89,7 @@ let data = {
                 ratings: "4.5",
                 spend: "20",
                 delevery_time: "À partir de 12:00",
-                sponsored: "No",
+                sponsored: "Yes",
                 free_delevery: "No",
                 image: "https://irp.cdn-website.com/b2d4b892/dms3rep/multi/pizza-2.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
                 logo: "https://irp.cdn-website.com/b2d4b892/dms3rep/multi/mazzo.jpg",
@@ -261,8 +261,6 @@ $(element).find('.cd-SearchInput').keyup(function(event) {
 $(element).find('.radio').click(function() {
     initMap();
     let val = $(this).data("val");
-    console.log(val, "val")
-
     let filters = {
         business_type: val
     };
@@ -293,21 +291,20 @@ function initMap() {
         },
         zoom: 15
     });
-
+    
     // Initialize markerCluster here after the map is ready
     markerCluster = new MarkerClusterer(map, markers, {
         imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
         gridSize: 50,
         maxZoom: 15,
     });
+
 }
 
 function searchPlaces(address, filteredProp, sortVal) {
-	console.log(filteredProp, "filteredProp function");
-	// const address = document.getElementById('addressInput').value;
 
 	let bounds = new google.maps.LatLngBounds();
-	
+
 	const geocoder = new google.maps.Geocoder();
 	geocoder.geocode({ address: address }, (results, status) => {
 		if (status === 'OK' && results[0]) {
@@ -315,88 +312,86 @@ function searchPlaces(address, filteredProp, sortVal) {
 			const location = results[0].geometry.location;
 			map.setCenter(location);
 
+      //Radius from the center location
 			const radius = 100000;
 
 			if (circle) {
-				circle.setMap(null);
+				  circle.setMap(null);
 			}
 			
 			//radius indicator
 			circle = new google.maps.Circle({
-				map: map,
-				center: location,
-				radius: radius,
-				fillColor: '#FF0000',
-				fillOpacity: 0,
-				strokeColor: '#FF0000',
-				strokeOpacity: 0,
-				strokeWeight: 2
+          map: map,
+          center: location,
+          radius: radius,
+          fillColor: '#FF0000',
+          fillOpacity: 0,
+          strokeColor: '#FF0000',
+          strokeOpacity: 0,
+          strokeWeight: 2
 			});
 
 			// Add a simple dot as the center of the radius
 			centerDot = new google.maps.Circle({
-				map: map,
-				center: location,
-				radius: 100, // Adjust the size as needed
-				fillColor: 'blue',
-				fillOpacity: 0.5,
-				strokeWeight: 0
-			  });
+          map: map,
+          center: location,
+          radius: 100, // Adjust the size as needed
+          fillColor: 'blue',
+          fillOpacity: 0,
+          strokeWeight: 0
+      });
 
-			const locationsInsideRadius = [];
+			let locationsInsideRadius = [];
 
-			filteredProp.forEach((location) => {
-				
-				const latLng = new google.maps.LatLng(location.lat, location.lng);
-				const distance = google.maps.geometry.spherical.computeDistanceBetween(latLng, circle.getCenter());
+      filteredProp.map((i) => {
+          const latLng = new google.maps.LatLng(i.lat, i.lng);
+          const distance = google.maps.geometry.spherical.computeDistanceBetween(latLng, circle.getCenter());
 
-				if (distance <= radius) {
-					
-					const marker = new google.maps.Marker({
-						position: latLng,
-						map,
-						category: location.business_type,
-						id: "marker_" + location.index
-					});
+          if (distance <= radius) {
+              const marker = new google.maps.Marker({
+                  position: latLng,
+                  map,
+                  category: i.business_type,
+                  icon: {
+                    url: "https://irp.cdn-website.com/b2d4b892/dms3rep/multi/pinmap.svg",
+                    scaledSize: new google.maps.Size(40, 40)
+                },
+                  id: "marker_" + i.index
+              });
 
-					//DISPLAY ALL RESULTS ON THE MAP
-					// bounds.extend(marker.position);
-					// map.fitBounds(bounds);
+              //DISPLAY ALL RESULTS ON THE MAP
+              // bounds.extend(marker.position);
+              // map.fitBounds(bounds);
 
-					// Add an info window to the marker
-					const infoWindow = new google.maps.InfoWindow({
-						content: `${createRow(location)}`
-					});
+              // Add an info window to the marker
+              const infoWindow = new google.maps.InfoWindow({
+                  content: `${createRow(i)}`
+              });
 
-					marker.addListener('click', function () {
-						infoWindow.open(map, marker);
-					});
+              marker.addListener('click', function () {
+                  infoWindow.open(map, marker);
+              });
 
-					markers.push(marker);
+              markers.push(marker);
 
-					
-
-					locationsInsideRadius.push({
-						id: location.id,
-						business_name: location.business_name,
-						business_type: location.business_type,
-				// 		address: location.address,
-						ratings: location.ratings,
-						spend: location.spend,
-						delevery_time: location.delevery_time,
-						sponsored: location.sponsored,
-						free_delevery: location.free_delevery,
-						image: location.image,
-						logo: location.logo,
-						link: location.link,
-				// 		markericon: location.markericon,
-						lat: location.lat,
-						lng: location.lng
-				  });
-
-				}
-			});
-
+              locationsInsideRadius.push({
+                  'id': i.id,
+                  'business_name': i.business_name,
+                  'business_type': i.business_type,
+                  'ratings': i.ratings,
+                  'spend': i.spend,
+                  'delevery_time': i.delevery_time,
+                  'sponsored': i.sponsored,
+                  'free_delevery': i.free_delevery,
+                  'image': i.image,
+                  'logo': i.logo,
+                  'link': i.link,
+                  'lat': i.lat,
+                  'lng': i.lng
+              });
+          }
+      });
+      
 			//display results counter
 			let count = locationsInsideRadius.length;
 			$(element).find(".counter").html(count);
@@ -404,16 +399,29 @@ function searchPlaces(address, filteredProp, sortVal) {
 			// Add the markers to the markerCluster
 			markerCluster.addMarkers(markers);
 
-			showFilteredLocations('all');
-
+      //display results
 			PaginationFunction(locationsInsideRadius, sortVal);
 
 		} else {
-			console.log('Geocode was not successful for the following reason: ' + status);
+			  console.log('Geocode was not successful for the following reason: ' + status);
 		}
 		
 	});
-	
+
+}
+
+function sortSponsord(obj){
+    return obj.sort(function(a, b) {
+        // Compare targetCategory1 in descending order
+        if (a.sponsored === "Yes" && b.sponsored !== "Yes") {
+            return -1;
+        } else if (a.sponsored !== "Yes" && b.sponsored === "Yes") {
+            return 1;
+        } else {
+           // If targetCategory1 is the same, sort by descending numbers in category2
+            return b.ratings - a.ratings;
+        }
+    }); 
 }
 
 function clearMarkers() {
@@ -467,7 +475,6 @@ function createRow(b){
 		itemLink = b.page_item_url.href;   
 	}
 	
-	console.log(b, "b");
 	
 	let j = `<a href="${b.link}" target="_blank">
 	            <div class="cd-res-box animate">
@@ -516,35 +523,32 @@ function createRow(b){
 
 //PAGINATION 
 function PaginationFunction(items, sort = "HTL"){
-
-	console.log(items, "items");
-	  //Lowest Price
-	  if(sort == "LTH"){
-		  items.sort(function(a, b) {
-			  return parseFloat(a.spend.replace(/,/g,'')) - parseFloat(b.spend.replace(/,/g,''));
-		  });
-	  }
-	  //Highest Ratings
-	  if(sort == "HTL"){
-		  items.sort(function(a, b) {
-			  return parseFloat(b.ratings.replace(/,/g,'')) - parseFloat(a.ratings.replace(/,/g,''));
-		  });
-	  }
-  
-  
-	$(element).find('.cd-res-main').pagination({
-		dataSource: items,
-		pageSize:10,
-		callback: function(result, pagination) {
-			console.log(result, "resultS")
-			let structure = '';
-			structure = result.map(i=>{
-			  return createRow(i);
-		   }).join("")
-		   $(element).find(".locationsList").html(structure);
-		}
-	});
+  //Lowest Price
+  if(sort == "LTH"){
+    items.sort(function(a, b) {
+      return parseFloat(a.spend.replace(/,/g,'')) - parseFloat(b.spend.replace(/,/g,''));
+    });
   }
+  //Highest Ratings
+  if(sort == "HTL"){
+    items.sort(function(a, b) {
+      return parseFloat(b.ratings.replace(/,/g,'')) - parseFloat(a.ratings.replace(/,/g,''));
+    });
+  }
+
+
+  $(element).find('.cd-res-main').pagination({
+    dataSource: items,
+    pageSize:10,
+    callback: function(result, pagination) {
+      let structure = '';
+      structure = result.map(i=>{
+        return createRow(i);
+        }).join("")
+        $(element).find(".locationsList").html(structure);
+    }
+  });
+}
 
 // MULTI FILTER
 function multiFilter(car, filters){
