@@ -24,6 +24,26 @@ html {
 	font-family: "Garet Heavy";
 	src: url("https://irp.cdn-website.com/b2d4b892/files/uploaded/Garet-Heavy.woff") format("woff2");
   }
+
+  span.sponsored {
+    background: #733ffe;
+    border-radius: 20px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #ffffff;
+}
+.textspan {
+    display: flex;
+    align-items: center;
+}
+.textspan p{
+    margin: 0;
+}
+p.del-time i.fa-solid.fa-circle.dots, p.cd-ratings i.fa-solid.fa-circle.dots{
+	font-size: 4px !important;
+	color: #222222 !important;
+	margin: 0 5px;
+}
   
   div.widgetShowcase-Search-Suggest {
 	  display: none;
