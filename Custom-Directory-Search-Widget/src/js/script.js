@@ -106,77 +106,80 @@ switch (device) {
 }
 
 //ADD MULTIPLE LINK SOURCE HERE
-
+let resultsPage = "results";
+let apikey = "AIzaSyAPXbTPYbaYYyR6dAk1KaeAVqM7fAzBqEE";
+let countryCode = "BE";
 
 dmAPI.runOnReady('init', function () {
-	dmAPI.loadScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyC9rXtfayHzDPUDYANS0eOD501pc2_gclQ&libraries=places', function () {
+	dmAPI.loadScript(`https://maps.googleapis.com/maps/api/js?key=${apikey}&libraries=places`, function () {
 		initialize();
-		
 	})
 })
 
 
-$(".srch").click(function(){
-	let sVal = $(element).find('#searchTextField').val();
-	console.log(sVal, "sval");
-});
 
-$(".fa-circle-xmark").click(function(){
-	$(this).hide();
-	$(".budiSuggest").hide();
-	$(element).find('.cb-search-Input').val("");
+$(element).find(".srch").click(function(){
+	let sVal = $(element).find('#search-input').val();
+	
+   // Set Parameter
+    let obj= {
+        place:sVal 
+    };
+	
+    let url_param = btoa(JSON.stringify(obj));
+
+    let itemLink = window.location.href.includes(data.siteId)  ? `/site/${data.siteId}${resultsPage}?data=${url_param}&preview=true&insitepreview=true&dm_device=${data.device}`: `${resultsPage}?data=${url_param}`;
+    window.location = itemLink;
 });
 
 function initialize() {
+    
 	const input = document.getElementById('search-input');
-	const autocompleteService = new google.maps.places.AutocompleteService();
+	
+    const autocompleteService = new google.maps.places.AutocompleteService();
 
 	const resultsContainer = document.getElementById('autocomplete-results');
 
 	input.addEventListener('input', function() {
+	    
 	  const query = input.value;
 
 	  if (query) {
+	      
+	    // Set component restrictions (e.g., restrict to the United States)
+        const componentRestrictions = {
+            country: countryCode
+        };
+	      
 		autocompleteService.getPlacePredictions(
-		  { input: query },
+		  { input: query, componentRestrictions: componentRestrictions },
 		  function(predictions) {
 			if (predictions) {
-			//   resultsContainer.innerHTML = ''; // Clear previous results
-			$("#results-wrapper").empty(); // Clear previous results
-
+			$(element).find("#results-wrapper").empty(); // Clear previous results
 			  predictions.forEach(function(prediction) {
-
-				console.log(prediction.description, "predection");
-
 				let output = `<div class="result-item">
 								<i class="fa-solid fa-location-dot"></i>
 								<p>${prediction.description}</p>
 							</div>`
 
-				$("#results-wrapper").append(output);
+				$(element).find("#results-wrapper").append(output);
 
-				$( ".result-item" ).click(function() {
+				$(element).find( ".result-item" ).click(function() {
 					let val = $(this).find("p").text()
-					console.log(val, "val");
 					input.value = val;
 					resultsContainer.style.display = 'none';
-					// $('.sudgest').css("display", "none");
 				});
 
 			  });
 
 			  resultsContainer.style.display = 'block';
-			//   $('.sudgest').css("display", "block");
 			} else {
 			  resultsContainer.style.display = 'none';
-			//   $('.sudgest').css("display", "none");
 			}
 		  }
 		);
 	  } else {
 		resultsContainer.style.display = 'none';
-		// $('.sudgest').css("display", "none");
 	  }
 	});
-  }
-
+}
