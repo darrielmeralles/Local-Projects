@@ -196,26 +196,68 @@ dmAPI.runOnReady('init', function () {
 })
 
 
-console.log(sortSponsord(propertyList), "propertyList");
+// Use your actual IDX Broker API endpoint and key
+const idxApiEndpoint = 'https://api.idxbroker.com/mls/listcomponents';
+const idxApiKey = 'fmG-XnsPAx24Vy-QTRGRT5';
 
-function sortSponsord(propertyList){
-	let targetCategory1 = 'Yes';
-	return propertyList.sort(function(a, b) {
-		// Compare targetCategory1 in descending order
-		if (a.sponsored === targetCategory1 && b.sponsored !== targetCategory1) {
-			return -1;
-		} else if (a.sponsored !== targetCategory1 && b.sponsored === targetCategory1) {
-			return 1;
-		} else {
-			// If targetCategory1 is the same, sort by descending numbers in category2
-			return b.ratings - a.ratings;
-		}
-	});
-	  
+// Function to fetch property data from IDX Broker
+async function fetchPropertyData() {
+  try {
+    const response = await fetch(idxApiEndpoint, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'API-key': idxApiKey,
+      },
+    });
+
+    const data = await response.json();
+
+    console.log(data, "data");
+
+    // Process the data and add markers to the map
+    processPropertyData(data);
+  } catch (error) {
+    console.error('Error fetching IDX Broker data:', error);
+  }
 }
 
+// Function to process property data and add markers to the map
+function processPropertyData(data) {
+  // Iterate through the data and add markers to the map
+  data.forEach(property => {
+    const marker = new google.maps.Marker({
+      position: {lat: property.latitude, lng: property.longitude},
+      map: map,
+      title: property.address,
+    });
+
+    // You can customize the marker further if needed
+  });
+}
+
+// Call the function to fetch and display property data
+fetchPropertyData();
 
 
+// console.log(sortSponsord(propertyList), "propertyList");
+
+// function sortSponsord(propertyList){
+// 	let targetCategory1 = 'Yes';
+// 	return propertyList.sort(function(a, b) {
+// 		// Compare targetCategory1 in descending order
+// 		if (a.sponsored === targetCategory1 && b.sponsored !== targetCategory1) {
+// 			return -1;
+// 		} else if (a.sponsored !== targetCategory1 && b.sponsored === targetCategory1) {
+// 			return 1;
+// 		} else {
+// 			// If targetCategory1 is the same, sort by descending numbers in category2
+// 			return b.ratings - a.ratings;
+// 		}
+// 	});
+	  
+// }
 
 // function fileSize(){
 // 	let f = "https://www.africau.edu/images/default/sample.pdf"
