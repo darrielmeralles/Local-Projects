@@ -132,54 +132,130 @@ $(element).find(".srch").click(function(){
     window.location = itemLink;
 });
 
-function initialize() {
-    
-	const input = document.getElementById('search-input');
-	
-    const autocompleteService = new google.maps.places.AutocompleteService();
+// Define Autocomplete globally
+let autocomplete;
 
-	const resultsContainer = document.getElementById('autocomplete-results');
+function initialize() {
+	const input = document.getElementById('search-input');
+	// const customResultsContainer = document.getElementById('custom-autocomplete-results');
+	const customResultsContainer = document.getElementById('autocomplete-results');
+	// const customResultsContainer = document.getElementById('results-wrapper');
+
+	navigator.geolocation.getCurrentPosition(function(position) {
+		const userLocation = {
+			lat: position.coords.latitude,
+			lng: position.coords.longitude
+		};
+
+		const bounds = new google.maps.LatLngBounds(userLocation, userLocation);
+
+		autocomplete = new google.maps.places.Autocomplete(input, {
+			types: ['geocode'],
+			bounds: bounds,
+			suppressDefaultUI: true // This will remove the default dropdown
+		});
+
+		displayUserLocation(userLocation);
+	});
 
 	input.addEventListener('input', function() {
-	    
-	  const query = input.value;
+		const query = input.value;
 
-	  if (query) {
-	      
-	    // Set component restrictions (e.g., restrict to the United States)
-        const componentRestrictions = {
-            country: countryCode
-        };
-	      
-		autocompleteService.getPlacePredictions(
-		  { input: query, componentRestrictions: componentRestrictions },
-		  function(predictions) {
-			if (predictions) {
-			$(element).find("#results-wrapper").empty(); // Clear previous results
-			  predictions.forEach(function(prediction) {
-				let output = `<div class="result-item">
-								<i class="fa-solid fa-location-dot"></i>
-								<p>${prediction.description}</p>
-							</div>`
+		if (query) {
+			const componentRestrictions = {
+				country: 'US'
+			};
 
-				$(element).find("#results-wrapper").append(output);
+			// customResultsContainer.innerHTML = '';
+			$(element).find("#results-wrapper").empty();
 
-				$(element).find( ".result-item" ).click(function() {
-					let val = $(this).find("p").text()
-					input.value = val;
-					resultsContainer.style.display = 'none';
-				});
+			displayUserLocation();
 
-			  });
+			autocomplete.addListener('place_changed', function() {
+				const place = autocomplete.getPlace();
+				console.log(place.name, place.formatted_address);
+			});
 
-			  resultsContainer.style.display = 'block';
-			} else {
-			  resultsContainer.style.display = 'none';
-			}
-		  }
-		);
-	  } else {
-		resultsContainer.style.display = 'none';
-	  }
+			const service = new google.maps.places.AutocompleteService();
+			service.getPlacePredictions(
+				{ input: query, componentRestrictions: componentRestrictions },
+				function(predictions) {
+				if (predictions) {
+
+					predictions.forEach(function(prediction) {
+						const resultItem = document.createElement('div');
+						resultItem.className = 'result-item';
+						resultItem.textContent = prediction.description;
+
+						const icon = document.createElement('i');
+						icon.className = 'fa-solid fa-location-dot';
+
+						resultItem.appendChild(icon);
+
+						console.log(resultItem, "resultItem");
+
+						// customResultsContainer.appendChild(resultItem);
+						$(element).find(".sudgest").text("Suggestions");
+						$(element).find("#results-wrapper").append(resultItem);
+
+						resultItem.addEventListener('click', function() {
+							input.value = prediction.description;
+							customResultsContainer.style.display = 'none';
+						});
+
+					});
+
+					customResultsContainer.style.display = 'block';
+
+				} else {
+					customResultsContainer.style.display = 'none';
+				}
+				}
+			);
+		} else {
+			customResultsContainer.style.display = 'none';
+		}
 	});
+
+	function displayUserLocation(location) {
+
+		console.log(location, "location");
+
+		const userLocationItem = document.createElement('div');
+		userLocationItem.className = 'result-item';
+
+		const geocoder = new google.maps.Geocoder();
+
+		geocoder.geocode({ location: location }, function(results, status) {
+
+			console.log(results, "results");
+
+			if (status === 'OK') {
+				userLocationItem.textContent = results[0].formatted_address;
+			} else {
+				// userLocationItem.textContent = 'Your Location';
+				userLocationItem.hide();
+			}
+
+			const icon = document.createElement('i');
+			icon.className = 'fa-solid fa-location-dot';
+
+			userLocationItem.appendChild(icon);
+			// customResultsContainer.appendChild(userLocationItem);
+
+			$(element).find(".sudgest").text("Ma position");
+			$(element).find("#results-wrapper").append(userLocationItem);
+			customResultsContainer.style.display = 'block';
+
+			console.log(userLocationItem);
+
+			$(element).find( ".result-item" ).click(function() {
+				let val = $(this).text();
+				console.log(val,"val");
+				input.value = val;
+				customResultsContainer.style.display = 'none';
+			});
+
+		});
+	}
 }

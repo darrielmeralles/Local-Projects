@@ -166,6 +166,7 @@ p.sudgest {
     z-index: 100;
     width: 100%;
     height: auto;
+    overflow: hidden;
 }
 
 .results-wrapper::before{
@@ -180,7 +181,8 @@ p.sudgest {
     cursor: pointer;
     display: flex;
     text-align: left !important;
-    justify-content: flex-start;
+    justify-content: flex-end;
+    flex-direction: row-reverse;
     width: 100%;
     padding: 10px;
     align-items: center;
@@ -197,6 +199,7 @@ p.sudgest {
 .result-item i{
     color: #733FFE;
     font-size: 20px;
+    margin-right: 10px;
 }
 #autocomplete-results::-webkit-scrollbar{
     width:6px;
@@ -210,6 +213,10 @@ p.sudgest {
 /*new css*/
 
 
+
+  .pac-container {
+    display: none !important; /* Hide the default autocomplete dropdown */
+  }
 
 input#searchTextField {
     height: 30px;
