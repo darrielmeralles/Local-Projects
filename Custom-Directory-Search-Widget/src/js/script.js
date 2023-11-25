@@ -137,9 +137,7 @@ let autocomplete;
 
 function initialize() {
 	const input = document.getElementById('search-input');
-	// const customResultsContainer = document.getElementById('custom-autocomplete-results');
 	const customResultsContainer = document.getElementById('autocomplete-results');
-	// const customResultsContainer = document.getElementById('results-wrapper');
 
 	navigator.geolocation.getCurrentPosition(function(position) {
 		const userLocation = {
@@ -192,7 +190,7 @@ function initialize() {
 
 						resultItem.appendChild(icon);
 
-						console.log(resultItem, "resultItem");
+						// console.log(resultItem, "resultItem");
 
 						// customResultsContainer.appendChild(resultItem);
 						$(element).find(".sudgest").text("Suggestions");
@@ -219,7 +217,7 @@ function initialize() {
 
 	function displayUserLocation(location) {
 
-		console.log(location, "location");
+		// console.log(location, "location");
 
 		const userLocationItem = document.createElement('div');
 		userLocationItem.className = 'result-item';
@@ -228,7 +226,7 @@ function initialize() {
 
 		geocoder.geocode({ location: location }, function(results, status) {
 
-			console.log(results, "results");
+			// console.log(results, "results");
 
 			if (status === 'OK') {
 				userLocationItem.textContent = results[0].formatted_address;
@@ -247,11 +245,11 @@ function initialize() {
 			$(element).find("#results-wrapper").append(userLocationItem);
 			customResultsContainer.style.display = 'block';
 
-			console.log(userLocationItem);
+			// console.log(userLocationItem);
 
 			$(element).find( ".result-item" ).click(function() {
 				let val = $(this).text();
-				console.log(val,"val");
+				// console.log(val,"val");
 				input.value = val;
 				customResultsContainer.style.display = 'none';
 			});
