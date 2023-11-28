@@ -196,49 +196,66 @@ dmAPI.runOnReady('init', function () {
 })
 
 
-// Use your actual IDX Broker API endpoint and key
-const idxApiEndpoint = 'https://api.idxbroker.com/mls/listcomponents';
-const idxApiKey = 'fmG-XnsPAx24Vy-QTRGRT5';
+var items = [
+  { name: 'Item 1', categoryA: 'A', categoryB: 'X', price: 10 },
+  { name: 'Item 2', categoryA: 'B', categoryB: 'Y', price: 20 },
+  { name: 'Item 3', categoryA: 'A', categoryB: 'X', price: 15 },
+  { name: 'Item 4', categoryA: 'C', categoryB: 'Z', price: 25 },
+  // Add more items as needed
+];
 
-// Function to fetch property data from IDX Broker
-async function fetchPropertyData() {
-  try {
-    const response = await fetch(idxApiEndpoint, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
-        'API-key': idxApiKey,
-      },
+$(document).ready(function() {
+  // Function to filter items based on selected categories
+  function filterItems(selectedCategoriesA, selectedCategoriesB) {
+    return items.filter(function(item) {
+      return (selectedCategoriesA.length === 0 || selectedCategoriesA.includes(item.categoryA)) &&
+             (selectedCategoriesB.length === 0 || selectedCategoriesB.includes(item.categoryB));
     });
-
-    const data = await response.json();
-
-    console.log(data, "data");
-
-    // Process the data and add markers to the map
-    processPropertyData(data);
-  } catch (error) {
-    console.error('Error fetching IDX Broker data:', error);
   }
-}
 
-// Function to process property data and add markers to the map
-function processPropertyData(data) {
-  // Iterate through the data and add markers to the map
-  data.forEach(property => {
-    const marker = new google.maps.Marker({
-      position: {lat: property.latitude, lng: property.longitude},
-      map: map,
-      title: property.address,
+  // Function to display items
+  function displayItems(itemsToShow) {
+    // Clear previous content
+    $('#result').empty();
+
+    // Display items
+    $.each(itemsToShow, function(index, item) {
+      $('#result').append('<p>' + item.name + ' - Category A: ' + item.categoryA + ' - Category B: ' + item.categoryB + ' - Price: $' + item.price + '</p>');
     });
+  }
 
-    // You can customize the marker further if needed
+  // Display all items on page load
+  displayItems(items);
+
+  // Handle checkbox changes for Category A
+  $('.categoryACheckbox').on('change', function() {
+    var selectedCategoriesA = $('.categoryACheckbox:checked').map(function() {
+      return $(this).val();
+    }).get();
+    var selectedCategoriesB = $('.categoryBCheckbox:checked').map(function() {
+      return $(this).val();
+    }).get();
+    var filteredItems = filterItems(selectedCategoriesA, selectedCategoriesB);
+    displayItems(filteredItems);
   });
-}
 
-// Call the function to fetch and display property data
-fetchPropertyData();
+  // Handle checkbox changes for Category B
+  $('.categoryBCheckbox').on('change', function() {
+    var selectedCategoriesA = $('.categoryACheckbox:checked').map(function() {
+      return $(this).val();
+    }).get();
+    var selectedCategoriesB = $('.categoryBCheckbox:checked').map(function() {
+      return $(this).val();
+    }).get();
+    var filteredItems = filterItems(selectedCategoriesA, selectedCategoriesB);
+    displayItems(filteredItems);
+  });
+});
+
+
+
+
+//working codes below____________________________________________________
 
 
 // console.log(sortSponsord(propertyList), "propertyList");
