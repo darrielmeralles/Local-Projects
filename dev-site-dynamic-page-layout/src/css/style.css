@@ -29,7 +29,7 @@ html {
 .widgetName-Main-Container input,
 .widgetName-Main-Container select {
 	position: relative;
-	display: block;
+	/* display: block; */
 	width: 100%;
 	height: auto;
 	padding: 0;
@@ -136,28 +136,78 @@ html {
 	padding: 0 !important;
 }
 .widget_row:nth-child(even) {
-    background: #efefef;
+	background: #f6f6f6;
 }
 .center_title{
-	text-align: center !important;
+	text-align: left !important;
+	font-size: 30px !important;
 }
-p.title {
-    font-size: 20px;
+p.feat_desc a {
+    color: blue;
     font-weight: bold;
 }
-ul.feat_list li {
+p.title {
+    font-size: 40px;
+    font-weight: bold;
+}
+p.subttitle  {
+    font-size: 20px !important;
+    font-weight: bold;
+	margin-top: 40px;
+}
+span.fa-li {
+    font-size: 20px;
+    color: #febc00;
+}
+.icons{
+	font-size: 20px;
+	color: #008f47;
+}
+.numbers{
+	font-size: 15px;
+	color: #222222;
+}
+.num{
+	margin: 0 0 0 10px;
+}
+.fa-circle{
+	font-size: 3px;
+    margin-left: 5px;
+}
+.horizontal{
+	width: 80% !important;
+}
+.vertical{
+	width: 40% !important;
+}
+/* p.feat_desc {
+    margin: 0;
+} */
+p.feat_desc a {
+    width: auto;
+    margin-left: 5px;
+}
+.fa-circle-xmark{
+	color: red !important;
+}
+.fa-square-check{
+	color: green !important;
+}
+/* p.feat_desc {
+    display: flex;
+} */
+/* ul.feat_list li {
     display: flex;
 }
 ul.feat_list li:nth-child(even) {
     flex-direction: row-reverse;
-}
+} */
 /* ul.feat_list li:nth-child(even) .feat_col1 {
     padding-left: 40px;
 } */
 .feat_col{
-	margin: auto !important;
-	width: 50% !important;
-	padding: 20px 20px !important;
+	margin: 0 auto 0 0!important;
+    /* width: 40% !important; */
 }
 p.feat_title {
     font-size: 18px;
@@ -173,7 +223,7 @@ ul.layout_list {
 ul.layout_list li {
     width: 25%;
 }
-
+/* ul.feat_list no_style */
 /* desktop-tablet.css */
 @media (min-width: 875px) and (max-width: 1280px) {
 
