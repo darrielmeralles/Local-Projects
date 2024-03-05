@@ -209,19 +209,19 @@ $(document).ready(function() {
   function filterItems(selectedCategoriesA, selectedCategoriesB) {
     return items.filter(function(item) {
       return (selectedCategoriesA.length === 0 || selectedCategoriesA.includes(item.categoryA)) &&
-             (selectedCategoriesB.length === 0 || selectedCategoriesB.includes(item.categoryB));
+            (selectedCategoriesB.length === 0 || selectedCategoriesB.includes(item.categoryB));
     });
   }
 
   // Function to display items
   function displayItems(itemsToShow) {
-    // Clear previous content
-    $('#result').empty();
+      // Clear previous content
+      $('#result').empty();
 
-    // Display items
-    $.each(itemsToShow, function(index, item) {
-      $('#result').append('<p>' + item.name + ' - Category A: ' + item.categoryA + ' - Category B: ' + item.categoryB + ' - Price: $' + item.price + '</p>');
-    });
+      // Display items
+      $.each(itemsToShow, function(index, item) {
+        $('#result').append('<p>' + item.name + ' - Category A: ' + item.categoryA + ' - Category B: ' + item.categoryB + ' - Price: $' + item.price + '</p>');
+      });
   }
 
   // Display all items on page load
@@ -229,31 +229,41 @@ $(document).ready(function() {
 
   // Handle checkbox changes for Category A
   $('.categoryACheckbox').on('change', function() {
-    var selectedCategoriesA = $('.categoryACheckbox:checked').map(function() {
-      return $(this).val();
-    }).get();
-    var selectedCategoriesB = $('.categoryBCheckbox:checked').map(function() {
-      return $(this).val();
-    }).get();
-    var filteredItems = filterItems(selectedCategoriesA, selectedCategoriesB);
-    displayItems(filteredItems);
+      var selectedCategoriesA = $('.categoryACheckbox:checked').map(function() {
+        return $(this).val();
+      }).get();
+      var selectedCategoriesB = $('.categoryBCheckbox:checked').map(function() {
+        return $(this).val();
+      }).get();
+      var filteredItems = filterItems(selectedCategoriesA, selectedCategoriesB);
+      displayItems(filteredItems);
   });
 
   // Handle checkbox changes for Category B
   $('.categoryBCheckbox').on('change', function() {
-    var selectedCategoriesA = $('.categoryACheckbox:checked').map(function() {
-      return $(this).val();
-    }).get();
-    var selectedCategoriesB = $('.categoryBCheckbox:checked').map(function() {
-      return $(this).val();
-    }).get();
-    var filteredItems = filterItems(selectedCategoriesA, selectedCategoriesB);
-    displayItems(filteredItems);
+      var selectedCategoriesA = $('.categoryACheckbox:checked').map(function() {
+        return $(this).val();
+      }).get();
+      var selectedCategoriesB = $('.categoryBCheckbox:checked').map(function() {
+        return $(this).val();
+      }).get();
+      var filteredItems = filterItems(selectedCategoriesA, selectedCategoriesB);
+      displayItems(filteredItems);
   });
+
 });
 
 
+let arrayOfObjects = [
+  { id: 3, name: 'Alice' },
+  { id: 1, name: 'Bob' },
+  { id: 2, name: 'Charlie' }
+];
 
+// Sorting the array by id in ascending order
+arrayOfObjects.sort((a, b) => a.id - b.id);
+
+console.log(arrayOfObjects, "arrayOfObjects");
 
 //working codes below____________________________________________________
 
