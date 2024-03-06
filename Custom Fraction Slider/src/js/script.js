@@ -78,26 +78,44 @@ function sliderStructure(list) {
     list.map(function(item) {
         output += `
             <div class="rgs-gallery-item swiper-slide">
-                <a href="${item.image_link}" class="rgs-item-link">
-                    <img loading="lazy" src="${item.image_url}" class="rgs-slider-image" alt="${item.image_alt}">
-                    <div class="rgs-gradient"></div>
-                    <div class="rgs-title-wrapper">
-                        <h3 class="rgs-title">${item.image_text}</h3>
-                    </div>
-                </a>
+				<img loading="lazy" src="${item.image_url}" class="rgs-slider-image" alt="${item.image_alt}">
+				<div class="rgs-title-wrapper">
+					<h3 class="rgs-title">01</h3>
+					<h3 class="rgs-title">${item.image_text}</h3>
+					<hr>
+					<p class="description">Centuries-old charm meets modern luxury in light-filled suites and cottages designed for comfort and style by Workstead, Canoe’s talented interior design team.</p>
+					<button>
+						<span class="text">LEARN MORE</span>
+					</button>
+				</div>
             </div>
         `;
     });
+    // list.map(function(item) {
+    //     output += `
+    //         <div class="rgs-gallery-item swiper-slide">
+    //             <a href="${item.image_link}" class="rgs-item-link">
+    //                 <img loading="lazy" src="${item.image_url}" class="rgs-slider-image" alt="${item.image_alt}">
+    //                 <div class="rgs-gradient"></div>
+    //                 <div class="rgs-title-wrapper">
+    //                     <h3 class="rgs-title">${item.image_text}</h3>
+    //                 </div>
+    //             </a>
+    //         </div>
+    //     `;
+    // });
 
     return output;
 }
 
 function sliderInitialize() {
     let swiper = new Swiper(".rgs-swiper"+widget_id, {
-        slidesPerView: 2,
-        spaceBetween: 50,
-		type: "fraction",
-        loop: false,
+        // slidesPerView: 1,
+        // spaceBetween: 50,
+		slidesPerView: 1.9,
+        spaceBetween: 60,
+		centeredSlides: true,
+		// centeredSlidesBounds: true, // Allow centered slides to be partial
 		pagination: {
 			el: ".swiper-pagination",
 			type: "fraction",
@@ -107,6 +125,10 @@ function sliderInitialize() {
             prevEl: ".rgs-prev.swiper-button-prev.rgs-navigation"+widget_id,
         },
     });
+
+	swiper.on('beforeInit', function () {
+		swiper.$wrapperEl.css('justify-content', 'flex-start'); // Adjust the justification to left
+	});
 }
 
 addCss('fontAwesomeSource','https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css'); 
