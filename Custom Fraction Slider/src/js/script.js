@@ -6,28 +6,36 @@ let data = {
 	elementId: '',
 	config: {
 		list: [{
-			"image_url": 'https://dreffui1gbt6t.cloudfront.net/images/pld/PRI_Home_Dine_021124_Elements.jpg',
+			"image_url": 'https://canoeplace.com/wp-content/uploads/2022/10/Workstead_Canoe_Bedroom2_0490-web-691x691@2x.jpg',
 			"image_alt": 'Image',
-			"image_link": '#',
-			"image_text": 'Elements'
+			"image_link": 'https://canoeplace.com/accommodations/',
+			"image_text": 'Stay Classic',
+			"number": "01",
+			"description": "Centuries-old charm meets modern luxury in light-filled suites and cottages designed for comfort and style by Workstead, Canoe’s talented interior design team."
 		},
 		{
-			"image_url": 'https://dreffui1gbt6t.cloudfront.net/images/pld/PRI_Home_Dine_021124_19th-Pub.jpg',
+			"image_url": 'https://canoeplace.com/wp-content/uploads/2023/07/23-CPI-William-097-RET-691x691.jpg',
 			"image_alt": 'Image',
-			"image_link": '#',
-			"image_text": '19th Pub'
+			"image_link": 'https://canoeplace.com/our-story/',
+			"image_text": 'Moments Away',
+			"number": "02",
+			"description": "Just 90 miles from New York City, and minutes from the Hamptons’ most beloved beaches and villages, Canoe Place is a lush, hedged enclave in the waterfront hamlet of Hampton Bays."
 		},
 		{
-			"image_url": 'https://dreffui1gbt6t.cloudfront.net/images/pld/pri-home-dine-stables-pie-mobile.jpg',
+			"image_url": 'https://canoeplace.com/wp-content/uploads/2023/07/MicrosoftTeams-image-305-691x691@2x.jpg',
 			"image_alt": 'Image',
-			"image_link": '#',
-			"image_text": 'Stables Saloon'
+			"image_link": 'https://canoeplace.com/dining/',
+			"image_text": 'Curated Cuisine',
+			"number": "03",
+			"description": "Inspired by the region’s abundance of local seafood and vegetables, savor our chef’s fresh takes on seasonal favorites."
 		},
 		{
-			"image_url": 'https://dreffui1gbt6t.cloudfront.net/images/pld/PRI_Home_Dine_021124_Wine-Cellar.jpg',
+			"image_url": 'https://canoeplace.com/wp-content/uploads/2023/07/230626_CanoePlace_SHOT_01_0197-691x691@2x.jpg',
 			"image_alt": 'Image',
-			"image_link": '#',
-			"image_text": 'Schlumberger Wine Cellar'
+			"image_link": 'https://canoeplace.com/events/',
+			"image_text": 'EXCEPTIONAL EVENTS',
+			"number": "04",
+			"description": "No matter the occasion, the rich history and charm of Canoe Place is a perfect backdrop for memorable gatherings and celebrations."
 		}],
 		sample:''
 	}
@@ -80,10 +88,10 @@ function sliderStructure(list) {
             <div class="rgs-gallery-item swiper-slide">
 				<img loading="lazy" src="${item.image_url}" class="rgs-slider-image" alt="${item.image_alt}">
 				<div class="rgs-title-wrapper">
-					<h3 class="rgs-title">01</h3>
+					<h3 class="rgs-title">${item.number}</h3>
 					<h3 class="rgs-title">${item.image_text}</h3>
 					<hr>
-					<p class="description">Centuries-old charm meets modern luxury in light-filled suites and cottages designed for comfort and style by Workstead, Canoe’s talented interior design team.</p>
+					<p class="description">${item.description}</p>
 					<button class="btn-link">
 						<span class="text">LEARN MORE</span>
 					</button>
