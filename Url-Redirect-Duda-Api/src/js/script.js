@@ -35,28 +35,56 @@ switch (device) {
 
 
 dmAPI.runOnReady('init', function () {
-	$(document).ready(function(){
-		// Activate tooltip
-		$('[data-toggle="tooltip"]').tooltip();
-		
-		// Select/Deselect checkboxes
-		var checkbox = $('table tbody input[type="checkbox"]');
-		$("#selectAll").click(function(){
-			if(this.checked){
-				checkbox.each(function(){
-					this.checked = true;                        
-				});
-			} else{
-				checkbox.each(function(){
-					this.checked = false;                        
-				});
-			} 
-		});
-		checkbox.click(function(){
-			if(!this.checked){
-				$("#selectAll").prop("checked", false);
-			}
-		});
-	});
+	getUrlList();
 })
 
+function getUrlList(){
+
+	let getUrls = doAjax({
+		url:`./php/actions.php`,
+		type: 'GET',
+		// data:JSON.stringify({
+		// 	'action':'Get Url',
+		// })
+		data: {
+			action: "Get Url"
+		}
+	});
+	getUrls.then(data=>{
+		console.log(data, 'data');
+		let resp = JSON.parse(data);
+		console.log(resp, 'resp');
+		if(resp.status){
+
+		}else{
+
+		}
+	  }); 
+
+}
+
+
+/**
+ * @param settings
+ * Reusable Async AJAX
+ * eg: var a = {
+        url: ajaxurl,
+        type: 'POST',
+        data: args
+    }
+    Callback : a.then(data => {
+        console.log(data)
+    })
+    */
+    async function doAjax(settings) {
+      
+		let result
+		try{
+			result = await $.ajax(settings);
+			return result;
+		}catch(error){
+			console.log(error)
+		}
+	
+		console.log(result, 'Result')
+	}
