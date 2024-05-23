@@ -9,7 +9,7 @@ let data = {
 		sample:''
 	}
 };
-
+let actionLink = "./php/actions.php";
 let collection = new Collection()
 
 let device = data.device;
@@ -44,11 +44,14 @@ function getUrlList(){
         type: "POST",
         data:{action: "Get Url"}
     };
-    let ulrList = doAjax(settings);
+    let urlList = doAjax(settings);
     
-    ulrList.then(resp =>{
+    urlList.then(resp =>{
 		console.log(resp, "resp ");
-        let data = JSON.parse(resp);
+		// Extract the JSON part from the received data
+		const jsonString = resp.substring(resp.indexOf('{'));
+        let data = JSON.parse(jsonString);
+		console.log(data, "data");
         
         if(data.status){
             //do
@@ -56,30 +59,24 @@ function getUrlList(){
             console.error(data.response)
         }
 	})
+
+
 }
 
 
 /**
  * @param settings
  * Reusable Async AJAX
- * eg: var a = {
+ * eg: let a = doAjax({
         url: ajaxurl,
         type: 'POST',
         data: args
-    }
+    })
     Callback : a.then(data => {
         console.log(data)
     })
-    */
-    async function doAjax(settings) {
-      
-		let result
-		try{
-			result = await $.ajax(settings);
-			return result;
-		}catch(error){
-			console.log(error)
-		}
-	
-		console.log(result, 'Result')
-	}
+*/
+function doAjax(settings) {
+    settings.data = JSON.stringify(settings.data);
+    return new Promise((res, rej) => $.ajax(settings).done(a => res(a)));
+}

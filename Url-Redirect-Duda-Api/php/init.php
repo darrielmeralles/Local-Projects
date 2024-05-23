@@ -12,4 +12,15 @@
     define('DUDA_ROUTE', $DUDA_SANDBOX_ROUTE);
     define('SITE_ALIAS', $SITE_NAME);
 
+
+    // Actions Custom Function for front-end handling data/error
+    function printResponse($response){
+    $response = json_decode(json_encode($response));
+    if($response->status){
+        print_r(json_encode($response));
+    }else {
+        die(json_encode($response));
+    }
+}
+
 ?>
