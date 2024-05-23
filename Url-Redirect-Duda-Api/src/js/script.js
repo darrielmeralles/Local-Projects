@@ -16,9 +16,7 @@ let device = data.device;
 let sampleList = data.config.sampleList;
 let sample = data.config.sample;
 
-let noCollectMessage = 'No data was found.' ///data.config.noCollectMessage
-let noCollectSubMessage = 'This will be hidden on preview and live site.' ///data.config.noCollectSubMessage
-let sampleListData;
+var settings;
 
 switch (device) {
 	case 'desktop':
@@ -40,27 +38,24 @@ dmAPI.runOnReady('init', function () {
 
 function getUrlList(){
 
-	let getUrls = doAjax({
-		url:`./php/actions.php`,
-		type: 'GET',
-		// data:JSON.stringify({
-		// 	'action':'Get Url',
-		// })
-		data: {
-			action: "Get Url"
-		}
-	});
-	getUrls.then(data=>{
-		console.log(data, 'data');
-		let resp = JSON.parse(data);
-		console.log(resp, 'resp');
-		if(resp.status){
-
-		}else{
-
-		}
-	  }); 
-
+	//iniitialize setting;
+    settings = {
+        url:`./php/actions.php`,
+        type: "POST",
+        data:{action: "Get Url"}
+    };
+    let ulrList = doAjax(settings);
+    
+    ulrList.then(resp =>{
+		console.log(resp, "resp ");
+        let data = JSON.parse(resp);
+        
+        if(data.status){
+            //do
+        }else{
+            console.error(data.response)
+        }
+	})
 }
 
 

@@ -11,12 +11,14 @@ if(gettype($data) !== 'object') die(json_encode(["status"=>false,"response"=>"Da
 switch ($data->action) {
 
     //CREATE URL REDIRECT
-    case 'Get Url':      
-        print_r(json_encode(listRule($data)));  
+    case 'Get Url':  
+        $ruleList = ruleList();
+            printResponse($ruleList);
         break;
 
     default:
-        die(json_encode(["status"=>false,"response"=>"Method Not Allowed - ".$data->action." not found"]));     
+        print_r('No action');
+        break;   
 }
 
 ?>
