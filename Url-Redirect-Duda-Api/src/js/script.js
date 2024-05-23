@@ -47,11 +47,16 @@ function getUrlList(){
     let urlList = doAjax(settings);
     
     urlList.then(resp =>{
-		console.log(resp, "resp ");
 		// Extract the JSON part from the received data
 		const jsonString = resp.substring(resp.indexOf('{'));
         let data = JSON.parse(jsonString);
 		console.log(data, "data");
+
+		let sitename = data.response.site_name;
+		let results = data.response.results;
+
+		console.log(sitename, "site_name");
+		console.log(results, "results");
         
         if(data.status){
             //do
