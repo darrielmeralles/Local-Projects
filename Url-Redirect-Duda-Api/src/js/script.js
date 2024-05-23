@@ -33,6 +33,41 @@ switch (device) {
 
 
 dmAPI.runOnReady('init', function () {
+
+	// $(window).on('load', function() {
+	// 	$('#login-form').modal('show');
+	// });
+	
+	$('.deleteRedirect').click(function() {
+		Swal.fire({
+			title: "Are you sure?",
+			text: "This action will remove the URL redirect from the site.",
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#3085d6",
+			cancelButtonColor: "#d33",
+			confirmButtonText: "Yes, delete it!"
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Swal.fire({
+					title: "Deleted!",
+					text: "URL Redirect has been deleted.",
+					icon: "success"
+				});
+			}
+		});
+	});
+	
+	$('.republishSite').click(function() {
+		Swal.fire({
+			position: "top-end",
+			icon: "success",
+			title: "The site has been republished",
+			showConfirmButton: false,
+			timer: 1500
+		});
+	});
+
 	getUrlList();
 })
 
@@ -60,14 +95,67 @@ function getUrlList(){
         
         if(data.status){
             //do
+			addTable(results);
+			$('.fw-normal').html(sitename)
         }else{
             console.error(data.response)
         }
 	})
-
-
 }
 
+function addUrl(src, target){
+
+	//iniitialize setting;
+    settings = {
+        url:`./php/actions.php`,
+        type: "POST",
+        data:{
+			action: "Add Url",
+			source: src,
+			target: target,
+			response_code:"301"
+		}
+    };
+    let urlList = doAjax(settings);
+    
+    urlList.then(resp =>{
+		// Extract the JSON part from the received data
+		const jsonString = resp.substring(resp.indexOf('{'));
+        let data = JSON.parse(jsonString);
+		console.log(data, "data");
+
+		let sitename = data.response.site_name;
+		let results = data.response.results;
+
+		console.log(sitename, "site_name");
+		console.log(results, "results");
+        
+        if(data.status){
+            //do
+			addTable(results);
+			$('.fw-normal').html(sitename)
+        }else{
+            console.error(data.response)
+        }
+	})
+}
+
+function addTable(j){
+	j.map(function(i){
+		let o = `<tr>
+					<th scope="row">${i.id}</th>
+					<td>${i.source}</td>
+					<td>${i.target}</td>
+					<td>
+						<div class="container-fluid p-0">
+							<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateRedirectModal"><i class="fa-solid fa-pen"></i></button>
+							<button type="button" class="btn btn-danger ms-2 deleteRedirect"><i class="fa-solid fa-trash"></i></button>
+						</div>
+					</td>
+				</tr>`;
+		$('.tble').append(o);                
+	});
+}
 
 /**
  * @param settings

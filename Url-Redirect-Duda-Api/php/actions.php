@@ -12,7 +12,13 @@ switch ($data->action) {
     //GET URL REDIRECTS
     case 'Get Url':  
         $ruleList = ruleList();
-            printResponse($ruleList);
+        printResponse($ruleList);
+        break;
+    
+    //ADD URL REDIRECTS
+    case 'Add Url':  
+        $ruleList = addUrl($data);
+        printResponse($ruleList);
         break;
 
     default:
