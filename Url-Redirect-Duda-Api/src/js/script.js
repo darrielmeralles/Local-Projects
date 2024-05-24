@@ -68,7 +68,22 @@ dmAPI.runOnReady('init', function () {
 		});
 	});
 
+	//load existing url
 	getUrlList();
+
+	// $( ".btn-primary" ).click(function() {
+	// 	addUrl("http://dev-widget-test-site.thecamel.co/music", "https://www.google.com/");
+	// 	getUrlList();
+	// 	console.log("click add");
+	// });
+
+	$( ".btn-primary" ).click(function() {
+		deleteUrl("1955998");
+		// getUrlList();
+		console.log("click delete");
+	});
+
+	
 })
 
 function getUrlList(){
@@ -102,7 +117,6 @@ function getUrlList(){
         }
 	})
 }
-
 function addUrl(src, target){
 
 	//iniitialize setting;
@@ -112,8 +126,7 @@ function addUrl(src, target){
         data:{
 			action: "Add Url",
 			source: src,
-			target: target,
-			response_code:"301"
+			target: target
 		}
     };
     let urlList = doAjax(settings);
@@ -122,18 +135,72 @@ function addUrl(src, target){
 		// Extract the JSON part from the received data
 		const jsonString = resp.substring(resp.indexOf('{'));
         let data = JSON.parse(jsonString);
-		console.log(data, "data");
+		console.log(data, "data add");
 
 		let sitename = data.response.site_name;
 		let results = data.response.results;
-
-		console.log(sitename, "site_name");
-		console.log(results, "results");
         
         if(data.status){
             //do
-			addTable(results);
-			$('.fw-normal').html(sitename)
+
+        }else{
+            console.error(data.response)
+        }
+	})
+}
+function updateUrl(id, src, target){
+
+	//iniitialize setting;
+    settings = {
+        url:`./php/actions.php`,
+        type: "POST",
+        data:{
+			action: "Update Url",
+			urlId: id,
+			source: src,
+			target: target
+		}
+    };
+    let urlList = doAjax(settings);
+    
+    urlList.then(resp =>{
+		// Extract the JSON part from the received data
+		const jsonString = resp.substring(resp.indexOf('{'));
+        let data = JSON.parse(jsonString);
+		console.log(data, "data update");
+		let sitename = data.response.site_name;
+		let results = data.response.results;
+        if(data.status){
+            //do
+
+        }else{
+            console.error(data.response)
+        }
+	})
+}
+function deleteUrl(id){
+
+	//iniitialize setting;
+    settings = {
+        url:`./php/actions.php`,
+        type: "POST",
+        data:{
+			action: "Delete Url",
+			urlId: id
+		}
+    };
+    let urlList = doAjax(settings);
+    
+    urlList.then(resp =>{
+		// Extract the JSON part from the received data
+		const jsonString = resp.substring(resp.indexOf('{'));
+        let data = JSON.parse(jsonString);
+		console.log(data, "data update");
+		let sitename = data.response.site_name;
+		let results = data.response.results;
+        if(data.status){
+            //do
+
         }else{
             console.error(data.response)
         }
@@ -148,11 +215,12 @@ function addTable(j){
 					<td>${i.target}</td>
 					<td>
 						<div class="container-fluid p-0">
-							<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateRedirectModal"><i class="fa-solid fa-pen"></i></button>
+							<button type="button" class="btn btn-warning btn-${i.id}" data-bs-toggle="modal" data-bs-target="#updateRedirectModal"><i class="fa-solid fa-pen"></i></button>
 							<button type="button" class="btn btn-danger ms-2 deleteRedirect"><i class="fa-solid fa-trash"></i></button>
 						</div>
 					</td>
 				</tr>`;
+		// $(".tble").empty();
 		$('.tble').append(o);                
 	});
 }

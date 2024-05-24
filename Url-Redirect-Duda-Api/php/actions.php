@@ -21,6 +21,18 @@ switch ($data->action) {
         printResponse($ruleList);
         break;
 
+    //UPDATE URL REDIRECTS
+    case 'Update Url':  
+        $ruleList = updateUrl($data);
+        printResponse($ruleList);
+        break;
+
+    //DELETE URL REDIRECTS
+    case 'Delete Url':  
+        $ruleList = deleteUrl($data);
+        printResponse($ruleList);
+        break;
+
     default:
         print_r('No action');
         break;   
