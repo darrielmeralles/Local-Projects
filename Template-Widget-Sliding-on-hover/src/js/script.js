@@ -548,7 +548,7 @@ dmAPI.runOnReady('init', function () {
 function PaginationFunction(items, container, wrapper, src, filetype){
 	$(element).find(`.${container}`).pagination({
 	  dataSource: items,
-	  pageSize:12,
+	  pageSize:6,
 	  callback: function(result, pagination) {
 		let structure = '';
 		structure = result.map(i=>{

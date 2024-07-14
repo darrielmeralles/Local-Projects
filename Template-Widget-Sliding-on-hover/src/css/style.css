@@ -8,6 +8,7 @@ html {
 	margin: 0;
 	box-sizing: border-box;
 	font: var(--defaultFont);
+	background-color: #1D242E;
 }
 
 .widget-abc123 {
@@ -185,6 +186,79 @@ html {
  ul.blocks svg {
 	 width: 450px;
 }
+.row h3{
+	font-size: 30px;
+	text-align: center;
+	color: #ffffff;
+}
+
+/* banner css */
+.banner.row {
+    display: flex;
+	padding: 100px 40px;
+	position: relative;
+}
+.banner.row:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #D09EFD;
+    height: 100%;
+    width: 260px;
+    z-index: 1;
+}
+.banner.row:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* background: #D09EFD; */
+    height: 100px;
+    width: 260px;
+    z-index: 1;
+	background-image: url("../images/local-img/DESIGN 1.png");
+	/* background-position: center; */
+	background-repeat: no-repeat;
+	background-size: contain;
+}
+.banner.row h1{
+	color: #ffffff;
+    font-size: 50px;
+}
+.banner.row h4{
+	color: #D09EFD;
+    font-size: 25px;
+}
+.banner .column{
+	width: 50%;
+	display: flex;
+	align-items: center;
+
+}
+.banner button{
+	border-radius: 20px;
+    padding: 10px 20px;
+    outline: none;
+    border: none;
+
+}
+.banner .column:nth-child(1){
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+.banner .column:nth-child(2){
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 1;
+}
+.banner .column:nth-child(2) img{
+	width: 350px;
+}
+/* banner css */
  
 /* map css  */
   /*PAGINATION CSS*/
@@ -192,9 +266,10 @@ html {
 	border: none !important;
 	color: #222222 !important;
 }
-/* .paginationjs .paginationjs-pages li>a{
-	border-radius: 10px !important;
-} */
+.paginationjs .paginationjs-pages li>a{
+	background: transparent !important;
+	color: #fff !important;
+}
 .animate {
 	animation-name: animate-pop;
 	animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
@@ -213,7 +288,7 @@ html {
 	}
 }
 .paginationjs .paginationjs-pages li.active>a{
-	background: #733FFE !important;
+	background: #D09EFD !important;
 	color: #ffffff !important;
 }
 .paginationjs{
