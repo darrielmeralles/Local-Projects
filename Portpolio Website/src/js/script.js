@@ -504,7 +504,126 @@ let data = {
 			{
                 image: "screencapture-thecameltraining-editor-multiscreensite-preview-c6f92575-2019-10-24-00_19_50",
             },
-		]
+		],
+        logoList:[
+            {
+                image: "ajja-;logo-design-1000x1000 (Page 1)",
+            },
+            {
+                image: "ajja-;logo-design-1000x1000 (Page 2)",
+            },
+            {
+                image: "ajja-;logo-design-1000x1000 (Page 3)",
+            },
+            {
+                image: "ajja-;logo-design-1000x1000 (Page 4)",
+            },
+            {
+                image: "ajja-;logo-design-1000x1000 (Page 5)",
+            },
+            {
+                image: "Beauty on bridge street logo (Page 1)",
+            },
+            {
+                image: "Beauty on bridge street logo (Page 2)",
+            },
+            {
+                image: "Beauty on bridge street logo (Page 3)",
+            },
+            {
+                image: "Beauty on bridge street logo (Page 4)",
+            },
+            {
+                image: "Beauty on bridge street logo (Page 5)",
+            },
+            {
+                image: "big-girls-fashion-logo (Page 1)",
+            },
+            {
+                image: "big-girls-fashion-logo (Page 2)",
+            },
+            {
+                image: "big-girls-fashion-logo (Page 3)",
+            },
+            {
+                image: "big-girls-fashion-logo (Page 4)",
+            },
+            {
+                image: "big-girls-fashion-logo (Page 5)",
+            },
+            {
+                image: "cherry-farm-recreate-logo (Page 1)",
+            },
+            {
+                image: "cherry-farm-recreate-logo (Page 2)",
+            },
+            {
+                image: "cherry-farm-recreate-logo (Page 3)",
+            },
+            {
+                image: "cherry-farm-recreate-logo (Page 4)",
+            },
+            {
+                image: "cherry-farm-recreate-logo (Page 5)",
+            },
+            {
+                image: "mudgee-tax-and-accounting-logo (Page 1)",
+            },
+            {
+                image: "mudgee-tax-and-accounting-logo (Page 2)",
+            },
+            {
+                image: "mudgee-tax-and-accounting-logo (Page 3)",
+            },
+            {
+                image: "mudgee-tax-and-accounting-logo (Page 4)",
+            },
+            {
+                image: "mudgee-tax-and-accounting-logo (Page 5)",
+            },
+            {
+                image: "Porky’s Nest -Logo Recreate (Page 1)",
+            },
+            {
+                image: "Porky’s Nest -Logo Recreate (Page 2)",
+            },
+            {
+                image: "robees-painting-service-logo (Page 1)",
+            },
+            {
+                image: "robees-painting-service-logo (Page 2)",
+            },
+            {
+                image: "robees-painting-service-logo (Page 3)",
+            },
+            {
+                image: "robees-painting-service-logo (Page 4)",
+            },
+            {
+                image: "robees-painting-service-logo (Page 5)",
+            },
+            {
+                image: "Terang Harness Racing Logo (Page 1)",
+            },
+            {
+                image: "Terang Harness Racing Logo (Page 2)",
+            },
+            {
+                image: "Terang Harness Racing Logo (Page 3)",
+            },
+            {
+                image: "Terang Harness Racing Logo (Page 4)",
+            },
+            {
+                image: "Terang Harness Racing Logo (Page 5)",
+            },
+            {
+                image: "Timber Blind Express-Logo",
+            },
+            {
+                image: "Tooko Wildlife Displays-Logo",
+            },
+        ]
 	}
 };
 
@@ -513,11 +632,27 @@ let collection = new Collection()
 let device = data.device;
 let mockupList= data.config.mockupList;
 let fullbuildList= data.config.fullbuildList;
-let sample = data.config.sample;
+let logoList=data.config.logoList;
+
+let autoplay=data.config.autoplay;
+let dots=data.config.dots;
+let interval=data.config.interval;
+let draggable=data.config.draggable;
+let arrows=data.config.arrows;
+let tablet=data.config.tablet;
+let mobile=data.config.mobile;
+let sTs=data.config.displaySlide;
+let arrw=data.config.arrw;
+let navSize=data.config.navSize;
+let iColor=data.config.iColor;
+let slideArrw="<i class='fa fa-"+arrw+"-left fa-"+navSize+" filmSlider-Arrow'></i>";
+let slideArrw2="<i class='fa fa-"+arrw+"-right fa-"+navSize+" filmSlider-Arrow'></i>";
+let a = $(element).find(".filmSlider-Main-Container");
+let dotsWrap = $(element).find('.filmSlider-Dots-Container');
+let arrwWrap = $(element).find('.filmSlider-Arrow-Container');
 
 let noCollectMessage = 'No data was found.' ///data.config.noCollectMessage
 let noCollectSubMessage = 'This will be hidden on preview and live site.' ///data.config.noCollectSubMessage
-let sampleListData;
 
 switch (device) {
 	case 'desktop':
@@ -535,11 +670,33 @@ switch (device) {
 
 dmAPI.runOnReady('init', function () {
 	dmAPI.loadScript('https://irt-cdn.multiscreensite.com/8914113fe39e47bcb3040f2b64f71b02/files/uploaded/paginates.min.js', function () {
-		dmAPI.loadScript('https://irt-cdn.multiscreensite.com/5775367238d847b8b62d126ce25c20de/files/uploaded/jquery.magnific-popup.js', function () {
-			PaginationFunction(fullbuildList, "fb-Main-Container", "fb-text-center", "fullbuild", "jpg");
-			PaginationFunction(mockupList, "sT-Main-Container", "text-center", "mockup", "png");
-			magnificPopUp("fb-text-center");
-			magnificPopUp("text-center");
+        dmAPI.loadScript('https://irp-cdn.multiscreensite.com/f49f126e/files/uploaded/slick.min.js', function () {
+            dmAPI.loadScript('https://irt-cdn.multiscreensite.com/5775367238d847b8b62d126ce25c20de/files/uploaded/jquery.magnific-popup.js', function () {
+
+                PaginationFunction(fullbuildList, "fb-Main-Container", "fb-text-center", "fullbuild", "jpg");
+                PaginationFunction(mockupList, "sT-Main-Container", "text-center", "mockup", "png");
+                magnificPopUp("fb-text-center");
+                magnificPopUp("text-center");
+
+                createSlider(logoList, "logo", "png");
+
+                a.fadeIn();
+                a.slick({
+                    autoplay:true,
+                    infinite:true,
+                    dots:true,
+                    autoplaySpeed:5000,
+                    draggable:true,
+                    arrows:true,
+                    appendDots:dotsWrap,
+                    slidesToShow:6,
+                    slidesToScroll:6,
+                    prevArrow:'<button type="button" class="filmSlider-Arrow-Prev filmSlider-Arrow">'+slideArrw+'</button>',
+                    nextArrow:'<button type="button" class="filmSlider-Arrow-Next filmSlider-Arrow">'+slideArrw2+'</button>',
+                    easing:'linear'
+                });
+
+            })
 		})
 	})
 })
@@ -548,7 +705,7 @@ dmAPI.runOnReady('init', function () {
 function PaginationFunction(items, container, wrapper, src, filetype){
 	$(element).find(`.${container}`).pagination({
 	  dataSource: items,
-	  pageSize:6,
+	  pageSize:3,
 	  callback: function(result, pagination) {
 		let structure = '';
 		structure = result.map(i=>{
@@ -567,6 +724,19 @@ function createRow(b, src, filetype){
 				</div>
 			</li>`
 	return j;
+}
+function createSlider(c, src, filetype){
+    console.log(c, "c")
+    c.map(function(i){
+        let j = `<div class="filmSlider-Section-ImageSlider">
+                    <div class="filmSlider-ImageSlider-PanelSlider">
+                        <a class="portfolioLink mfp-with-zoom" href="./src/images/${src}/${i.image}.${filetype}"><i class="fa-solid fa-expand"></i></a>
+                        <img src="./src/images/${src}/${i.image}.${filetype}" alt="logo" class="filmSlider-PanelSlider-Img">
+                    </div> 
+                </div>`
+            $("#filmSlider").append(j);
+    })
+
 }
 
 function magnificPopUp(container) {
