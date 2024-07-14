@@ -41,6 +41,63 @@
 <b>Custom Property Listing Luminous Visuals</b><br>
 ![custom-property-listing-2](https://github.com/user-attachments/assets/d7e9464d-f0e4-4942-9885-8e0064838d35)
 
+<b>Custom Tabs Widget</b><br>
+![custom-tab-widget](https://github.com/user-attachments/assets/3bd06d4f-116d-4c8b-a177-cd92d610c3e7)
+
+<b>Dynamic Page Showcase Slider</b><br>
+![dynamic-page-showcase](https://github.com/user-attachments/assets/580b89ec-5307-42a2-adb0-4761fd1549d1)
+
+<b>Dynamic Page Video Widget</b><br>
+![dynamic-page-video](https://github.com/user-attachments/assets/408e6da4-ae56-4363-8ec7-b7cccd02894a)
+
+<b>Interactive Usa Svg Map Widget</b><br>
+![interactive-svg-map](https://github.com/user-attachments/assets/761a3051-79f0-4f27-af98-f48611ef227f)
+
+<b>Latest Magazine</b><br>
+![latest-magazine](https://github.com/user-attachments/assets/9b6ec3fa-7687-48e4-8777-cea17883ec32)
+
+<b>Magazine Listing</b><br>
+![magazine-listing](https://github.com/user-attachments/assets/0617229e-9e39-4cef-bbbb-35d4dcfa686a)
+
+<b>Masonry Slider Gallery</b><br>
+![masonry-slider](https://github.com/user-attachments/assets/17ddffdb-af53-4bed-8982-09c8f3288a34)
+
+<b>Parallax Effect on Hover</b><br>
+![parallax-banner](https://github.com/user-attachments/assets/0749ee85-b800-49f0-8c37-df0b3de8a5b0)
+
+<b>Policies Widget</b><br>
+![policies-widget](https://github.com/user-attachments/assets/6a4d571e-ea07-4924-ae2d-8d7fc1693632)
+
+<b>Product Listing Widget</b><br>
+![product-view](https://github.com/user-attachments/assets/1ee721c9-0990-4d1c-a853-421a5d920e9f)
+
+<b>Resources Widget</b><br>
+![resources-widget](https://github.com/user-attachments/assets/0803bad7-ddcb-4859-926a-2f7f9561494c)
+
+<b>Sticky Box</b><br>
+![sticky-box](https://github.com/user-attachments/assets/dbeb3013-86b2-4c28-9823-0780ad7f6491)
+
+<b>Team Slider</b><br>
+![team-slider](https://github.com/user-attachments/assets/c605d436-c41e-4713-819c-1be731044f11)
+
+<b>Url Redirect Duda Api</b><br>
+![url-redirect-1](https://github.com/user-attachments/assets/5b3ea0d6-658a-4bd1-8989-3deb5bfb645e)<br>
+![url-redirect-2](https://github.com/user-attachments/assets/b1013033-ee21-4f6b-8cca-30f2fedd73bd)
+
+<b>Vertical Timeline</b><br>
+![vertical-timeline](https://github.com/user-attachments/assets/6123d621-8109-4572-a792-37600540dbbc)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
