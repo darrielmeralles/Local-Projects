@@ -1,0 +1,21 @@
+.modal-dialog {
+    max-width: 425px !important;
+    top: 40%;
+    transform: translateY(-50%) !important;
+}
+
+ /* Optional styling to make the autocomplete dropdown more visible */
+ .ui-autocomplete {
+    max-height: 200px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+    z-index: 100000;
+}
+.ui-menu-item {
+    padding: 8px;
+}
+.ui-menu-item-wrapper {
+    display: flex !important;
+    justify-content: space-between;
+}

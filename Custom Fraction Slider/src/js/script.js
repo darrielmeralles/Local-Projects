@@ -6,7 +6,7 @@ let data = {
 	elementId: '',
 	config: {
 		list: [{
-			"image_url": 'https://canoeplace.com/wp-content/uploads/2022/10/Workstead_Canoe_Bedroom2_0490-web-691x691@2x.jpg',
+			"image_url": 'https://images.pexels.com/photos/271815/pexels-photo-271815.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 			"image_alt": 'Image',
 			"image_link": 'https://canoeplace.com/accommodations/',
 			"image_text": 'Stay Classic',
@@ -14,7 +14,7 @@ let data = {
 			"description": "Centuries-old charm meets modern luxury in light-filled suites and cottages designed for comfort and style by Workstead, Canoe’s talented interior design team."
 		},
 		{
-			"image_url": 'https://canoeplace.com/wp-content/uploads/2023/07/23-CPI-William-097-RET-691x691.jpg',
+			"image_url": 'https://images.pexels.com/photos/271815/pexels-photo-271815.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 			"image_alt": 'Image',
 			"image_link": 'https://canoeplace.com/our-story/',
 			"image_text": 'Moments Away',
@@ -22,7 +22,7 @@ let data = {
 			"description": "Just 90 miles from New York City, and minutes from the Hamptons’ most beloved beaches and villages, Canoe Place is a lush, hedged enclave in the waterfront hamlet of Hampton Bays."
 		},
 		{
-			"image_url": 'https://canoeplace.com/wp-content/uploads/2023/07/MicrosoftTeams-image-305-691x691@2x.jpg',
+			"image_url": 'https://images.pexels.com/photos/271815/pexels-photo-271815.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 			"image_alt": 'Image',
 			"image_link": 'https://canoeplace.com/dining/',
 			"image_text": 'Curated Cuisine',
@@ -30,7 +30,7 @@ let data = {
 			"description": "Inspired by the region’s abundance of local seafood and vegetables, savor our chef’s fresh takes on seasonal favorites."
 		},
 		{
-			"image_url": 'https://canoeplace.com/wp-content/uploads/2023/07/230626_CanoePlace_SHOT_01_0197-691x691@2x.jpg',
+			"image_url": 'https://images.pexels.com/photos/271815/pexels-photo-271815.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 			"image_alt": 'Image',
 			"image_link": 'https://canoeplace.com/events/',
 			"image_text": 'EXCEPTIONAL EVENTS',

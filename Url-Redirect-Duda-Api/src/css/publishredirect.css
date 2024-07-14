@@ -1,0 +1,29 @@
+.logoutButton {
+    right: 40px;
+    bottom: 40px; 
+}
+
+.dashboard-wrapper .paginationjs {
+    margin-top: 30px;
+}
+
+.dashboard-wrapper .paginationjs .paginationjs-pages li {
+    cursor: pointer;
+}
+
+.dashboard-wrapper .paginationjs .paginationjs-pages li:first-child > a {
+    font-size: 1.25em !important;
+}
+.dashboard-wrapper .paginationjs .paginationjs-pages li:last-child > a {
+    font-size: 1.25em !important;
+}
+.dashboard-wrapper .paginationjs .paginationjs-pages li:not(.active) > a {
+    color: #212529 !important;
+}
+.dashboard-wrapper .paginationjs .paginationjs-pages li.active > a {
+    background-color: #212529 !important;
+    color: #ffffff !important;
+}
+.paginationjs .paginationjs-pages li, .paginationjs .paginationjs-pages li:last-child{
+    border: none !important;
+}

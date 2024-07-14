@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.11.0/sweetalert2.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css">
+    <link rel="stylesheet" href="src/css/publishredirect.css">
+    <link rel="stylesheet" media='screen and (min-width: 320px) and (max-width: 480px)' href="src/css/publishredirect-mobile.css">
+</head>
+<body>
+    <div class="dashboard-wrapper container p-5">
+        <div class="container-fluid d-flex justify-content-center mb-5">
+            <h1 class="text-center fw-bold">URL Redirect List</h1>
+        </div>
+        <div class="container-fluid d-flex align-items-center mb-3 p-0">
+            <div class="container p-0">
+                <h3 class="fs-5 fw-bold m-0">Site Alias: <span class="fw-normal siteAlias"></span></h3>
+            </div>
+            <div class="container d-flex justify-content-end p-0">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRedirectModal">Add New</button>
+                <button type="button" class="btn btn-success ms-3 republishSite">Republish Site</button>
+            </div>
+        </div>
+        <div class="table-responsive text-nowrap">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">OLD PAGE URL</th>
+                        <th scope="col">DESTINATION PAGE URL</th>
+                        <th scope="col">REDIRECT TYPE</th>
+                        <th scope="col" class="w-25">ACTION</th>
+                    </tr>
+                </thead>
+                <tbody class="redirect-table-list"></tbody>
+            </table>
+        </div>
+
+        <!-- Add Redirect Modal -->
+        <div class="modal fade" id="addRedirectModal" tabindex="-1" aria-labelledby="addRedirectURL" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addRedirectModalLabel">Add URL Redirect</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="add-source" class="form-label">Source URL</label>
+                            <input type="text" class="form-control" id="add-source" placeholder="https://www.">
+                        </div>
+                        <div class="mb-3">
+                            <label for="add-target" class="form-label">Destination page</label>
+                            <input type="text" class="form-control" id="add-target" placeholder="https://www.">
+                        </div>
+                        <div class="mb-3">
+                            <label for="add-responceCode" class="form-label">Redirect Type</label>
+                            <select class="form-select" aria-label="Default select example" id="add-responceCode">
+                                <option value="301">301 Redirect(Permanently moved)</option>
+                                <option value="302">302 Redirect(Temporary moved)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary addRedirect">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Update Redirect Modal -->
+        <div class="modal fade" id="updateRedirectModal" tabindex="-1" aria-labelledby="updateRedirectURL" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateRedirectModalLabel">Update URL Redirect</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3 d-none">
+                            <label for="update-id" class="form-label">ID:</label>
+                            <input type="text" class="form-control" id="update-id">
+                        </div>
+                        <div class="mb-3">
+                            <label for="update-source" class="form-label">Source URL</label>
+                            <input type="text" class="form-control" id="update-source" placeholder="https://www.">
+                        </div>
+                        <div class="mb-3">
+                            <label for="update-target" class="form-label">Destination page</label>
+                            <input type="text" class="form-control" id="update-target" placeholder="https://www.">
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" aria-label="Default select example" id="update-responceCode">
+                                <option selected>Redirect Type:</option>
+                                <option value="301">301 Redirect(Permanently moved)</option>
+                                <option value="302">302 Redirect(Temporary moved)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary updateRedirect">Update</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-danger position-absolute logoutButton">Log Out</button>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.11.0/sweetalert2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.6.0/pagination.min.js"></script>
+    <script src="src/js/publishredirect.js"></script>
+</body>
+</html>
