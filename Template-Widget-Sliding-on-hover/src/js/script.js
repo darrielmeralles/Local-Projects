@@ -478,7 +478,7 @@ let data = {
                 image: "screencapture-my-duda-co-preview-c7232cd5-2019-10-24-20_21_24",
             },
 			{
-                image: "screencapture-my-duda-co-preview-dd45b00f-2019-10-24-00_23_474",
+                image: "screencapture-my-duda-co-preview-dd45b00f-2019-10-24-00_23_47",
             },
 			{
                 image: "screencapture-my-duda-co-preview-e9c2e55e-2019-10-23-04_54_00",

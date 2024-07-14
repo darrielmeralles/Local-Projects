@@ -7,7 +7,7 @@ let data = {
 	config: {
 		propertyList: [
 			{
-				Image: "https://jltadmin.m9corp.com//uploads/listings/1690568422_0.jpg",
+				Image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 				Street_Address: "15 Eaglemere Drive",
 				City: "Eaglemere",
 				Price: "448,900",
@@ -17,7 +17,7 @@ let data = {
 				page_item_url: "15-Eaglemere-Drive"
 			},
 			{
-				Image: "https://jltadmin.m9corp.com//uploads/listings/1690565062_0.jpg",
+				Image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 				Street_Address: "162 Joynson Crescent",
 				City: "Ridgewood South",
 				Price: "488,900",
@@ -27,7 +27,7 @@ let data = {
 				page_item_url: "162-Joynson-Crescent"
 			},
 			{
-				Image: "https://jltadmin.m9corp.com//uploads/listings/1690215309_0.jpg",
+				Image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 				Street_Address: "213 Ferndale Ave",
 				City: "Norwood Flats",
 				Price: "549,900",
@@ -37,7 +37,7 @@ let data = {
 				page_item_url: "213-Ferndale-Ave"
 			},
 			{
-				Image: "https://jltadmin.m9corp.com//uploads/listings/1689972335_0.jpg",
+				Image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 				Street_Address: "56 Lake Estate Drive",
 				City: "Gimli RM",
 				Price: "634,900",
@@ -47,7 +47,7 @@ let data = {
 				page_item_url: "56-Lake-Estate-Drive"
 			},
 			{
-				Image: "https://jltadmin.m9corp.com//uploads/listings/1690909471_0.jpg",
+				Image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 				Street_Address: "402 Kirkfield Street",
 				City: "Westwood",
 				Price: "390,000",
@@ -57,7 +57,7 @@ let data = {
 				page_item_url: "402-Kirkfield-Street"
 			},
 			{
-				Image: "https://jltadmin.m9corp.com//uploads/listings/1689958512_0.jpg",
+				Image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 				Street_Address: "49 Hargrave St",
 				City: "",
 				Price: "2,600,000",
@@ -67,7 +67,7 @@ let data = {
 				page_item_url: "49-Hargrave-St"
 			},
 			{
-				Image: "https://jltadmin.m9corp.com//uploads/listings/1690467958_0.jpg",
+				Image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 				Street_Address: "666 Dudley Ave",
 				City: "Crescentwood",
 				Price: "286,000",
@@ -77,7 +77,7 @@ let data = {
 				page_item_url: "666-Dudley-Ave"
 			},
 			{
-				Image: "https://jltadmin.m9corp.com//uploads/listings/1690405172_0.jpg",
+				Image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 				Street_Address: "77 Edmonton St (Unit 206)",
 				City: "Downtown",
 				Price: "155,000",
@@ -87,7 +87,7 @@ let data = {
 				page_item_url: "77-Edmonton-St-Unit-206"
 			},
 			{
-				Image: "https://jltadmin.m9corp.com//uploads/listings/1689190103_0.jpg",
+				Image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 				Street_Address: "459 Elgin Avenue",
 				City: "Central",
 				Price: "210,000",
@@ -97,7 +97,7 @@ let data = {
 				page_item_url: "459-Elgin-Avenue"
 			},
 			{
-				Image: "https://jltadmin.m9corp.com//uploads/listings/1689190103_0.jpg",
+				Image: "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 				Street_Address: "432 Harbison Ave W",
 				City: "Elmwood",
 				Price: "299,900",
