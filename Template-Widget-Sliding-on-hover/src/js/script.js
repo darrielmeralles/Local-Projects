@@ -292,7 +292,217 @@ let data = {
           ],
 		fullbuildList:[
 			{
-                image: "Athens Addiction Recovery Center-Mockup-V2",
+                image: "screencapture-dashboard-thecamel-co-preview-6b68bb36-2019-10-23-19_51_12",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-06beff6a-2019-10-24-20_28_22",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-6fff0f25-2019-10-24-20_25_45",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-7c8d9194-2019-12-12-10_30_11",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-7d4a94b0-2019-10-23-04_19_27",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-47e506a7-2019-10-23-21_07_06",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-93e549b4-2019-10-24-20_20_12",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-911ada74-2019-10-24-02_06_55",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-66324d16-2019-10-24-20_23_31",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-93514f41-2019-10-24-03_52_51",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-343260fe-2019-10-24-00_04_12",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-734003f6-2019-10-24-03_28_56",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-55814004-2019-10-23-02_04_29",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-a5f23b6a-2019-10-24-19_29_36",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-a6bbaa61-2019-10-24-20_07_43",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-b0aff1a0-2019-10-24-02_15_38",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-b413117e-2019-10-24-03_49_01",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-ba746c00-2019-10-24-03_27_01",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-bb523d55-2019-10-23-04_21_41",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-beb0f62b-2019-10-24-02_00_10",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-c2b41c95-2019-10-24-00_27_27",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-cbca7e08-2019-10-23-04_49_39",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-cd70895f-2019-10-23-02_09_29",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-cfc1a2e5-2019-11-11-09_20_01",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-dc427ab7-2019-10-23-23_56_10",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-dc6994e4-2019-10-24-03_41_59",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-e6ac32ce-2019-10-23-04_32_49",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-e29a71e8-2019-10-24-20_16_10",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-e85fc378-2019-10-24-02_11_27",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-e941e4bd-2019-10-24-20_08_21",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-fa5ef180-2019-10-23-19_46_42",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-fa57b313-2019-10-24-19_33_36",
+            },
+			{
+                image: "screencapture-dashboard-thecamel-co-preview-fd57e202-2019-10-24-00_28_55",
+            },
+			{
+                image: "screencapture-editor-searchmarketingspecialists-au-preview-67250b0c-2019-10-24-00_00_30",
+            },
+			{
+                image: "screencapture-editor-searchmarketingspecialists-au-preview-c5e92fa6-2019-10-24-20_07_11",
+            },
+			{
+                image: "screencapture-fairfaxmarketingservices-editor-multiscreensite-preview-3e78d220-2019-10-23-04_20_34",
+            },
+			{
+                image: "screencapture-fairfaxmarketingservices-editor-multiscreensite-preview-5aec0166-2019-10-23-04_27_18",
+            },
+			{
+                image: "screencapture-fairfaxmarketingservices-editor-multiscreensite-preview-2436c21f-2019-10-24-20_24_50",
+            },
+			{
+                image: "screencapture-fairfaxmarketingservices-editor-multiscreensite-preview-7456d291-2019-10-23-04_25_41",
+            },
+			{
+                image: "screencapture-fairfaxmarketingservices-editor-multiscreensite-preview-92834abb-2019-10-23-02_11_18",
+            },
+			{
+                image: "screencapture-fairfaxmarketingservices-editor-multiscreensite-preview-b9a1bb32-2019-10-23-04_33_53",
+            },
+			{
+                image: "screencapture-fairfaxmarketingservices-editor-multiscreensite-preview-ca626e24-2019-10-29-04_13_04",
+            },
+			{
+                image: "screencapture-lovederm-ca-2019-10-24-04_00_18",
+            },
+			{
+                image: "screencapture-mccalldawson-ca-2019-10-24-19_31_24",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-2c3fbd48-2019-10-24-00_11_48",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-2fb4a9b5-2019-10-23-21_08_06",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-4edbd52e-2019-10-23-21_05_59",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-8e19a33d-2019-10-24-00_02_31",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-0031a8d5-2019-10-23-04_52_55",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-34a4a050-2019-10-23-04_46_36",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-80cec419-2019-10-23-04_23_34",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-516d5119-2019-10-24-00_17_05",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-795dc61a-2019-10-24-19_39_38",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-921fac69-2019-10-23-23_58_40",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-2491b429-2019-10-23-19_49_23",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-4537da85-2019-10-24-19_28_16",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-48820df0-2019-10-24-00_14_29",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-5528080f-2019-10-24-03_37_14",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-8097184c-2019-10-23-04_39_54",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-b9d5c823-2019-10-23-19_47_40",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-bec3187b-2019-10-23-04_22_43",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-c7232cd5-2019-10-24-20_21_24",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-dd45b00f-2019-10-24-00_23_474",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-e9c2e55e-2019-10-23-04_54_00",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-ef4b2da0-2019-10-24-03_55_57",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-fceff528-2019-10-23-04_31_40",
+            },
+			{
+                image: "screencapture-my-duda-co-preview-fd6af413-2019-10-24-02_13_58",
+            },
+			{
+                image: "screencapture-preview-greenelephantagency-preview-54f29355-2019-10-23-04_50_41",
+            },
+			{
+                image: "screencapture-talbotestate-ca-2019-10-24-19_39_55",
+            },
+			{
+                image: "screencapture-thecameltraining-editor-multiscreensite-preview-7afa2382-2019-10-24-04_08_40",
+            },
+			{
+                image: "screencapture-thecameltraining-editor-multiscreensite-preview-c6f92575-2019-10-24-00_19_50",
             },
 		]
 	}
@@ -326,39 +536,41 @@ switch (device) {
 dmAPI.runOnReady('init', function () {
 	dmAPI.loadScript('https://irt-cdn.multiscreensite.com/8914113fe39e47bcb3040f2b64f71b02/files/uploaded/paginates.min.js', function () {
 		dmAPI.loadScript('https://irt-cdn.multiscreensite.com/5775367238d847b8b62d126ce25c20de/files/uploaded/jquery.magnific-popup.js', function () {
-			PaginationFunction(mockupList);
-			magnificPopUp();
+			PaginationFunction(fullbuildList, "fb-Main-Container", "fb-text-center", "fullbuild", "jpg");
+			PaginationFunction(mockupList, "sT-Main-Container", "text-center", "mockup", "png");
+			magnificPopUp("fb-text-center");
+			magnificPopUp("text-center");
 		})
 	})
 })
 
 //PAGINATION 
-function PaginationFunction(items){
-	$(element).find('.sT-Main-Container').pagination({
+function PaginationFunction(items, container, wrapper, src, filetype){
+	$(element).find(`.${container}`).pagination({
 	  dataSource: items,
 	  pageSize:12,
 	  callback: function(result, pagination) {
 		let structure = '';
 		structure = result.map(i=>{
-		  return createRow(i);
+		  return createRow(i, src, filetype);
 		  }).join("")
-		  $(element).find(".text-center").html(structure);
+		  $(element).find(`.${wrapper}`).html(structure);
 	  }
 	});
   }
 
-function createRow(b){
+function createRow(b, src, filetype){
 	let j = `<li class="block">
 				<div class="window macpro">
-					<a class="portfolioLink mfp-with-zoom" href="./src/images/mockup/${b.image}.png"><i class="fa-solid fa-expand"></i></a>
-					<img src="./src/images/mockup/${b.image}.png">
+					<a class="portfolioLink mfp-with-zoom" href="./src/images/${src}/${b.image}.${filetype}"><i class="fa-solid fa-expand"></i></a>
+					<img src="./src/images/${src}/${b.image}.${filetype}">
 				</div>
 			</li>`
 	return j;
 }
 
-function magnificPopUp() {
-    $(element).find('.text-center').magnificPopup({
+function magnificPopUp(container) {
+    $(element).find(`.${container}`).magnificPopup({
 		delegate: 'a',
         type: 'image'
     });

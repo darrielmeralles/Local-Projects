@@ -152,6 +152,7 @@ html {
     margin-bottom: 10px;
     width: 31%;
     margin: 10px;
+	box-shadow: 0 4px 12px rgba(76, 76, 76, 0.2);
 }
  ul.blocks li.block .window.macpro {
 	 top: 17px;
@@ -235,9 +236,7 @@ html {
     text-decoration: none;
     border-radius: 10px;
 	transition: 0.5s ease-in-out;
-    box-shadow: 11px 10px 54px -12px rgba(0, 0, 0, 0.93);
-    -webkit-box-shadow: 11px 10px 54px -12px rgba(0, 0, 0, 0.93);
-    -moz-box-shadow: 11px 10px 54px -12px rgba(0, 0, 0, 0.93);
+    box-shadow: 0 4px 12px rgba(76, 76, 76, 0.2);
 }
 .portfolioLink:hover{
 	background: #504545;
